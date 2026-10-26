@@ -1,0 +1,1 @@
+try{document.documentElement.dataset.tema=localStorage.getItem('ana-portal-tema-dev-senior')||'oscuro'}catch(e){}

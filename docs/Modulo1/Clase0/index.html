@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+
+<html data-empresa="dev-senior" data-paleta="bosque" data-tema="oscuro" data-tema-base="oscuro" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Ana Alvarado" name="author"/>
+<meta content="© 2026 Ana Alvarado — Todos los derechos reservados" name="copyright"/>
+<meta content="noindex, nofollow, noarchive, noimageindex" name="robots"/>
+<title>Fundamentos de la web · PulsoFit · Dev Senior</title>
+<link href="vendor/fonts.css" rel="stylesheet"/>
+<link href="vendor/prism-line-numbers.min.css" rel="stylesheet"/>
+<link href="anaestilos-v12.css" rel="stylesheet"/>
+</head>
+<body>
+<a class="skip-link" href="#caso">Saltar al contenido</a>
+<div aria-hidden="true" class="topline" id="topline"></div>
+<div aria-label="Controles" class="controls">
+<button aria-label="Cambiar tema" class="ctrl" id="temaBtn" type="button">☀</button>
+<button aria-label="Pantalla completa" class="ctrl" id="fullscreenBtn" type="button">⛶</button>
+</div>
+<div class="shell" data-collapsed="false" id="shell">
+<aside aria-label="Índice de la clase" class="sidebar">
+<div class="sb-top">
+<span class="brand-mark">A</span>
+<div class="sb-title"><b>Dev Senior</b><span>Python Full Stack · Clase 0</span></div>
+</div>
+<button aria-label="Colapsar menú" class="sb-toggle" id="collapseBtn" type="button">‹</button>
+<nav aria-label="Secciones" class="sb-nav" id="nav"><a class="nav-item active" href="#portada"><span class="nav-index">00</span><span class="nav-label">Portada</span></a><span class="nav-group">El encargo</span><a class="nav-item" href="#caso"><span class="nav-index">01</span><span class="nav-label">PulsoFit nos escribe</span></a><a class="nav-item" href="#objetivos"><span class="nav-index">02</span><span class="nav-label">Lo que lograrás</span></a><span class="nav-group">Comprender</span><a class="nav-item" href="#mapa-curso"><span class="nav-index">03</span><span class="nav-label">De FastAPI al frontend</span></a><a class="nav-item" href="#web"><span class="nav-index">04</span><span class="nav-label">Cómo funciona una página web</span></a><span class="nav-group">Preparar</span><a class="nav-item" href="#entorno"><span class="nav-index">05</span><span class="nav-label">Preparar el entorno</span></a><span class="nav-group">HTML</span><a class="nav-item" href="#html"><span class="nav-index">06</span><span class="nav-label">El elemento y la estructura</span></a><a class="nav-item" href="#html-minimo"><span class="nav-index">07</span><span class="nav-label">Una página mínima y su servidor</span></a><a class="nav-item" href="#html-clases"><span class="nav-index">08</span><span class="nav-label">Las partes de la página de Valeria</span></a><span class="nav-group">CSS</span><a class="nav-item" href="#css"><span class="nav-index">09</span><span class="nav-label">Selectores y reglas CSS</span></a><a class="nav-item" href="#css-tarjetas"><span class="nav-index">10</span><span class="nav-label">Conectar los estilos y crear tarjetas</span></a><a class="nav-item" href="#css-cajas"><span class="nav-index">11</span><span class="nav-label">Medidas y distribución con Flexbox</span></a><a class="nav-item" href="#css-botones"><span class="nav-index">12</span><span class="nav-label">Botones y puente a Tailwind</span></a><span class="nav-group">JavaScript</span><a class="nav-item" href="#dom"><span class="nav-index">13</span><span class="nav-label">De Python al DOM</span></a><a class="nav-item" href="#js-conectar"><span class="nav-index">14</span><span class="nav-label">Conectar JavaScript con la página</span></a><a class="nav-item" href="#js-datos"><span class="nav-index">15</span><span class="nav-label">Las clases como datos</span></a><a class="nav-item" href="#js-pintar"><span class="nav-index">16</span><span class="nav-label">Pintar tarjetas desde los datos</span></a><a class="nav-item" href="#js-modulos"><span class="nav-index">17</span><span class="nav-label">Separar los datos del código</span></a><span class="nav-group">Reservar</span><a class="nav-item" href="#eventos"><span class="nav-index">18</span><span class="nav-label">Eventos y la función renderizar</span></a><a class="nav-item" href="#clic"><span class="nav-index">19</span><span class="nav-label">Escuchar el clic de cada botón</span></a><a class="nav-item" href="#repintar"><span class="nav-index">20</span><span class="nav-label">Volver a pintar después de reservar</span></a><a class="nav-item" href="#agotadas"><span class="nav-index">21</span><span class="nav-label">Una clase llena no se puede reservar</span></a><a class="nav-item" href="#contador"><span class="nav-index">22</span><span class="nav-label">Contar mis reservas</span></a><a class="nav-item" href="#traza"><span class="nav-index">23</span><span class="nav-label">Un clic en Reservar de Funcional</span></a><span class="nav-group">El siguiente paso</span><a class="nav-item" href="#react"><span class="nav-index">24</span><span class="nav-label">Por qué existe React</span></a><a class="nav-item" href="#practica"><span class="nav-index">25</span><span class="nav-label">Práctica: ampliar PulsoFit</span></a><a class="nav-item" href="#node"><span class="nav-index">26</span><span class="nav-label">Preparar Node.js para la Clase 1</span></a><span class="nav-group">Cerrar</span><a class="nav-item" href="#cierre"><span class="nav-index">27</span><span class="nav-label">PulsoFit ya permite reservar</span></a><span class="nav-group">Consultar</span><a class="nav-item" href="#errores"><span class="nav-index">28</span><span class="nav-label">Errores frecuentes y cómo leerlos</span></a><a class="nav-item" href="#archivos"><span class="nav-index">29</span><span class="nav-label">Mapa final de archivos</span></a><a class="nav-item" href="#glosario"><span class="nav-index">30</span><span class="nav-label">Glosario de la clase</span></a><a class="nav-item" href="#documentacion"><span class="nav-index">31</span><span class="nav-label">Documentación para profundizar</span></a></nav>
+<div class="sb-prog">
+<div class="lbl"><span>Progreso</span><span id="progPct">0%</span></div>
+<div class="track"><div class="fill" id="progFill"></div></div>
+</div>
+</aside>
+<main class="main">
+<header class="hero view" data-accent="1" data-escena="apertura" data-layout="canvas" id="portada"><div class="hero-inner"><div class="hero-copy"><span class="eyebrow">Dev Senior · Python Full Stack · Clase 0</span><h1 class="hero-title">Fundamentos de la web para React</h1><p class="hero-lead">HTML, CSS y JavaScript: lo que React necesita que entiendas primero</p><div class="meta"><span class="pill" data-hot="">PulsoFit</span><span class="pill">HTML · CSS · JavaScript</span></div></div><figure class="hero-visual"><img alt="Las paredes, el aspecto del gimnasio y el torniquete representan estructura, presentación y comportamiento" src="img/gimnasio-capas.png"/><figcaption class="hero-note">HTML es estructura, CSS es presentación, JavaScript es comportamiento.<span class="figura-credito">Ilustración original creada para la clase.</span></figcaption></figure></div></header>
+<div class="content"><section class="section view" data-accent="1" data-escena="apertura" data-layout="canvas" hidden="" id="caso"><div class="sec-head"><span class="sec-n">El encargo · 01</span><h2 class="sec-t">PulsoFit nos escribe</h2></div><div class="body"><article class="correo"><div class="correo-head"><span class="correo-avatar">VC</span><div><div class="correo-remitente">Valeria Cárdenas · <a href="mailto:valeria@pulsofit.co">valeria@pulsofit.co</a></div><div class="correo-ruta">Para: Equipo de desarrollo</div></div><span class="correo-fecha">26 oct 2026</span></div><div class="correo-asunto">Las reservas por WhatsApp nos están desbordando</div><div class="correo-body"><p>Hola, equipo:</p>
+<p>Soy la dueña de PulsoFit. Hoy recibimos las reservas de clases por WhatsApp y ya no damos abasto: esta mañana llegaron 31 mensajes antes de las 6:00 a. m.</p>
+<p>El jueves pasó lo peor: llegaron 22 personas a Spinning y solo tenemos 18 bicicletas. Cuatro se fueron molestas.</p>
+<p>Necesitamos una página donde la gente vea las clases del día, quién las dicta, a qué hora y cuántos cupos quedan. Que pueda reservar con un botón y que, si una clase ya no tiene cupos, no la deje reservar.</p>
+<p>¿Pueden ayudarnos?</p>
+<p>Valeria</p>
+</div></article>
+<h3>Lo que pide Valeria, en una lista</h3>
+<ol>
+<li>Ver las clases del día: nombre, entrenador, hora y cupos.</li>
+<li>Reservar con un botón.</li>
+<li>Que una clase sin cupos no se pueda reservar.</li>
+</ol>
+</div></section>
+<section class="section view" data-accent="1" data-escena="objetivos" data-layout="canvas" hidden="" id="objetivos"><div class="sec-head"><span class="sec-n">El encargo · 02</span><h2 class="sec-t">Lo que lograrás</h2></div><div class="body"><p><strong>Antes de hoy:</strong> sabes construir una API que responde JSON, pero no sabes cómo se convierte eso en una página que una persona pueda usar.
+<strong>Al terminar:</strong> PulsoFit tiene una página que muestra las clases desde los datos, permite reservar y bloquea las clases agotadas.</p>
+<ol class="objetivos">
+<li><div><p class="obj-texto"><strong>Explicar</strong> qué hace cada capa de la web (HTML, CSS y JavaScript). </p><p class="obj-evidencia"> señalas en PulsoFit qué archivo da la estructura, cuál la presentación y cuál el comportamiento.</p></div></li>
+<li><div><p class="obj-texto"><strong>Construir</strong> una lista que se pinta desde un arreglo de datos. </p><p class="obj-evidencia"> agregas una clase nueva en <code>datos.js</code> y aparece en pantalla sin tocar el HTML.</p></div></li>
+<li><div><p class="obj-texto"><strong>Detectar</strong> por qué sincronizar datos y pantalla a mano es frágil. </p><p class="obj-evidencia"> quitas una línea, el contador se desfasa y explicas por qué React existe para evitarlo.</p></div></li>
+</ol>
+</div></section>
+<section class="section view" data-accent="1" data-escena="concepto" data-layout="canvas" hidden="" id="mapa-curso"><div class="sec-head"><span class="sec-n">Comprender · 03</span><h2 class="sec-t">De FastAPI al frontend</h2></div><div class="body"><h3>3.1 · De dónde vienes</h3>
+<p>En el curso anterior construiste APIs con FastAPI. Tu API recibía peticiones HTTP y respondía JSON. La probabas con Swagger o con Postman.</p>
+<p>Eso es la mitad de una aplicación. Hoy empieza la otra mitad.</p>
+<h3>3.2 · El mapa completo</h3>
+<p>Una aplicación Full Stack tiene dos lados que se hablan por HTTP. Tú ya conoces el de la derecha.</p>
+<div class="flow"><div class="flow-step"><strong>Navegador (frontend)</strong><span>HTML · CSS · JS · React (Módulo 1)</span></div><span aria-hidden="true" class="flow-arrow">→</span><div class="flow-step"><strong>FastAPI (backend)</strong><span>Python · petición HTTP · respuesta JSON</span></div><span aria-hidden="true" class="flow-arrow">→</span><div class="flow-step"><strong>Base de datos</strong><span></span></div></div><details class="reveal"><summary>Ver el esquema en texto</summary><div class="code-block"><div class="code-head"><span class="code-context">Referencia</span><button class="copy-btn" type="button">Copiar</button></div><pre><code class="language-plaintext">┌──────────────────────┐   petición HTTP    ┌──────────────────────┐      ┌───────────┐
+│  NAVEGADOR (frontend)│ ─────────────────▶ │  FastAPI (backend)   │ ───▶ │ Base de   │
+│  HTML · CSS · JS     │                    │  Python              │      │ datos     │
+│  React (Módulo 1)    │ ◀───────────────── │  (curso anterior)    │ ◀─── │           │
+└──────────────────────┘   respuesta JSON   └──────────────────────┘      └───────────┘</code></pre></div></details>
+<h3>3.3 · Qué vas a construir en el curso</h3>
+<ul>
+<li><strong>Módulo 1:</strong> el frontend con React, Vite y Tailwind.</li>
+<li><strong>Módulo 2:</strong> conectarlo con FastAPI e iniciar sesión con JWT.</li>
+<li><strong>Módulo 3:</strong> roles, calidad y el proyecto final completo.</li>
+</ul>
+</div></section>
+<section class="section view" data-accent="1" data-escena="concepto" data-layout="canvas" hidden="" id="web"><div class="sec-head"><span class="sec-n">Comprender · 04</span><h2 class="sec-t">Cómo funciona una página web</h2></div><div class="body"><h3>4.1 · Qué pasa cuando escribes una dirección</h3>
+<p>Cuando escribes <code>pulsofit.co</code> en el navegador, pasa algo que ya conoces del backend: <strong>el navegador hace una petición HTTP</strong> y un servidor responde.</p>
+<p>La diferencia: tu FastAPI respondía JSON. Un servidor web responde <strong>archivos</strong> que el navegador sabe leer.</p>
+<h3>4.2 · Los tres archivos que el navegador entiende</h3>
+<div class="flow"><div class="flow-step"><strong>Navegador</strong><span>pide la página</span></div><span aria-hidden="true" class="flow-arrow">→</span><div class="flow-step"><strong>index.html</strong><span>la estructura</span></div><span aria-hidden="true" class="flow-arrow">→</span><div class="flow-step"><strong>estilos.css</strong><span>la presentación</span></div><span aria-hidden="true" class="flow-arrow">→</span><div class="flow-step"><strong>app.js</strong><span>el comportamiento</span></div></div><details class="reveal"><summary>Ver el esquema en texto</summary><div class="code-block"><div class="code-head"><span class="code-context">Referencia</span><button class="copy-btn" type="button">Copiar</button></div><pre><code class="language-plaintext">Navegador pide la página
+        ↓
+Servidor responde index.html   →  la estructura
+        ↓
+El HTML pide estilos.css       →  la presentación
+        ↓
+El HTML pide app.js            →  el comportamiento
+        ↓
+El navegador junta todo y lo pinta en pantalla</code></pre></div></details>
+<h3>4.3 · Navegador</h3>
+<ul>
+<li><strong>Técnica:</strong> programa que pide archivos por HTTP, los interpreta y los dibuja en pantalla (Chrome, Edge, Firefox, Safari).</li>
+<li><strong>En la vida real:</strong> es como un traductor: recibe instrucciones escritas y las convierte en algo que tú ves y tocas.</li>
+</ul>
+<h3>4.4 · Las tres capas</h3>
+<h3>4.5 · HTML · la estructura</h3>
+<ul>
+<li><strong>Técnica:</strong> lenguaje de marcado que describe <strong>qué hay</strong> en la página y qué papel cumple cada cosa: un título, un párrafo, un botón.</li>
+<li><strong>En PulsoFit:</strong> "aquí va el nombre del gimnasio, aquí la lista de clases, aquí el botón Reservar".</li>
+</ul>
+<h3>4.6 · CSS · la presentación</h3>
+<ul>
+<li><strong>Técnica:</strong> lenguaje de estilos que describe <strong>cómo se ve</strong> cada elemento: color, tamaño, espacio, posición.</li>
+<li><strong>En PulsoFit:</strong> "las tarjetas son blancas, con bordes redondeados y una al lado de la otra".</li>
+</ul>
+<h3>4.7 · JavaScript · el comportamiento</h3>
+<ul>
+<li><strong>Técnica:</strong> lenguaje de programación que corre dentro del navegador y <strong>reacciona</strong> a lo que hace la persona: modifica la página, responde a clics, pide datos a una API.</li>
+<li><strong>En PulsoFit:</strong> "cuando alguien toque Reservar, descuenta un cupo".</li>
+</ul>
+<h3>4.8 · La analogía: el propio gimnasio</h3>
+<p>Piensa en la sede de PulsoFit:</p>
+<ul>
+<li><strong><button class="termino" data-glosario="html" type="button">HTML</button></strong> son las paredes y los salones: el salón de spinning, la recepción, los casilleros.</li>
+<li><strong><button class="termino" data-glosario="css" type="button">CSS</button></strong> es la pintura, la iluminación y cómo se acomodan las máquinas.</li>
+<li><strong><button class="termino" data-glosario="javascript" type="button">JavaScript</button></strong> es el torniquete que abre cuando pones tu huella: reacciona a lo que haces.</li>
+</ul>
+<p>Un gimnasio sin paredes no existe; sin pintura funciona pero se ve mal; sin torniquete, nadie controla el acceso.</p>
+<div class="micro-task"><span class="component-label">Para pensar</span><p class="micro-task-q">Valeria pide que una clase sin cupos no se pueda reservar. ¿Cuál de las tres capas se encarga de eso?</p><details class="micro-reveal"><summary>Comprobar</summary><p class="micro-answer">JavaScript. El botón existe gracias a HTML y se ve gris gracias a CSS, pero <strong>decidir</strong> que no se puede reservar porque los cupos llegaron a cero es comportamiento: una regla que se evalúa mientras la página está abierta.</p></details></div>
+<h3>4.9 · Por qué React necesita esto</h3>
+<p>React no es un cuarto lenguaje. Es una <strong>librería de JavaScript</strong> que genera HTML y que se estiliza con CSS.</p>
+<div class="table-wrap"><table class="data-table">
+<thead>
+<tr>
+<th>En la Clase 1 vas a ver…</th>
+<th>…y en realidad es</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Un componente de React</td>
+<td>Una función de JavaScript</td>
+</tr>
+<tr>
+<td>JSX (<code>&lt;h3&gt;{clase.nombre}&lt;/h3&gt;</code>)</td>
+<td>HTML escrito dentro de JavaScript</td>
+</tr>
+<tr>
+<td>Clases de Tailwind (<code>p-4 rounded-lg</code>)</td>
+<td>Atajos de CSS</td>
+</tr>
+<tr>
+<td><code>useState</code></td>
+<td>Datos que, al cambiar, vuelven a pintar la pantalla</td>
+</tr>
+</tbody></table></div>
+<p>Si hoy entiendes la columna de la derecha, la de la izquierda deja de ser magia.</p>
+</div></section>
+<section class="section view" data-accent="1" data-escena="construccion" data-layout="canvas" hidden="" id="entorno"><div class="sec-head"><span class="sec-n">Preparar · 05</span><h2 class="sec-t">Preparar el entorno</h2></div><div class="body"><h3>5.1 · Crea la carpeta del proyecto</h3>
+<p>Crea una carpeta llamada <code>pulsofit</code> donde guardas tus proyectos (por ejemplo, en <code>Documentos/devsenior/</code>). Todo lo de hoy vive ahí.</p>
+<p>Ábrela en Cursor: <strong>File → Open Folder</strong> y selecciona <code>pulsofit</code>. Si usas VS Code, el menú es el mismo.</p>
+<h3>5.2 · Apaga el autocompletado de la IA (solo por hoy)</h3>
+<p>Hoy trabajas en <strong>nivel 0 de IA</strong>: la IA puede explicarte, pero no escribe por ti. El autocompletado gris adivina el código antes de que lo pienses, y eso es justo lo que hoy queremos evitar.</p>
+<p>El chat sí queda activo: lo usas cuando tú decidas preguntar.</p>
+<h3>5.3 · En Cursor</h3>
+<ol>
+<li>Haz clic en el indicador <strong>Tab</strong> de la barra de estado, abajo a la derecha.</li>
+<li>Elige <strong>Disable globally</strong>.</li>
+<li>También está en <strong>Cursor Settings → Tab</strong>.</li>
+</ol>
+<h3>5.4 · En VS Code con Copilot</h3>
+<p>Presiona <code>Ctrl+Shift+P</code>, busca <strong>Preferences: Open User Settings (JSON)</strong> y agrega dentro de las llaves:</p>
+<div class="code-block"><div class="code-head"><span class="code-context">Referencia</span><button class="copy-btn" type="button">Copiar</button></div><pre><code class="language-json">"github.copilot.enable": { "*": false },
+"github.copilot.nextEditSuggestions.enabled": false</code></pre></div>
+<h3>5.5 · Verifica que quedó apagado</h3>
+<p>Crea un archivo de prueba <code>prueba.js</code>, escribe <code>function sumar(</code> y espera dos segundos. No debe aparecer texto gris. Luego borra <code>prueba.js</code>.</p>
+<h3>5.6 · El servidor: Python te sirve la página</h3>
+<p>Para ver la página necesitamos un servidor que entregue los archivos al navegador, igual que uvicorn entregaba tu API. Python trae uno incluido: <code>http.server</code>.</p>
+<p>Más adelante vamos a necesitarlo sí o sí (en el Momento 7 sabrás por qué), así que lo usamos desde el inicio.</p>
+<div class="callout" data-tone="warning"><span class="callout-icon">!</span><div><h4>Ojo técnico</h4><p><code>python -m http.server</code> es solo para desarrollo. La documentación de Python advierte que no se debe usar en producción: hace solo verificaciones básicas de seguridad.</p>
+</div></div>
+<div class="papel"><h4>Quién dice que va así</h4><p>Cada nota del código lleva una etiqueta que dice <strong>quién exige</strong> que esa pieza esté ahí. Así sabes qué es obligatorio y qué puedes cambiar.</p>
+<div class="table-wrap"><table class="data-table">
+<thead>
+<tr>
+<th>Etiqueta</th>
+<th>Quién lo dice</th>
+<th>¿Se puede cambiar?</th>
+<th>Dónde se verifica</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>🟨 Lenguaje</td>
+<td>La sintaxis de HTML, CSS o JavaScript</td>
+<td>No</td>
+<td>MDN Web Docs</td>
+</tr>
+<tr>
+<td>🟩 Plataforma</td>
+<td>El navegador o Python</td>
+<td>No, salvo por configuración</td>
+<td>Documentación del navegador o de Python</td>
+</tr>
+<tr>
+<td>🟧 Framework o librería</td>
+<td>Una librería externa (hoy ninguna; desde la Clase 1, React)</td>
+<td>No</td>
+<td>Documentación oficial de la librería</td>
+</tr>
+<tr>
+<td>⬜ Convención</td>
+<td>La comunidad lo hace así</td>
+<td>Sí, aunque conviene respetarla</td>
+<td>Guías de estilo, costumbre del equipo</td>
+</tr>
+<tr>
+<td>🟪 Decisión del proyecto</td>
+<td>Nosotros, por el negocio de PulsoFit</td>
+<td>Sí, si cambia el negocio</td>
+<td>El correo de Valeria</td>
+</tr>
+</tbody></table></div>
+</div>
+</div></section>
+<section class="section view" data-accent="1" data-escena="concepto" data-layout="canvas" hidden="" id="html"><div class="sec-head"><span class="sec-n">HTML · 06</span><h2 class="sec-t">El elemento y la estructura</h2></div><div class="body"><div class="mision"><div class="mision-head"><span class="mision-titulo">Misión del bloque</span></div><div class="mision-grid"><div class="mision-item"><span class="component-label">Para Valeria</span><p>que la gente vea las clases del día con su entrenador, hora y cupos.</p>
+</div><div class="mision-item"><span class="component-label">Lo que hacemos</span><p>escribimos la estructura de la página en HTML, sin colores ni comportamiento.</p>
+</div><div class="mision-item" data-resultado=""><span class="component-label">Cómo sabemos que quedó</span><p>el navegador muestra el nombre del gimnasio y dos clases con su botón Reservar.</p>
+</div></div></div>
+<h3>6.1 · La pieza básica: el elemento</h3>
+<h3>6.2 · Qué es un elemento</h3>
+<ul>
+<li><strong>Técnica:</strong> un elemento HTML es una pieza de la página marcada con una <strong>etiqueta de apertura</strong>, un <strong>contenido</strong> y una <strong>etiqueta de cierre</strong>.</li>
+<li><strong>En la vida real:</strong> es como las etiquetas de una caja de mudanza: "Cocina", "Libros". No cambian lo que hay dentro, pero dicen qué es.</li>
+</ul>
+<h3>6.3 · Anatomía de un elemento</h3>
+<div class="code-block"><div class="code-head"><span class="code-context">Referencia</span><button class="copy-btn" type="button">Copiar</button></div><pre><code class="language-plaintext"> etiqueta de apertura        contenido         etiqueta de cierre
+        │                        │                     │
+   &lt;button class="btn"&gt;      Reservar            &lt;/button&gt;
+            └─────┬─────┘
+              atributo: información extra sobre el elemento</code></pre></div>
+<ul>
+<li><strong>Etiqueta:</strong> el nombre entre <code>&lt;</code> y <code>&gt;</code>. Dice qué tipo de cosa es.</li>
+<li><strong>Cierre:</strong> la misma etiqueta con <code>/</code>. Dice dónde termina.</li>
+<li><strong>Atributo:</strong> un dato extra dentro de la etiqueta de apertura, con la forma <code>nombre="valor"</code>.</li>
+</ul>
+<h3>6.4 · Los elementos se meten unos dentro de otros</h3>
+<p>Un elemento puede contener otros elementos. Eso forma un <strong>árbol</strong>: la página entera es un elemento que contiene la cabecera, que contiene el título, y así.</p>
+<p>Ese árbol va a ser clave en el Momento 7: JavaScript lo recorre para cambiar la página.</p>
+<div class="archivo-ficha"><span class="archivo-accion">Crear</span><span class="archivo-nombre">index.html</span><span class="archivo-ruta">pulsofit/</span></div>
+<p>Es la puerta de entrada de PulsoFit: el primer archivo que el navegador pide. Hoy responde la primera necesidad del correo de Valeria, <strong>ver las clases del día</strong>. Más adelante este archivo cargará los estilos (Momento 6) y el código JavaScript (Momento 7).</p>
+<h3>6.5 · Cómo crear el archivo</h3>
+<p>En el panel izquierdo de Cursor, sobre la carpeta <code>pulsofit</code>, haz clic en el ícono <strong>New File</strong> y escribe <code>index.html</code>. El nombre es exacto: todo en minúsculas.</p>
+</div></section>
+<section class="section view" data-accent="1" data-escena="construccion" data-layout="canvas" hidden="" id="html-minimo"><div class="sec-head"><span class="sec-n">HTML · 07</span><h2 class="sec-t">Una página mínima y su servidor</h2></div><div class="body"><h3>7.1 · Una página mínima que el navegador entienda</h3>
+<article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">index.html</span><span class="archivo-ruta">pulsofit/</span></div><div class="lectura"><div class="lectura-head"><span class="lectura-num">1</span><h4 class="lectura-titulo">Una página mínima que el navegador entienda</h4><div class="lectura-proposito"><p><strong>Necesidad:</strong> antes de mostrar clases, necesitamos que el navegador reconozca el archivo como una página y muestre algo, aunque sea el nombre del gimnasio.</p><p><strong>Dónde va:</strong> en <code>index.html</code>, que está vacío.</p></div></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><span class="code-context">index.html · Líneas 1–11</span></div><pre class="line-numbers" data-start="1"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;PulsoFit · Clases de hoy&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;PulsoFit&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div><ol class="notas"><li class="nota" data-lineas="1"><div class="nota-cabeza"><span class="nota-lineas">L1</span><span class="nota-codigo"><code>&lt;!DOCTYPE html&gt;</code></span></div><p>🟨 Lenguaje · Le avisa al navegador que el archivo usa HTML moderno. No es una etiqueta y no se cierra; sin ella, el navegador entra en un modo antiguo de compatibilidad.</p></li><li class="nota" data-lineas="2"><div class="nota-cabeza"><span class="nota-lineas">L2</span><span class="nota-codigo"><code>&lt;html lang="es"&gt;</code></span></div><p>🟨 Lenguaje · <code>html</code> abre el elemento raíz: todo lo demás va dentro. El atributo <code>lang="es"</code> dice que el contenido está en español; lo usan los lectores de pantalla para pronunciar bien y el navegador para ofrecer traducción.</p></li><li class="nota" data-lineas="3"><div class="nota-cabeza"><span class="nota-lineas">L3</span><span class="nota-codigo"><code>&lt;head&gt;</code></span></div><p>🟨 Lenguaje · Abre la cabeza del documento: información <strong>sobre</strong> la página que no se dibuja en ella.</p></li><li class="nota" data-lineas="4"><div class="nota-cabeza"><span class="nota-lineas">L4</span><span class="nota-codigo"><code>&lt;meta charset="UTF-8"&gt;</code></span></div><p>🟨 Lenguaje · Dice con qué codificación están escritos los caracteres. Con <code>UTF-8</code> las tildes, la ñ y el punto medio <code>·</code> se ven bien. <code>meta</code> no tiene cierre porque no tiene contenido.</p></li><li class="nota" data-lineas="5"><div class="nota-cabeza"><span class="nota-lineas">L5</span><span class="nota-codigo"><code>&lt;meta name="viewport" …&gt;</code></span></div><p>🟩 Plataforma · Le pide al navegador del celular que use el ancho real de la pantalla (<code>width=device-width</code>) sin zoom inicial (<code>initial-scale=1.0</code>). Valeria quiere que la gente reserve desde el celular.</p></li><li class="nota" data-lineas="6"><div class="nota-cabeza"><span class="nota-lineas">L6</span><span class="nota-codigo"><code>&lt;title&gt;…&lt;/title&gt;</code></span></div><p>🟨 Lenguaje · El texto de la pestaña del navegador y el que aparece en los resultados de búsqueda. 🟪 El texto es decisión nuestra.</p></li><li class="nota" data-lineas="7"><div class="nota-cabeza"><span class="nota-lineas">L7</span><span class="nota-codigo"><code>&lt;/head&gt;</code></span></div><p>🟨 Lenguaje · Cierra la cabeza.</p></li><li class="nota" data-lineas="8"><div class="nota-cabeza"><span class="nota-lineas">L8</span><span class="nota-codigo"><code>&lt;body&gt;</code></span></div><p>🟨 Lenguaje · Abre el cuerpo: todo lo que va aquí <strong>sí</strong> se dibuja en pantalla.</p></li><li class="nota" data-lineas="9"><div class="nota-cabeza"><span class="nota-lineas">L9</span><span class="nota-codigo"><code>&lt;h1&gt;PulsoFit&lt;/h1&gt;</code></span></div><p>🟨 Lenguaje · <code>h1</code> es el título principal de la página; solo debe haber uno. 🟪 El texto es el nombre del gimnasio.</p></li><li class="nota" data-lineas="10-11"><div class="nota-cabeza"><span class="nota-lineas">L10-11</span><span class="nota-codigo"><code>&lt;/body&gt;</code> y <code>&lt;/html&gt;</code></span></div><p>🟨 Lenguaje · Cierran el cuerpo y el documento, en orden inverso al que se abrieron.</p></li></ol></div></div></article>
+<h3>7.2 · Levanta el servidor</h3>
+<p>Abre una terminal en Cursor: menú <strong>Terminal → New Terminal</strong>. La terminal abre en la carpeta <code>pulsofit</code>; verifícalo con <code>pwd</code> (o <code>cd</code> en Windows).</p>
+<p>Ejecuta este comando <strong>desde la carpeta <code>pulsofit</code></strong>:</p>
+<div class="code-block" data-tipo="terminal"><div class="code-head"><span class="code-context">Terminal</span><button class="copy-btn" type="button">Copiar</button></div><pre><code class="language-bash">python -m http.server 5500</code></pre></div>
+<h3>7.3 · Qué hace ese comando</h3>
+<ul>
+<li><code>python -m http.server</code> le pide a Python que ejecute su servidor web incluido.</li>
+<li><code>5500</code> es el puerto. No usamos el 8000 porque es el que usa uvicorn por defecto: así puedes tener tu FastAPI y esta página abiertas al mismo tiempo.</li>
+<li>En Mac o Linux el comando puede ser <code>python3</code> en lugar de <code>python</code>.</li>
+</ul>
+<h4 class="build-step-title">Pruébalo</h4>
+<div class="consola"><pre><code class="language-plaintext">Entrada (terminal): python -m http.server 5500
+Salida esperada en la terminal:
+Serving HTTP on :: port 5500 (http://[::]:5500/) ...
+
+Entrada (navegador): http://localhost:5500
+Salida esperada en el navegador:
+Pestaña: PulsoFit · Clases de hoy
+Página: PulsoFit (en letra grande, negra, sobre fondo blanco)</code></pre></div>
+<div class="callout" data-tone="warning"><span class="callout-icon">!</span><div><h4>Ojo técnico</h4><p>El servidor queda ocupando esa terminal mientras corre. Para escribir otros comandos, abre una terminal nueva con el <strong>+</strong>. Para detener el servidor, haz clic en la terminal y presiona <code>Ctrl+C</code>.</p>
+</div></div>
+</div></section>
+<section class="section view" data-accent="1" data-escena="construccion" data-layout="canvas" hidden="" id="html-clases"><div class="sec-head"><span class="sec-n">HTML · 08</span><h2 class="sec-t">Las partes de la página de Valeria</h2></div><div class="body"><h3>8.1 · Las partes de la página de Valeria</h3>
+<article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">index.html</span><span class="archivo-ruta">pulsofit/</span></div><div class="lectura"><div class="lectura-head"><span class="lectura-num">2</span><h4 class="lectura-titulo">Las partes de la página de Valeria</h4><div class="lectura-proposito"><p><strong>Necesidad:</strong> Valeria quiere ver las clases del día con entrenador, hora y cupos, y un botón para reservar. Hoy la página solo dice "PulsoFit".</p><p><strong>Dónde va:</strong> en <code>index.html</code>, <strong>reemplaza</strong> la línea 9 (<code>&lt;h1&gt;PulsoFit&lt;/h1&gt;</code>) por todo este bloque. El resto del archivo no cambia.</p></div></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><span class="code-context">index.html · Líneas 9–36</span></div><pre class="line-numbers" data-start="9"><code class="language-markup">  &lt;header&gt;
+    &lt;h1&gt;PulsoFit&lt;/h1&gt;
+    &lt;p&gt;Reserva tu clase en segundos&lt;/p&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;h2&gt;Clases de hoy&lt;/h2&gt;
+    &lt;section&gt;
+      &lt;article&gt;
+        &lt;h3&gt;Spinning&lt;/h3&gt;
+        &lt;p&gt;Entrena: Laura Gómez&lt;/p&gt;
+        &lt;p&gt;Hora: 6:00 a. m.&lt;/p&gt;
+        &lt;p&gt;Cupos: 3&lt;/p&gt;
+        &lt;button&gt;Reservar&lt;/button&gt;
+      &lt;/article&gt;
+      &lt;article&gt;
+        &lt;h3&gt;Yoga&lt;/h3&gt;
+        &lt;p&gt;Entrena: Andrés Pérez&lt;/p&gt;
+        &lt;p&gt;Hora: 7:00 a. m.&lt;/p&gt;
+        &lt;p&gt;Cupos: 8&lt;/p&gt;
+        &lt;button&gt;Reservar&lt;/button&gt;
+      &lt;/article&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+
+  &lt;footer&gt;
+    &lt;p&gt;PulsoFit · Abierto de lunes a sábado, de 5:00 a. m. a 10:00 p. m.&lt;/p&gt;
+  &lt;/footer&gt;</code></pre></div><ol class="notas"><li class="nota" data-lineas="9"><div class="nota-cabeza"><span class="nota-lineas">L9</span><span class="nota-codigo"><code>&lt;header&gt;</code></span></div><p>🟨 Lenguaje · Abre la cabecera de la página: lo que la presenta. Aquí va el nombre del gimnasio y su lema.</p></li><li class="nota" data-lineas="10"><div class="nota-cabeza"><span class="nota-lineas">L10</span><span class="nota-codigo"><code>&lt;h1&gt;PulsoFit&lt;/h1&gt;</code></span></div><p>🟨 Lenguaje · El mismo título del paso 1, ahora dentro de la cabecera. Sigue siendo el único <code>h1</code>.</p></li><li class="nota" data-lineas="11"><div class="nota-cabeza"><span class="nota-lineas">L11</span><span class="nota-codigo"><code>&lt;p&gt;…&lt;/p&gt;</code></span></div><p>🟨 Lenguaje · <code>p</code> es un párrafo: un bloque de texto. 🟪 El lema es nuestro; en el Momento 8 este párrafo mostrará el contador de reservas.</p></li><li class="nota" data-lineas="12"><div class="nota-cabeza"><span class="nota-lineas">L12</span><span class="nota-codigo"><code>&lt;/header&gt;</code></span></div><p>🟨 Lenguaje · Cierra la cabecera.</p></li><li class="nota" data-lineas="13"><div class="nota-cabeza"><span class="nota-lineas">L13</span><span class="nota-codigo">línea en blanco</span></div><p>⬜ Convención · Al navegador no le importa; a quien lee el código sí: separa las grandes zonas de la página.</p></li><li class="nota" data-lineas="14"><div class="nota-cabeza"><span class="nota-lineas">L14</span><span class="nota-codigo"><code>&lt;main&gt;</code></span></div><p>🟨 Lenguaje · Abre el contenido principal: lo que vino a buscar la persona. Solo hay un <code>main</code> por página.</p></li><li class="nota" data-lineas="15"><div class="nota-cabeza"><span class="nota-lineas">L15</span><span class="nota-codigo"><code>&lt;h2&gt;Clases de hoy&lt;/h2&gt;</code></span></div><p>🟨 Lenguaje · <code>h2</code> es un subtítulo, un nivel debajo del <code>h1</code>. Los títulos van en orden: <code>h1</code>, <code>h2</code>, <code>h3</code>, como los capítulos y secciones de un libro.</p></li><li class="nota" data-lineas="16"><div class="nota-cabeza"><span class="nota-lineas">L16</span><span class="nota-codigo"><code>&lt;section&gt;</code></span></div><p>🟨 Lenguaje · Agrupa un bloque temático: aquí, la lista de clases. <em>Lo usarás:</em> en el Momento 7 JavaScript llenará esta sección.</p></li><li class="nota" data-lineas="17"><div class="nota-cabeza"><span class="nota-lineas">L17</span><span class="nota-codigo"><code>&lt;article&gt;</code></span></div><p>🟨 Lenguaje · Una pieza de contenido que tiene sentido por sí sola: una clase del gimnasio. Cada clase será un <code>article</code>.</p></li><li class="nota" data-lineas="18"><div class="nota-cabeza"><span class="nota-lineas">L18</span><span class="nota-codigo"><code>&lt;h3&gt;Spinning&lt;/h3&gt;</code></span></div><p>🟨 Lenguaje · El título de la clase, un nivel debajo de "Clases de hoy". 🟪 Los datos (Spinning, Laura Gómez, 6:00 a. m., 3 cupos) son de PulsoFit.</p></li><li class="nota" data-lineas="19-21"><div class="nota-cabeza"><span class="nota-lineas">L19-21</span><span class="nota-codigo">tres <code>&lt;p&gt;</code></span></div><p>🟨 Lenguaje · Entrenador, hora y cupos: exactamente lo que pidió Valeria en su correo.</p></li><li class="nota" data-lineas="22"><div class="nota-cabeza"><span class="nota-lineas">L22</span><span class="nota-codigo"><code>&lt;button&gt;Reservar&lt;/button&gt;</code></span></div><p>🟨 Lenguaje · Un botón que se puede presionar con mouse, dedo o teclado. Por ahora no hace nada: el comportamiento es trabajo de JavaScript (Momento 8).</p></li><li class="nota" data-lineas="23"><div class="nota-cabeza"><span class="nota-lineas">L23</span><span class="nota-codigo"><code>&lt;/article&gt;</code></span></div><p>🟨 Lenguaje · Cierra la tarjeta de Spinning.</p></li><li class="nota" data-lineas="24-30"><div class="nota-cabeza"><span class="nota-lineas">L24-30</span><span class="nota-codigo">el segundo <code>article</code></span></div><p>🟨 Lenguaje · La misma estructura para Yoga. Fíjate que la <strong>copiamos completa</strong>: guarda esa incomodidad, vuelve en el Momento 7.</p></li><li class="nota" data-lineas="31-32"><div class="nota-cabeza"><span class="nota-lineas">L31-32</span><span class="nota-codigo"><code>&lt;/section&gt;</code> y <code>&lt;/main&gt;</code></span></div><p>🟨 Lenguaje · Cierran la lista y el contenido principal.</p></li><li class="nota" data-lineas="34"><div class="nota-cabeza"><span class="nota-lineas">L34</span><span class="nota-codigo"><code>&lt;footer&gt;</code></span></div><p>🟨 Lenguaje · El pie de página: información de cierre, como el horario del gimnasio.</p></li><li class="nota" data-lineas="35-36"><div class="nota-cabeza"><span class="nota-lineas">L35-36</span><span class="nota-codigo">párrafo y <code>&lt;/footer&gt;</code></span></div><p>🟪 Decisión del proyecto · El horario de PulsoFit; 🟨 <code>&lt;/footer&gt;</code> cierra el pie.</p></li></ol></div></div></article>
+<h4 class="build-step-title">Pruébalo</h4>
+<div class="consola"><pre><code class="language-plaintext">Entrada: guarda el archivo (Ctrl+S) y recarga el navegador (F5) en http://localhost:5500
+Salida esperada (sin colores, todo en columna):
+PulsoFit
+Reserva tu clase en segundos
+Clases de hoy
+Spinning
+Entrena: Laura Gómez
+Hora: 6:00 a. m.
+Cupos: 3
+[Reservar]
+Yoga
+Entrena: Andrés Pérez
+Hora: 7:00 a. m.
+Cupos: 8
+[Reservar]
+PulsoFit · Abierto de lunes a sábado, de 5:00 a. m. a 10:00 p. m.</code></pre></div>
+<h3>8.2 · Por qué <code>header</code>, <code>main</code>, <code>article</code> y no cajas genéricas</h3>
+<p>Existe una etiqueta genérica, <code>div</code>, que sirve para todo. Podríamos haber escrito la página entera con <code>div</code>, y se vería igual.</p>
+<p>Las etiquetas con significado (<strong>HTML semántico</strong>) le dicen al navegador, a Google y a los lectores de pantalla qué papel cumple cada parte. Una persona ciega que navega con lector de pantalla puede saltar directo al <code>main</code> o recorrer los <code>article</code> uno por uno.</p>
+<details class="code-reveal" data-archivo="index.html"><summary><span><span class="code-reveal-title">index.html · archivo completo</span><span class="code-reveal-note">38 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Editar</span><span class="code-file">index.html</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;PulsoFit · Clases de hoy&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;PulsoFit&lt;/h1&gt;
+    &lt;p&gt;Reserva tu clase en segundos&lt;/p&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;h2&gt;Clases de hoy&lt;/h2&gt;
+    &lt;section&gt;
+      &lt;article&gt;
+        &lt;h3&gt;Spinning&lt;/h3&gt;
+        &lt;p&gt;Entrena: Laura Gómez&lt;/p&gt;
+        &lt;p&gt;Hora: 6:00 a. m.&lt;/p&gt;
+        &lt;p&gt;Cupos: 3&lt;/p&gt;
+        &lt;button&gt;Reservar&lt;/button&gt;
+      &lt;/article&gt;
+      &lt;article&gt;
+        &lt;h3&gt;Yoga&lt;/h3&gt;
+        &lt;p&gt;Entrena: Andrés Pérez&lt;/p&gt;
+        &lt;p&gt;Hora: 7:00 a. m.&lt;/p&gt;
+        &lt;p&gt;Cupos: 8&lt;/p&gt;
+        &lt;button&gt;Reservar&lt;/button&gt;
+      &lt;/article&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+
+  &lt;footer&gt;
+    &lt;p&gt;PulsoFit · Abierto de lunes a sábado, de 5:00 a. m. a 10:00 p. m.&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div></div></details>
+</div></section>
+<section class="section view" data-accent="1" data-escena="concepto" data-layout="canvas" hidden="" id="css"><div class="sec-head"><span class="sec-n">CSS · 09</span><h2 class="sec-t">Selectores y reglas CSS</h2></div><div class="body"><div class="mision"><div class="mision-head"><span class="mision-titulo">Misión del bloque</span></div><div class="mision-grid"><div class="mision-item"><span class="component-label">Para Valeria</span><p>que la página se vea como la de un gimnasio y no como un documento de texto.</p>
+</div><div class="mision-item"><span class="component-label">Lo que hacemos</span><p>escribimos un archivo de estilos y le ponemos nombre a cada pieza que queremos vestir.</p>
+</div><div class="mision-item" data-resultado=""><span class="component-label">Cómo sabemos que quedó</span><p>las clases aparecen como tarjetas blancas, una al lado de la otra, con un botón naranja.</p>
+</div></div></div>
+<h3>9.1 · La pieza básica: la regla CSS</h3>
+<h3>9.2 · Qué es una regla</h3>
+<ul>
+<li><strong>Técnica:</strong> una regla CSS tiene un <strong>selector</strong> (a quién le aplico) y un bloque de <strong>declaraciones</strong> <code>propiedad: valor;</code> (qué le cambio).</li>
+<li><strong>En la vida real:</strong> es como una orden en el gimnasio: "a <strong>todos los entrenadores</strong> → camiseta negra, gorra roja". Primero a quién, después qué.</li>
+</ul>
+<h3>9.3 · Anatomía de una regla</h3>
+<div class="code-block"><div class="code-head"><span class="code-context">Referencia</span><button class="copy-btn" type="button">Copiar</button></div><pre><code class="language-plaintext"> selector         propiedad        valor
+    │                 │              │
+ .tarjeta   {    padding    :     16px    ;   }
+            └──────────── declaración ────────┘</code></pre></div>
+<h3>9.4 · Tres formas de elegir a quién</h3>
+<div class="table-wrap"><table class="data-table">
+<thead>
+<tr>
+<th>Selector</th>
+<th>Se escribe</th>
+<th>Elige</th>
+<th>Ejemplo hoy</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>De etiqueta</td>
+<td><code>body</code></td>
+<td>Todos los elementos con esa etiqueta</td>
+<td><code>body</code>, <code>main</code>, <code>footer</code></td>
+</tr>
+<tr>
+<td>De clase</td>
+<td><code>.tarjeta</code></td>
+<td>Todos los que tengan <code>class="tarjeta"</code></td>
+<td><code>.tarjeta</code>, <code>.btn-reservar</code></td>
+</tr>
+<tr>
+<td>Universal</td>
+<td><code>*</code></td>
+<td>Absolutamente todos</td>
+<td><code>*</code></td>
+</tr>
+</tbody></table></div>
+<h3>9.5 · Para qué sirve el atributo <code>class</code></h3>
+<p>Una <strong>clase</strong> es un nombre que tú le pones a un elemento para poder elegirlo desde CSS. Varios elementos pueden compartir la misma clase: las dos tarjetas se llamarán <code>tarjeta</code>.</p>
+<p>En HTML se escribe <code>class="tarjeta"</code>; en CSS se elige con punto: <code>.tarjeta</code>.</p>
+<div class="archivo-ficha"><span class="archivo-accion">Crear</span><span class="archivo-nombre">estilos.css</span><span class="archivo-ruta">pulsofit/</span></div>
+<p>Es el vestuario de PulsoFit: todo lo visual vive aquí, separado de la estructura. Así, si mañana Valeria cambia el color de la marca, se edita un solo archivo y el HTML no se toca. <code>index.html</code> lo va a pedir con una línea nueva.</p>
+<h3>9.6 · Cómo crear el archivo</h3>
+<p>Igual que antes: <strong>New File</strong> sobre la carpeta <code>pulsofit</code> y escribe <code>estilos.css</code>.</p>
+</div></section>
+<section class="section view" data-accent="1" data-escena="construccion" data-layout="canvas" hidden="" id="css-tarjetas"><div class="sec-head"><span class="sec-n">CSS · 10</span><h2 class="sec-t">Conectar los estilos y crear tarjetas</h2></div><div class="body"><h3>10.1 · Conectar los estilos y vestir toda la página</h3>
+<article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">index.html</span><span class="archivo-ruta">pulsofit/</span></div><div class="lectura"><div class="lectura-head"><span class="lectura-num">1</span><h4 class="lectura-titulo">Conectar los estilos y vestir toda la página</h4><div class="lectura-proposito"><p><strong>Necesidad:</strong> el navegador no sabe que existe <code>estilos.css</code>. Hay que avisarle desde el HTML y comprobar que la conexión funciona con un cambio visible.</p><p><strong>Dónde va (1 de 2):</strong> en <code>index.html</code>, <strong>agrega</strong> esta línea debajo del <code>&lt;title&gt;</code> (queda como línea 7).</p></div></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><span class="code-context">index.html · Líneas 7–7</span></div><pre class="line-numbers" data-start="7"><code class="language-markup">  &lt;link rel="stylesheet" href="estilos.css"&gt;</code></pre></div><ol class="notas"><li class="nota" data-lineas="7"><div class="nota-cabeza"><span class="nota-lineas">L7</span><span class="nota-codigo"><code>&lt;link rel="stylesheet" href="estilos.css"&gt;</code></span></div><p>🟨 Lenguaje · <code>link</code> conecta la página con otro archivo; <code>rel="stylesheet"</code> dice que es una hoja de estilos y <code>href</code> dice dónde está. 🟪 <code>estilos.css</code> es el nombre que elegimos: debe coincidir letra por letra con el archivo. Es un elemento vacío, sin cierre.</p></li></ol></div></div></article>
+<article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">estilos.css</span><span class="archivo-ruta">pulsofit/</span></div><div class="lectura"><div class="lectura-head"><span class="lectura-num">1</span><h4 class="lectura-titulo">Conectar los estilos y vestir toda la página</h4><div class="lectura-proposito"><p><strong>Dónde va (2 de 2):</strong> en <code>estilos.css</code>, que está vacío.</p></div></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><span class="code-context">estilos.css · Líneas 1–6</span></div><pre class="line-numbers" data-start="1"><code class="language-css">body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background-color: #f4f4f8;
+  color: #1a1a1a;
+}</code></pre></div><ol class="notas"><li class="nota" data-lineas="1"><div class="nota-cabeza"><span class="nota-lineas">L1</span><span class="nota-codigo"><code>body {</code></span></div><p>🟨 Lenguaje · Selector de etiqueta: elige el <code>body</code>, es decir, toda la página visible. La llave <code>{</code> abre las declaraciones.</p></li><li class="nota" data-lineas="2"><div class="nota-cabeza"><span class="nota-lineas">L2</span><span class="nota-codigo"><code>margin: 0;</code></span></div><p>🟨 Lenguaje · El navegador le pone al <code>body</code> un margen de 8 píxeles por defecto; lo quitamos para que la cabecera toque los bordes. Cada declaración termina en <code>;</code>.</p></li><li class="nota" data-lineas="3"><div class="nota-cabeza"><span class="nota-lineas">L3</span><span class="nota-codigo"><code>font-family: system-ui, sans-serif;</code></span></div><p>🟨 Lenguaje · Elige la letra. <code>system-ui</code> usa la letra del sistema operativo (Segoe UI en Windows, San Francisco en Mac). Si no existe, usa <code>sans-serif</code>, cualquier letra sin remates. ⬜ Es una elección moderna y común.</p></li><li class="nota" data-lineas="4"><div class="nota-cabeza"><span class="nota-lineas">L4</span><span class="nota-codigo"><code>background-color: #f4f4f8;</code></span></div><p>🟨 Lenguaje · Color de fondo. <code>#f4f4f8</code> es un color en hexadecimal: tres pares de números para rojo, verde y azul. 🟪 Un gris muy claro, decisión nuestra.</p></li><li class="nota" data-lineas="5"><div class="nota-cabeza"><span class="nota-lineas">L5</span><span class="nota-codigo"><code>color: #1a1a1a;</code></span></div><p>🟨 Lenguaje · <code>color</code> es el color del <strong>texto</strong>, no del fondo. Un negro suave, más cómodo de leer que el negro puro.</p></li><li class="nota" data-lineas="6"><div class="nota-cabeza"><span class="nota-lineas">L6</span><span class="nota-codigo"><code>}</code></span></div><p>🟨 Lenguaje · Cierra la regla.</p></li></ol></div></div></article>
+<h4 class="build-step-title">Pruébalo</h4>
+<div class="consola"><pre><code class="language-plaintext">Entrada: guarda los dos archivos y recarga http://localhost:5500
+Salida esperada:
+- El fondo pasa de blanco a gris muy claro.
+- La letra cambia a la del sistema (más moderna).
+- El texto ya no tiene espacio contra el borde izquierdo de la ventana.
+- En la terminal aparece una petición nueva: "GET /estilos.css HTTP/1.1" 200</code></pre></div>
+<div class="callout" data-tone="warning"><span class="callout-icon">!</span><div><h4>Ojo técnico</h4><p>Si no ves ningún cambio, revisa la terminal: si dice <code>"GET /estilos.css HTTP/1.1" 404</code>, el nombre en <code>href</code> y el del archivo no coinciden (una mayúscula, una letra de más). El navegador no muestra error en la página; simplemente no aplica estilos.</p>
+</div></div>
+<h3>10.2 · Convertir cada clase en una tarjeta</h3>
+<article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">index.html</span><span class="archivo-ruta">pulsofit/</span></div><div class="lectura"><div class="lectura-head"><span class="lectura-num">2</span><h4 class="lectura-titulo">Convertir cada clase en una tarjeta</h4><div class="lectura-proposito"><p><strong>Necesidad:</strong> las dos clases se ven como texto suelto. Queremos que cada una sea una tarjeta, pero CSS necesita una forma de elegir <strong>solo</strong> los <code>article</code>.</p><p><strong>Dónde va (1 de 2):</strong> en <code>index.html</code>, cambia las dos etiquetas <code>&lt;article&gt;</code> (líneas 18 y 25) por:</p></div></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><span class="code-context">index.html · Líneas 18–18</span></div><pre class="line-numbers" data-start="18"><code class="language-markup">      &lt;article class="tarjeta"&gt;</code></pre></div><ol class="notas"><li class="nota" data-lineas="18"><div class="nota-cabeza"><span class="nota-lineas">L18,25</span><span class="nota-codigo"><code>class="tarjeta"</code></span></div><p>🟨 Lenguaje · El atributo <code>class</code> le pone un nombre al elemento. 🟪 <code>tarjeta</code> es nuestro; lo elegimos porque describe qué es, no cómo se ve (no <code>caja-blanca</code>).</p></li></ol></div></div></article>
+<article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">estilos.css</span><span class="archivo-ruta">pulsofit/</span></div><div class="lectura"><div class="lectura-head"><span class="lectura-num">2</span><h4 class="lectura-titulo">Convertir cada clase en una tarjeta</h4><div class="lectura-proposito"><p><strong>Dónde va (2 de 2):</strong> en <code>estilos.css</code>, debajo de la regla <code>body</code>, dejando una línea en blanco.</p></div></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><span class="code-context">estilos.css · Líneas 8–14</span></div><pre class="line-numbers" data-start="8"><code class="language-css">.tarjeta {
+  width: 220px;
+  padding: 16px;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  background-color: #ffffff;
+}</code></pre></div><ol class="notas"><li class="nota" data-lineas="8"><div class="nota-cabeza"><span class="nota-lineas">L8</span><span class="nota-codigo"><code>.tarjeta {</code></span></div><p>🟨 Lenguaje · El punto indica selector de clase: elige todos los elementos con <code>class="tarjeta"</code>. Aquí, las dos clases del gimnasio.</p></li><li class="nota" data-lineas="9"><div class="nota-cabeza"><span class="nota-lineas">L9</span><span class="nota-codigo"><code>width: 220px;</code></span></div><p>🟨 Lenguaje · Ancho de la tarjeta. <code>px</code> son píxeles. 🟪 220 permite que quepan varias tarjetas en una pantalla de computador.</p></li><li class="nota" data-lineas="10"><div class="nota-cabeza"><span class="nota-lineas">L10</span><span class="nota-codigo"><code>padding: 16px;</code></span></div><p>🟨 Lenguaje · Relleno: espacio <strong>dentro</strong> de la tarjeta, entre el borde y el texto. Sin él, el texto quedaría pegado al borde.</p></li><li class="nota" data-lineas="11"><div class="nota-cabeza"><span class="nota-lineas">L11</span><span class="nota-codigo"><code>border: 1px solid #dddddd;</code></span></div><p>🟨 Lenguaje · Borde en una sola línea: grosor (<code>1px</code>), estilo (<code>solid</code>, línea continua) y color (gris claro).</p></li><li class="nota" data-lineas="12"><div class="nota-cabeza"><span class="nota-lineas">L12</span><span class="nota-codigo"><code>border-radius: 8px;</code></span></div><p>🟨 Lenguaje · Redondea las esquinas 8 píxeles.</p></li><li class="nota" data-lineas="13"><div class="nota-cabeza"><span class="nota-lineas">L13</span><span class="nota-codigo"><code>background-color: #ffffff;</code></span></div><p>🟨 Lenguaje · Fondo blanco, para que la tarjeta resalte sobre el gris de la página.</p></li></ol></div></div></article>
+<h4 class="build-step-title">Pruébalo</h4>
+<div class="consola"><pre><code class="language-plaintext">Entrada: guarda, recarga y haz clic derecho sobre la tarjeta de Spinning → Inspeccionar
+Salida esperada en pantalla: dos tarjetas blancas con borde gris, una debajo de la otra
+Salida esperada en el inspector (pestaña Computed, el diagrama de cajas):
+contenido 220 × (alto) · padding 16 · border 1 → ancho total en pantalla: 254 px</code></pre></div>
+<h3>10.3 · El modelo de caja</h3>
+<h3>10.4 · Qué es</h3>
+<ul>
+<li><strong>Técnica:</strong> el navegador dibuja <strong>cada elemento como una caja</strong> con cuatro capas: contenido, relleno (<code>padding</code>), borde (<code>border</code>) y margen (<code>margin</code>).</li>
+<li><strong>En la vida real:</strong> un cuadro colgado en la pared: la foto es el contenido, el paspartú blanco es el <code>padding</code>, el marco es el <code>border</code> y el espacio hasta el siguiente cuadro es el <code>margin</code>.</li>
+</ul>
+<div class="code-block"><div class="code-head"><span class="code-context">Referencia</span><button class="copy-btn" type="button">Copiar</button></div><pre><code class="language-plaintext">┌──────────────── margin (espacio afuera) ────────────────┐
+│  ┌──────────── border (el marco) ────────────────────┐  │
+│  │  ┌──────── padding (relleno adentro) ─────────┐   │  │
+│  │  │                                            │   │  │
+│  │  │        contenido: el texto de la clase     │   │  │
+│  │  │                                            │   │  │
+│  │  └────────────────────────────────────────────┘   │  │
+│  └───────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────┘</code></pre></div>
+<div class="micro-task"><span class="component-label">Para pensar</span><p class="micro-task-q">Le pediste a la tarjeta <code>width: 220px</code>, pero el inspector dice que ocupa 254 píxeles. ¿De dónde salen los 34 de más?</p><details class="micro-reveal"><summary>Comprobar</summary><p class="micro-answer">Del relleno y el borde de <strong>los dos lados</strong>: 16 + 16 de <code>padding</code> y 1 + 1 de <code>border</code> = 34. Por defecto, <code>width</code> mide solo el contenido y el navegador suma lo demás afuera.</p></details></div>
+</div></section>
+<section class="section view" data-accent="1" data-escena="construccion" data-layout="canvas" hidden="" id="css-cajas"><div class="sec-head"><span class="sec-n">CSS · 11</span><h2 class="sec-t">Medidas y distribución con Flexbox</h2></div><div class="body"><h3>11.1 · Que el ancho sea el ancho real</h3>
+<article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">estilos.css</span><span class="archivo-ruta">pulsofit/</span></div><div class="lectura"><div class="lectura-head"><span class="lectura-num">3</span><h4 class="lectura-titulo">Que el ancho sea el ancho real</h4><div class="lectura-proposito"><p><strong>Necesidad:</strong> pedir 220 y obtener 254 complica cualquier diseño. Queremos que <code>width</code> incluya relleno y borde.</p><p><strong>Dónde va:</strong> al <strong>inicio</strong> de <code>estilos.css</code>, antes de la regla <code>body</code>, dejando una línea en blanco después.</p></div></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><span class="code-context">estilos.css · Líneas 1–3</span></div><pre class="line-numbers" data-start="1"><code class="language-css">* {
+  box-sizing: border-box;
+}</code></pre></div><ol class="notas"><li class="nota" data-lineas="1"><div class="nota-cabeza"><span class="nota-lineas">L1</span><span class="nota-codigo"><code>* {</code></span></div><p>🟨 Lenguaje · El selector universal: elige todos los elementos de la página.</p></li><li class="nota" data-lineas="2"><div class="nota-cabeza"><span class="nota-lineas">L2</span><span class="nota-codigo"><code>box-sizing: border-box;</code></span></div><p>🟨 Lenguaje · Cambia cómo se mide una caja: <code>width</code> incluye contenido, relleno y borde. Si pides 220, mide 220. ⬜ Casi todos los proyectos profesionales empiezan con esta regla; Tailwind también la trae.</p></li><li class="nota" data-lineas="3"><div class="nota-cabeza"><span class="nota-lineas">L3</span><span class="nota-codigo"><code>}</code></span></div><p>🟨 Lenguaje · Cierra la regla.</p></li></ol></div></div></article>
+<h4 class="build-step-title">Pruébalo</h4>
+<div class="consola"><pre><code class="language-plaintext">Entrada: guarda, recarga e inspecciona otra vez la tarjeta de Spinning
+Salida esperada en el inspector: ancho total 220 px (contenido 186 · padding 16 · border 1)</code></pre></div>
+<div class="callout" data-tone="warning"><span class="callout-icon">!</span><div><h4>Quítala y mira</h4><p>borra la línea 2 y recarga. La tarjeta vuelve a medir 254 px en el inspector: el navegador regresó a sumar el relleno y el borde por fuera. Vuelve a escribirla.</p></div></div>
+<h3>11.2 · Tarjetas una al lado de la otra</h3>
+<p><strong>Necesidad:</strong> las tarjetas se apilan una debajo de otra y la cabecera tiene el lema debajo del nombre. Valeria quiere ver todas las clases de un vistazo.</p>
+<p><strong>Dónde va (1 de 2):</strong> en <code>index.html</code>, ponle nombre a la cabecera y a la lista:</p>
+<ul>
+<li>Línea 10: cambia <code>&lt;header&gt;</code> por <code>&lt;header class="encabezado"&gt;</code>.</li>
+<li>Línea 17: cambia <code>&lt;section&gt;</code> por <code>&lt;section class="lista-clases"&gt;</code>.</li>
+</ul>
+<article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">index.html</span><span class="archivo-ruta">pulsofit/</span></div><div class="lectura"><div class="lectura-head"><span class="lectura-num">4</span><h4 class="lectura-titulo">Tarjetas una al lado de la otra</h4></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><span class="code-context">index.html · Líneas 10–10</span></div><pre class="line-numbers" data-start="10"><code class="language-markup">  &lt;header class="encabezado"&gt;</code></pre></div><ol class="notas"><li class="nota" data-lineas="10"><div class="nota-cabeza"><span class="nota-lineas">L10</span><span class="nota-codigo"><code>class="encabezado"</code></span></div><p>🟪 Decisión del proyecto · El nombre con el que CSS va a acomodar la cabecera.</p></li></ol></div></div></article>
+<article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">index.html</span><span class="archivo-ruta">pulsofit/</span></div><div class="lectura"><div class="lectura-head"><span class="lectura-num">4</span><h4 class="lectura-titulo">Tarjetas una al lado de la otra</h4></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><span class="code-context">index.html · Líneas 17–17</span></div><pre class="line-numbers" data-start="17"><code class="language-markup">    &lt;section class="lista-clases"&gt;</code></pre></div><ol class="notas"><li class="nota" data-lineas="17"><div class="nota-cabeza"><span class="nota-lineas">L17</span><span class="nota-codigo"><code>class="lista-clases"</code></span></div><p>🟪 Decisión del proyecto · El nombre del contenedor de las tarjetas. ⬜ Las clases de varias palabras se separan con guion: es la costumbre en CSS.</p></li></ol></div></div></article>
+<article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">estilos.css</span><span class="archivo-ruta">pulsofit/</span></div><div class="lectura"><div class="lectura-head"><span class="lectura-num">4</span><h4 class="lectura-titulo">Tarjetas una al lado de la otra</h4><div class="lectura-proposito"><p><strong>Dónde va (2 de 2):</strong> en <code>estilos.css</code>, <strong>entre</strong> la regla <code>body</code> y la regla <code>.tarjeta</code>, con una línea en blanco antes y después.</p></div></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><span class="code-context">estilos.css · Líneas 12–29</span></div><pre class="line-numbers" data-start="12"><code class="language-css">.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background-color: #1a1a2e;
+  color: #ffffff;
+}
+
+main {
+  padding: 24px;
+}
+
+.lista-clases {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}</code></pre></div><ol class="notas"><li class="nota" data-lineas="12-13"><div class="nota-cabeza"><span class="nota-lineas">L12-13</span><span class="nota-codigo"><code>.encabezado { display: flex;</code></span></div><p>🟨 Lenguaje · <code>display: flex</code> convierte la cabecera en un <strong>contenedor flexible</strong>: sus hijos directos (el <code>h1</code> y el <code>p</code>) dejan de apilarse y se acomodan en una fila.</p></li><li class="nota" data-lineas="14"><div class="nota-cabeza"><span class="nota-lineas">L14</span><span class="nota-codigo"><code>justify-content: space-between;</code></span></div><p>🟨 Lenguaje · Reparte los hijos a lo largo de la fila: el primero pegado a la izquierda, el último a la derecha, el espacio en medio.</p></li><li class="nota" data-lineas="15"><div class="nota-cabeza"><span class="nota-lineas">L15</span><span class="nota-codigo"><code>align-items: center;</code></span></div><p>🟨 Lenguaje · Los centra en vertical, para que el nombre y el lema queden a la misma altura.</p></li><li class="nota" data-lineas="16"><div class="nota-cabeza"><span class="nota-lineas">L16</span><span class="nota-codigo"><code>padding: 16px 24px;</code></span></div><p>🟨 Lenguaje · Con dos valores, el primero es arriba y abajo, el segundo izquierda y derecha.</p></li><li class="nota" data-lineas="17-18"><div class="nota-cabeza"><span class="nota-lineas">L17-18</span><span class="nota-codigo">fondo y texto</span></div><p>🟪 Decisión del proyecto · Azul muy oscuro con texto blanco: la cabecera se distingue del contenido.</p></li><li class="nota" data-lineas="21-23"><div class="nota-cabeza"><span class="nota-lineas">L21-23</span><span class="nota-codigo"><code>main { padding: 24px; }</code></span></div><p>🟨 Lenguaje · Selector de etiqueta: separa el contenido principal de los bordes de la ventana.</p></li><li class="nota" data-lineas="25-26"><div class="nota-cabeza"><span class="nota-lineas">L25-26</span><span class="nota-codigo"><code>.lista-clases { display: flex;</code></span></div><p>🟨 Lenguaje · El mismo truco: la sección se vuelve contenedor flexible y las tarjetas, sus hijos, se ponen en fila.</p></li><li class="nota" data-lineas="27"><div class="nota-cabeza"><span class="nota-lineas">L27</span><span class="nota-codigo"><code>flex-wrap: wrap;</code></span></div><p>🟨 Lenguaje · Si las tarjetas no caben en una fila, bajan a la siguiente en lugar de apretarse. En un celular quedarán una debajo de otra.</p></li><li class="nota" data-lineas="28"><div class="nota-cabeza"><span class="nota-lineas">L28</span><span class="nota-codigo"><code>gap: 16px;</code></span></div><p>🟨 Lenguaje · El espacio entre tarjetas, en horizontal y en vertical. Con <code>gap</code> no hay que ponerle margen a cada tarjeta.</p></li></ol></div></div></article>
+<h4 class="build-step-title">Pruébalo</h4>
+<div class="consola"><pre><code class="language-plaintext">Entrada: guarda los dos archivos y recarga
+Salida esperada:
+- Cabecera azul oscura: "PulsoFit" a la izquierda, "Reserva tu clase en segundos" a la derecha
+- Las dos tarjetas, Spinning y Yoga, una al lado de la otra con espacio entre ellas
+- Si haces la ventana muy angosta, Yoga baja debajo de Spinning</code></pre></div>
+<h3>11.3 · Flexbox, en una imagen</h3>
+<h3>11.4 · Qué es</h3>
+<ul>
+<li><strong>Técnica:</strong> Flexbox es un sistema de CSS para acomodar elementos <strong>en una dirección</strong> (fila o columna). Se activa en el padre con <code>display: flex</code> y actúa sobre sus hijos directos.</li>
+<li><strong>En la vida real:</strong> los casilleros de un vestidor: el mueble (padre) decide cómo se alinean las puertas (hijos) y cuánto espacio dejar entre ellas.</li>
+</ul>
+<div class="code-block"><div class="code-head"><span class="code-context">Referencia</span><button class="copy-btn" type="button">Copiar</button></div><pre><code class="language-plaintext">.lista-clases  (display: flex · gap: 16px)
+┌──────────────────────────────────────────────────────────┐
+│ ┌──────────┐   ┌──────────┐   ┌──────────┐               │
+│ │ Spinning │16 │  Yoga    │16 │ Funcional│  ← eje principal (fila)
+│ └──────────┘px └──────────┘px └──────────┘               │
+└──────────────────────────────────────────────────────────┘</code></pre></div>
+</div></section>
+<section class="section view" data-accent="1" data-escena="construccion" data-layout="canvas" hidden="" id="css-botones"><div class="sec-head"><span class="sec-n">CSS · 12</span><h2 class="sec-t">Botones y puente a Tailwind</h2></div><div class="body"><h3>12.1 · El botón y los detalles finales</h3>
+<article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">index.html</span><span class="archivo-ruta">pulsofit/</span></div><div class="lectura"><div class="lectura-head"><span class="lectura-num">5</span><h4 class="lectura-titulo">El botón y los detalles finales</h4><div class="lectura-proposito"><p><strong>Necesidad:</strong> el botón Reservar es lo más importante de la tarjeta y hoy es un botón gris del navegador. Además, el título de cada clase tiene espacio de sobra arriba.</p><p><strong>Dónde va (1 de 2):</strong> en <code>index.html</code>, cambia los dos <code>&lt;button&gt;</code> (líneas 23 y 30) por:</p></div></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><span class="code-context">index.html · Líneas 23–23</span></div><pre class="line-numbers" data-start="23"><code class="language-markup">        &lt;button class="btn-reservar"&gt;Reservar&lt;/button&gt;</code></pre></div><ol class="notas"><li class="nota" data-lineas="23"><div class="nota-cabeza"><span class="nota-lineas">L23,30</span><span class="nota-codigo"><code>class="btn-reservar"</code></span></div><p>🟪 Decisión del proyecto · El nombre del botón. <em>Lo usarás:</em> en el Momento 8 JavaScript buscará los botones por este mismo nombre.</p></li></ol></div></div></article>
+<article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">estilos.css</span><span class="archivo-ruta">pulsofit/</span></div><div class="lectura"><div class="lectura-head"><span class="lectura-num">5</span><h4 class="lectura-titulo">El botón y los detalles finales</h4><div class="lectura-proposito"><p><strong>Dónde va (2 de 2):</strong> al <strong>final</strong> de <code>estilos.css</code>, debajo de la regla <code>.tarjeta</code>, dejando una línea en blanco.</p></div></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><span class="code-context">estilos.css · Líneas 39–63</span></div><pre class="line-numbers" data-start="39"><code class="language-css">.tarjeta h3 {
+  margin-top: 0;
+}
+
+.btn-reservar {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  background-color: #e4572e;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-reservar:disabled {
+  background-color: #aaaaaa;
+  cursor: not-allowed;
+}
+
+footer {
+  padding: 16px 24px;
+  text-align: center;
+  color: #666666;
+}</code></pre></div><ol class="notas"><li class="nota" data-lineas="39"><div class="nota-cabeza"><span class="nota-lineas">L39</span><span class="nota-codigo"><code>.tarjeta h3 {</code></span></div><p>🟨 Lenguaje · Selector <strong>descendiente</strong>: el espacio significa "dentro de". Elige solo los <code>h3</code> que están dentro de una tarjeta; otros <code>h3</code> de la página no se tocan.</p></li><li class="nota" data-lineas="40"><div class="nota-cabeza"><span class="nota-lineas">L40</span><span class="nota-codigo"><code>margin-top: 0;</code></span></div><p>🟨 Lenguaje · Quita el margen superior que el navegador le pone a los títulos, para que no haya un hueco arriba en la tarjeta.</p></li><li class="nota" data-lineas="43-44"><div class="nota-cabeza"><span class="nota-lineas">L43-44</span><span class="nota-codigo"><code>.btn-reservar { width: 100%;</code></span></div><p>🟨 Lenguaje · El porcentaje se calcula sobre el padre: el botón ocupa todo el ancho de la tarjeta, fácil de tocar en el celular.</p></li><li class="nota" data-lineas="45-47"><div class="nota-cabeza"><span class="nota-lineas">L45-47</span><span class="nota-codigo">relleno, sin borde, esquinas</span></div><p>🟨 Lenguaje · <code>border: none</code> quita el borde gris del navegador; el resto ya lo conoces de la tarjeta.</p></li><li class="nota" data-lineas="48-50"><div class="nota-cabeza"><span class="nota-lineas">L48-50</span><span class="nota-codigo">fondo, texto, negrita</span></div><p>🟪 Decisión del proyecto · Naranja de energía con texto blanco en negrita: el botón es lo primero que se ve.</p></li><li class="nota" data-lineas="51"><div class="nota-cabeza"><span class="nota-lineas">L51</span><span class="nota-codigo"><code>cursor: pointer;</code></span></div><p>🟨 Lenguaje · Al pasar el mouse aparece la mano, la señal universal de "esto se puede presionar".</p></li><li class="nota" data-lineas="54"><div class="nota-cabeza"><span class="nota-lineas">L54</span><span class="nota-codigo"><code>.btn-reservar:disabled {</code></span></div><p>🟨 Lenguaje · <code>:disabled</code> es una <strong>pseudoclase</strong>: elige el botón solo cuando está deshabilitado. <em>Lo usarás:</em> en el Momento 8, cuando una clase llegue a cero cupos, JavaScript deshabilitará su botón y esta regla lo pintará de gris.</p></li><li class="nota" data-lineas="55-56"><div class="nota-cabeza"><span class="nota-lineas">L55-56</span><span class="nota-codigo">gris y cursor prohibido</span></div><p>🟨 Lenguaje · <code>not-allowed</code> muestra el círculo tachado.</p></li><li class="nota" data-lineas="59-63"><div class="nota-cabeza"><span class="nota-lineas">L59-63</span><span class="nota-codigo"><code>footer { … }</code></span></div><p>🟨 Lenguaje · Selector de etiqueta: centra el horario (<code>text-align: center</code>) en un gris más suave.</p></li></ol></div></div></article>
+<h4 class="build-step-title">Pruébalo</h4>
+<div class="consola"><pre><code class="language-plaintext">Entrada: guarda los dos archivos y recarga
+Salida esperada:
+- Cada tarjeta tiene un botón naranja de ancho completo con el texto "Reservar" en blanco
+- Al pasar el mouse sobre el botón aparece la mano
+- El título de cada clase queda pegado arriba de la tarjeta, sin hueco
+- El horario aparece centrado en gris al pie de la página</code></pre></div>
+<h3>12.2 · Puente a Tailwind (Clase 1)</h3>
+<h3>12.3 · Lo que hiciste hoy, con los atajos de la próxima clase</h3>
+<p>Tailwind no es otro lenguaje: es una colección de <strong>clases ya escritas</strong> que equivalen a una o dos declaraciones de CSS. En lugar de escribir <code>.tarjeta { padding: 16px; }</code>, pones la clase <code>p-4</code> directamente en el HTML.</p>
+<div class="table-wrap"><table class="data-table">
+<thead>
+<tr>
+<th>CSS que escribiste hoy</th>
+<th>Clase de Tailwind</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>padding: 16px</code></td>
+<td><code>p-4</code></td>
+</tr>
+<tr>
+<td><code>gap: 16px</code></td>
+<td><code>gap-4</code></td>
+</tr>
+<tr>
+<td><code>border-radius: 8px</code></td>
+<td><code>rounded-lg</code></td>
+</tr>
+<tr>
+<td><code>display: flex</code></td>
+<td><code>flex</code></td>
+</tr>
+<tr>
+<td><code>flex-wrap: wrap</code></td>
+<td><code>flex-wrap</code></td>
+</tr>
+<tr>
+<td><code>background-color: #ffffff</code></td>
+<td><code>bg-white</code></td>
+</tr>
+<tr>
+<td><code>font-weight: bold</code></td>
+<td><code>font-bold</code></td>
+</tr>
+</tbody></table></div>
+<details class="code-reveal" data-archivo="index.html"><summary><span><span class="code-reveal-title">index.html · archivo completo</span><span class="code-reveal-note">39 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Editar</span><span class="code-file">index.html</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;PulsoFit · Clases de hoy&lt;/title&gt;
+  &lt;link rel="stylesheet" href="estilos.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header class="encabezado"&gt;
+    &lt;h1&gt;PulsoFit&lt;/h1&gt;
+    &lt;p&gt;Reserva tu clase en segundos&lt;/p&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;h2&gt;Clases de hoy&lt;/h2&gt;
+    &lt;section class="lista-clases"&gt;
+      &lt;article class="tarjeta"&gt;
+        &lt;h3&gt;Spinning&lt;/h3&gt;
+        &lt;p&gt;Entrena: Laura Gómez&lt;/p&gt;
+        &lt;p&gt;Hora: 6:00 a. m.&lt;/p&gt;
+        &lt;p&gt;Cupos: 3&lt;/p&gt;
+        &lt;button class="btn-reservar"&gt;Reservar&lt;/button&gt;
+      &lt;/article&gt;
+      &lt;article class="tarjeta"&gt;
+        &lt;h3&gt;Yoga&lt;/h3&gt;
+        &lt;p&gt;Entrena: Andrés Pérez&lt;/p&gt;
+        &lt;p&gt;Hora: 7:00 a. m.&lt;/p&gt;
+        &lt;p&gt;Cupos: 8&lt;/p&gt;
+        &lt;button class="btn-reservar"&gt;Reservar&lt;/button&gt;
+      &lt;/article&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+
+  &lt;footer&gt;
+    &lt;p&gt;PulsoFit · Abierto de lunes a sábado, de 5:00 a. m. a 10:00 p. m.&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div></div></details>
+<details class="code-reveal" data-archivo="estilos.css"><summary><span><span class="code-reveal-title">estilos.css · archivo completo</span><span class="code-reveal-note">63 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Editar</span><span class="code-file">estilos.css</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-css">* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background-color: #f4f4f8;
+  color: #1a1a1a;
+}
+
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background-color: #1a1a2e;
+  color: #ffffff;
+}
+
+main {
+  padding: 24px;
+}
+
+.lista-clases {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.tarjeta {
+  width: 220px;
+  padding: 16px;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+.tarjeta h3 {
+  margin-top: 0;
+}
+
+.btn-reservar {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  background-color: #e4572e;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-reservar:disabled {
+  background-color: #aaaaaa;
+  cursor: not-allowed;
+}
+
+footer {
+  padding: 16px 24px;
+  text-align: center;
+  color: #666666;
+}</code></pre></div></div></details>
+</div></section>
+<section class="section view" data-accent="1" data-escena="concepto" data-layout="canvas" hidden="" id="dom"><div class="sec-head"><span class="sec-n">JavaScript · 13</span><h2 class="sec-t">De Python al DOM</h2></div><div class="body"><div class="mision"><div class="mision-head"><span class="mision-titulo">Misión del bloque</span></div><div class="mision-grid"><div class="mision-item"><span class="component-label">Para Valeria</span><p>que agregar una clase nueva no signifique copiar HTML a mano.</p>
+</div><div class="mision-item"><span class="component-label">Lo que hacemos</span><p>guardamos las clases en una lista de datos y JavaScript construye las tarjetas a partir de ella.</p>
+</div><div class="mision-item" data-resultado=""><span class="component-label">Cómo sabemos que quedó</span><p>aparecen las 4 clases del día y el HTML ya no tiene ninguna tarjeta escrita a mano.</p>
+</div></div></div>
+<h3>13.1 · Tú ya sabes programar</h3>
+<p>JavaScript es un lenguaje nuevo para ti, pero las ideas no. Casi todo lo que vas a escribir hoy tiene un gemelo en Python.</p>
+<div class="table-wrap"><table class="data-table">
+<thead>
+<tr>
+<th>Python</th>
+<th>JavaScript</th>
+<th>Para qué</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>print("hola")</code></td>
+<td><code>console.log("hola")</code></td>
+<td>Mostrar algo para depurar</td>
+</tr>
+<tr>
+<td><code>lista = [1, 2]</code></td>
+<td><code>const lista = [1, 2];</code></td>
+<td>Una lista de valores (en JS: <strong>arreglo</strong>)</td>
+</tr>
+<tr>
+<td><code>{"nombre": "Yoga"}</code></td>
+<td><code>{ nombre: "Yoga" }</code></td>
+<td>Datos con nombre (en JS: <strong>objeto</strong>)</td>
+</tr>
+<tr>
+<td><code>f"Hola {nombre}"</code></td>
+<td><code>`Hola ${nombre}`</code></td>
+<td>Meter variables en un texto</td>
+</tr>
+<tr>
+<td><code>[f(x) for x in lista]</code></td>
+<td><code>lista.map((x) =&gt; f(x))</code></td>
+<td>Transformar cada elemento</td>
+</tr>
+<tr>
+<td><code>"".join(lista)</code></td>
+<td><code>lista.join("")</code></td>
+<td>Unir textos en uno solo</td>
+</tr>
+<tr>
+<td><code>lambda x: x * 2</code></td>
+<td><code>(x) =&gt; x * 2</code></td>
+<td>Función corta sin nombre</td>
+</tr>
+<tr>
+<td><code>def reservar(id):</code></td>
+<td><code>function reservar(id) {</code></td>
+<td>Función con nombre</td>
+</tr>
+<tr>
+<td><code>True</code>, <code>False</code>, <code>None</code></td>
+<td><code>true</code>, <code>false</code>, <code>null</code></td>
+<td>Valores especiales</td>
+</tr>
+<tr>
+<td><code>==</code></td>
+<td><code>===</code></td>
+<td>Comparar (en JS usa siempre tres)</td>
+</tr>
+<tr>
+<td><code>from datos import clases</code></td>
+<td><code>import { clases } from "./datos.js";</code></td>
+<td>Traer algo de otro archivo</td>
+</tr>
+</tbody></table></div>
+<h3>13.2 · El DOM: el puente entre JavaScript y la pantalla</h3>
+<h3>13.3 · Qué es</h3>
+<ul>
+<li><strong>Técnica:</strong> el DOM (<em>Document Object Model</em>) es el árbol de objetos que el navegador construye a partir del HTML. Cada elemento es un objeto que JavaScript puede buscar, leer y modificar.</li>
+<li><strong>En la vida real:</strong> el HTML es el plano del gimnasio en papel; el DOM es el gimnasio construido. JavaScript no edita el plano: entra al gimnasio y mueve las cosas.</li>
+</ul>
+<div class="code-block"><div class="code-head"><span class="code-context">Referencia</span><button class="copy-btn" type="button">Copiar</button></div><pre><code class="language-plaintext">document
+ └── html
+      ├── head
+      └── body
+           ├── header.encabezado
+           ├── main
+           │    ├── h2
+           │    └── section#lista-clases   ← aquí JavaScript va a pintar las tarjetas
+           └── footer</code></pre></div>
+<h3>13.4 · Lo importante</h3>
+<p>Cuando JavaScript cambia el DOM, <strong>la pantalla cambia de inmediato</strong>. El archivo <code>index.html</code> en tu disco no se modifica nunca.</p>
+<div class="archivo-ficha"><span class="archivo-accion">Crear</span><span class="archivo-nombre">app.js</span><span class="archivo-ruta">pulsofit/</span></div>
+<p>Es el cerebro de PulsoFit: tiene los datos de las clases y el código que los convierte en tarjetas. Responde la primera queja de Valeria (copiar HTML a mano) y prepara la segunda (reservar), que llega en el Momento 8. <code>index.html</code> lo carga con una línea nueva al final del <code>body</code>.</p>
+</div></section>
+<section class="section view" data-accent="1" data-escena="construccion" data-layout="canvas" hidden="" id="js-conectar"><div class="sec-head"><span class="sec-n">JavaScript · 14</span><h2 class="sec-t">Conectar JavaScript con la página</h2></div><div class="body"><h3>Conectar JavaScript con la página</h3>
+<article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">app.js</span><span class="archivo-ruta">pulsofit/</span></div><div class="lectura"><div class="lectura-head"><span class="lectura-num">1</span><h4 class="lectura-titulo">Conectar JavaScript con la página</h4><div class="lectura-proposito"><p><strong>Necesidad:</strong> antes de escribir lógica hay que comprobar que el navegador carga y ejecuta nuestro archivo.</p><p><strong>Dónde va (1 de 2):</strong> crea <code>app.js</code> en la carpeta <code>pulsofit</code> y escribe:</p></div></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><span class="code-context">app.js · Líneas 1–1</span></div><pre class="line-numbers" data-start="1"><code class="language-javascript">console.log("PulsoFit conectado");</code></pre></div><ol class="notas"><li class="nota" data-lineas="1"><div class="nota-cabeza"><span class="nota-lineas">L1</span><span class="nota-codigo"><code>console.log("PulsoFit conectado");</code></span></div><p>🟩 Plataforma · <code>console.log</code> es el <code>print</code> del navegador: escribe en la consola de las herramientas de desarrollador, no en la página. 🟨 El texto va entre comillas y la instrucción termina en <code>;</code>.</p></li></ol></div></div></article>
+<article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">index.html</span><span class="archivo-ruta">pulsofit/</span></div><div class="lectura"><div class="lectura-head"><span class="lectura-num">1</span><h4 class="lectura-titulo">Conectar JavaScript con la página</h4><div class="lectura-proposito"><p><strong>Dónde va (2 de 2):</strong> en <code>index.html</code>, agrega esta línea <strong>justo antes</strong> de <code>&lt;/body&gt;</code>, con una línea en blanco antes (queda como línea 39):</p></div></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><span class="code-context">index.html · Líneas 39–39</span></div><pre class="line-numbers" data-start="39"><code class="language-markup">  &lt;script type="module" src="app.js"&gt;&lt;/script&gt;</code></pre></div><ol class="notas"><li class="nota" data-lineas="39"><div class="nota-cabeza"><span class="nota-lineas">L39</span><span class="nota-codigo"><code>&lt;script type="module" src="app.js"&gt;&lt;/script&gt;</code></span></div><p>🟨 Lenguaje · <code>script</code> carga un archivo de JavaScript; <code>src</code> dice cuál. <code>type="module"</code> le dice al navegador que es un <strong>módulo</strong>: un archivo que puede importar y exportar partes (lo usamos en el paso 4). 🟩 Los módulos esperan a que el HTML esté listo antes de ejecutarse. Se cierra con <code>&lt;/script&gt;</code> aunque esté vacío.</p></li></ol></div></div></article>
+<h4 class="build-step-title">Pruébalo</h4>
+<div class="consola"><pre><code class="language-plaintext">Entrada: guarda, recarga y abre la consola (F12 → pestaña Console)
+Salida esperada en la consola:
+PulsoFit conectado</code></pre></div>
+<div class="callout" data-tone="warning"><span class="callout-icon">!</span><div><h4>Ojo técnico</h4><p>Si abres <code>index.html</code> con doble clic (la barra dice <code>file:///C:/…</code>) en lugar de <code>http://localhost:5500</code>, la consola muestra un error que menciona <strong>CORS policy</strong> y <code>origin 'null'</code>. Se lee así: el navegador bloquea los módulos que no llegan desde un servidor, por seguridad. Esta es la razón por la que levantamos el servidor de Python desde el inicio.</p>
+</div></div>
+</div></section>
+<section class="section view" data-accent="1" data-escena="construccion" data-layout="canvas" hidden="" id="js-datos"><div class="sec-head"><span class="sec-n">JavaScript · 15</span><h2 class="sec-t">Las clases como datos</h2></div><div class="body"><h3>Las clases como datos, no como HTML</h3>
+<article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">app.js</span><span class="archivo-ruta">pulsofit/</span></div><div class="lectura"><div class="lectura-head"><span class="lectura-num">2</span><h4 class="lectura-titulo">Las clases como datos, no como HTML</h4><div class="lectura-proposito"><p><strong>Necesidad:</strong> Valeria tiene 4 clases hoy y tendrá 20. Escribir cada una en HTML no escala. Las clases deben vivir en una lista de datos, igual que en Python.</p><p><strong>Dónde va:</strong> en <code>app.js</code>, <strong>reemplaza</strong> la línea 1 por todo este bloque.</p></div></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><span class="code-context">app.js · Líneas 1–8</span></div><pre class="line-numbers" data-start="1"><code class="language-javascript">const clases = [
+  { id: 1, nombre: "Spinning", entrenador: "Laura Gómez", hora: "6:00 a. m.", cupos: 3 },
+  { id: 2, nombre: "Yoga", entrenador: "Andrés Pérez", hora: "7:00 a. m.", cupos: 8 },
+  { id: 3, nombre: "Funcional", entrenador: "Daniela Ríos", hora: "6:00 p. m.", cupos: 1 },
+  { id: 4, nombre: "Boxeo", entrenador: "Camilo Torres", hora: "7:30 p. m.", cupos: 0 },
+];
+
+console.log(clases);</code></pre></div><ol class="notas"><li class="nota" data-lineas="1"><div class="nota-cabeza"><span class="nota-lineas">L1</span><span class="nota-codigo"><code>const clases = [</code></span></div><p>🟨 Lenguaje · <code>const</code> crea una variable que no se puede reasignar (no se puede volver a escribir <code>clases = …</code>). <code>clases</code> es el nombre; ⬜ en JavaScript los nombres van en <em>camelCase</em> (<code>misReservas</code>). <code>[</code> abre un <strong>arreglo</strong>, la lista de JavaScript.</p></li><li class="nota" data-lineas="2"><div class="nota-cabeza"><span class="nota-lineas">L2</span><span class="nota-codigo"><code>{ id: 1, nombre: "Spinning", … }</code></span></div><p>🟨 Lenguaje · Las llaves crean un <strong>objeto</strong>: el diccionario de JavaScript. Cada dato es <code>clave: valor</code>, separados por coma; las claves no llevan comillas. 🟪 Los campos son exactamente lo que pidió Valeria, más un <code>id</code> para distinguir cada clase.</p></li><li class="nota" data-lineas="2"><div class="nota-cabeza"><span class="nota-lineas">L2</span><span class="nota-codigo"><code>cupos: 3</code></span></div><p>🟨 Lenguaje · Los números van sin comillas; los textos, con comillas. Es la diferencia entre poder restar y no poder.</p></li><li class="nota" data-lineas="3-5"><div class="nota-cabeza"><span class="nota-lineas">L3-5</span><span class="nota-codigo">Yoga, Funcional y Boxeo</span></div><p>🟪 Decisión del proyecto · Funcional tiene 1 cupo y Boxeo 0 a propósito: los usaremos en el Momento 8 para probar qué pasa cuando se acaban.</p></li><li class="nota" data-lineas="5"><div class="nota-cabeza"><span class="nota-lineas">L5</span><span class="nota-codigo">la coma al final</span></div><p>⬜ Convención · La coma después del último objeto es opcional; se deja para que agregar una clase nueva solo sume una línea.</p></li><li class="nota" data-lineas="6"><div class="nota-cabeza"><span class="nota-lineas">L6</span><span class="nota-codigo"><code>];</code></span></div><p>🟨 Lenguaje · Cierra el arreglo y termina la instrucción.</p></li><li class="nota" data-lineas="8"><div class="nota-cabeza"><span class="nota-lineas">L8</span><span class="nota-codigo"><code>console.log(clases);</code></span></div><p>🟩 Plataforma · Muestra el arreglo completo en la consola para verificar que quedó bien escrito.</p></li></ol></div></div></article>
+<h4 class="build-step-title">Pruébalo</h4>
+<div class="consola"><pre><code class="language-plaintext">Entrada: guarda, recarga y mira la consola
+Salida esperada:
+(4) [{…}, {…}, {…}, {…}]
+Al hacer clic en el triángulo: 0: {id: 1, nombre: 'Spinning', entrenador: 'Laura Gómez', hora: '6:00 a. m.', cupos: 3} … y así las cuatro</code></pre></div>
+<div class="micro-task"><span class="component-label">Para pensar</span><p class="micro-task-q">Mira el objeto de Spinning y piensa en tus endpoints de FastAPI. ¿A qué se parece?</p><details class="micro-reveal"><summary>Comprobar</summary><p class="micro-answer">También al <strong>JSON</strong> que respondía tu API. JSON significa <em>JavaScript Object Notation</em>: nació de esta misma forma de escribir objetos. En el Módulo 2, este arreglo dejará de estar escrito aquí y llegará desde tu FastAPI.</p></details></div>
+</div></section>
+<section class="section view" data-accent="1" data-escena="construccion" data-layout="canvas" hidden="" id="js-pintar"><div class="sec-head"><span class="sec-n">JavaScript · 16</span><h2 class="sec-t">Pintar tarjetas desde los datos</h2></div><div class="body"><h3>Que JavaScript pinte las tarjetas</h3>
+<article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">index.html</span><span class="archivo-ruta">pulsofit/</span></div><div class="lectura"><div class="lectura-head"><span class="lectura-num">3</span><h4 class="lectura-titulo">Que JavaScript pinte las tarjetas</h4><div class="lectura-proposito"><p><strong>Necesidad:</strong> los datos están en la consola, pero la página sigue mostrando las dos tarjetas escritas a mano. Queremos que las tarjetas salgan <strong>de los datos</strong>.</p><p><strong>Dónde va (1 de 2):</strong> en <code>index.html</code>, borra la sección completa con sus dos <code>article</code> (líneas 17 a 32) y deja en su lugar esta única línea:</p></div></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><span class="code-context">index.html · Líneas 17–17</span></div><pre class="line-numbers" data-start="17"><code class="language-markup">    &lt;section id="lista-clases" class="lista-clases"&gt;&lt;/section&gt;</code></pre></div><ol class="notas"><li class="nota" data-lineas="17"><div class="nota-cabeza"><span class="nota-lineas">L17</span><span class="nota-codigo"><code>id="lista-clases"</code></span></div><p>🟨 Lenguaje · Un <code>id</code> es un nombre <strong>único</strong> en toda la página. Lo usa JavaScript para encontrar exactamente este elemento. La <code>class</code> se queda para los estilos. ⬜ Clase para CSS, <code>id</code> para JavaScript: así cada lenguaje tiene su propio "nombre" del elemento.</p></li><li class="nota" data-lineas="17"><div class="nota-cabeza"><span class="nota-lineas">L17</span><span class="nota-codigo">sección vacía</span></div><p>🟪 Decisión del proyecto · Ya no hay tarjetas en el HTML: la sección es un espacio que JavaScript va a llenar.</p></li></ol></div></div></article>
+<article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">app.js</span><span class="archivo-ruta">pulsofit/</span></div><div class="lectura"><div class="lectura-head"><span class="lectura-num">3</span><h4 class="lectura-titulo">Que JavaScript pinte las tarjetas</h4><div class="lectura-proposito"><p><strong>Dónde va (2 de 2):</strong> en <code>app.js</code>, <strong>reemplaza</strong> la línea 8 (<code>console.log(clases);</code>) por este bloque.</p></div></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><span class="code-context">app.js · Líneas 8–22</span></div><pre class="line-numbers" data-start="8"><code class="language-javascript">const lista = document.querySelector("#lista-clases");
+
+lista.innerHTML = clases
+  .map(
+    (clase) =&gt; `
+      &lt;article class="tarjeta"&gt;
+        &lt;h3&gt;${clase.nombre}&lt;/h3&gt;
+        &lt;p&gt;Entrena: ${clase.entrenador}&lt;/p&gt;
+        &lt;p&gt;Hora: ${clase.hora}&lt;/p&gt;
+        &lt;p&gt;Cupos: ${clase.cupos}&lt;/p&gt;
+        &lt;button class="btn-reservar"&gt;Reservar&lt;/button&gt;
+      &lt;/article&gt;
+    `
+  )
+  .join("");</code></pre></div><ol class="notas"><li class="nota" data-lineas="8"><div class="nota-cabeza"><span class="nota-lineas">L8</span><span class="nota-codigo"><code>const lista = document.querySelector("#lista-clases");</code></span></div><p>🟩 Plataforma · <code>document</code> es el DOM completo. <code>querySelector</code> busca el <strong>primer</strong> elemento que cumpla un selector de CSS; <code>#</code> significa "por <code>id</code>" (igual que <code>.</code> significa "por clase"). Guardamos la sección en <code>lista</code> para usarla abajo.</p></li><li class="nota" data-lineas="10"><div class="nota-cabeza"><span class="nota-lineas">L10</span><span class="nota-codigo"><code>lista.innerHTML = clases</code></span></div><p>🟩 Plataforma · <code>innerHTML</code> es el HTML que hay <strong>dentro</strong> de un elemento. Al asignarle un texto, el navegador lo convierte en elementos y los pinta. Lo que le asignamos se construye en las líneas siguientes.</p></li><li class="nota" data-lineas="11"><div class="nota-cabeza"><span class="nota-lineas">L11</span><span class="nota-codigo"><code>.map(</code></span></div><p>🟨 Lenguaje · <code>map</code> recorre el arreglo y, por cada clase, produce algo nuevo. Devuelve un arreglo <strong>nuevo</strong> del mismo tamaño; <code>clases</code> no cambia. Es tu <em>list comprehension</em>.</p></li><li class="nota" data-lineas="12"><div class="nota-cabeza"><span class="nota-lineas">L12</span><span class="nota-codigo"><code>(clase) =&gt; </code></span></div><p>🟨 Lenguaje · Una <strong>función flecha</strong>: recibe una clase y devuelve lo que viene después de <code>=&gt;</code>. Es tu <code>lambda</code>. ⬜ El nombre <code>clase</code> (en singular) es costumbre: cada vuelta recibe una sola.</p></li><li class="nota" data-lineas="12"><div class="nota-cabeza"><span class="nota-lineas">L12</span><span class="nota-codigo">la comilla invertida <code>`</code></span></div><p>🟨 Lenguaje · Abre un <strong>template literal</strong>: un texto que puede ocupar varias líneas y llevar variables dentro. Es tu <em>f-string</em>.</p></li><li class="nota" data-lineas="13-19"><div class="nota-cabeza"><span class="nota-lineas">L13-19</span><span class="nota-codigo">el <code>article</code></span></div><p>🟨 Lenguaje · Es el mismo HTML que escribiste a mano en el Momento 5, ahora como molde. 🟪 Conserva las clases <code>tarjeta</code> y <code>btn-reservar</code> para que el CSS del Momento 6 siga funcionando.</p></li><li class="nota" data-lineas="14-17"><div class="nota-cabeza"><span class="nota-lineas">L14-17</span><span class="nota-codigo"><code>${clase.nombre}</code> y compañía</span></div><p>🟨 Lenguaje · <code>${…}</code> mete el valor de una expresión dentro del texto. <code>clase.nombre</code> lee la clave <code>nombre</code> del objeto (en Python sería <code>clase["nombre"]</code>).</p></li><li class="nota" data-lineas="20"><div class="nota-cabeza"><span class="nota-lineas">L20</span><span class="nota-codigo"><code>`</code></span></div><p>🟨 Lenguaje · Cierra el template literal. Cada vuelta de <code>map</code> devuelve un texto con una tarjeta.</p></li><li class="nota" data-lineas="21"><div class="nota-cabeza"><span class="nota-lineas">L21</span><span class="nota-codigo"><code>)</code></span></div><p>🟨 Lenguaje · Cierra el <code>map</code>. En este punto tenemos un arreglo de 4 textos, uno por tarjeta.</p></li><li class="nota" data-lineas="22"><div class="nota-cabeza"><span class="nota-lineas">L22</span><span class="nota-codigo"><code>.join("");</code></span></div><p>🟨 Lenguaje · Une los 4 textos en uno solo, sin nada entre ellos (<code>""</code>). Es tu <code>"".join(lista)</code> de Python, con el orden al revés.</p></li></ol></div></div></article>
+<h4 class="build-step-title">Pruébalo</h4>
+<div class="consola"><pre><code class="language-plaintext">Entrada: guarda los dos archivos y recarga
+Salida esperada: 4 tarjetas con estilos, en este orden
+Spinning · Entrena: Laura Gómez · Hora: 6:00 a. m. · Cupos: 3 · [Reservar]
+Yoga · Entrena: Andrés Pérez · Hora: 7:00 a. m. · Cupos: 8 · [Reservar]
+Funcional · Entrena: Daniela Ríos · Hora: 6:00 p. m. · Cupos: 1 · [Reservar]
+Boxeo · Entrena: Camilo Torres · Hora: 7:30 p. m. · Cupos: 0 · [Reservar]</code></pre></div>
+<div class="callout" data-tone="warning"><span class="callout-icon">!</span><div><h4>Quítala y mira</h4><p>borra <code>.join("")</code> de la línea 22 (deja el <code>;</code> después del paréntesis) y recarga. Entre las tarjetas aparecen <strong>comas</strong> sueltas. Sin <code>join</code>, <code>innerHTML</code> recibe un arreglo, lo convierte en texto a su manera y separa los elementos con coma. Vuelve a escribirlo.</p></div></div>
+<div class="momento-ia"><div class="momento-ia-head"><span class="momento-ia-titulo">Momento IA</span><span class="ia-nivel">Nivel 0 · Tutor</span><span class="ia-herramienta">Chat de Cursor o del navegador</span></div><div class="momento-ia-body"><div><span class="component-label">Qué razonas primero tú</span><p>escribe en un comentario, con tus palabras, qué crees que hace cada una de las líneas 10 a 22.</p>
+</div><div class="code-block" data-tipo="prompt"><div class="code-head"><span class="code-context">Prompt sugerido</span><button class="copy-btn" type="button">Copiar</button></div><pre><code class="language-plaintext">"Estoy aprendiendo JavaScript y vengo de Python. Te pego este código: [pega las líneas 10 a 22]. Explícame paso a paso qué hacen `.map` y `.join`, comparándolos con una list comprehension y con `''.join()` de Python. No reescribas mi código ni me des código nuevo."</code></pre></div><div><span class="component-label">Cómo validar la respuesta</span><p>compárala con lo que escribiste tú. Si la IA menciona algo que no hemos visto (por ejemplo <code>reduce</code> o <code>forEach</code>), pregúntale qué es antes de aceptarlo. Comprueba en la consola que <code>clases.map((clase) =&gt; clase.nombre)</code> devuelve los 4 nombres.</p>
+</div><div><span class="component-label">Qué NO se delega</span><p>escribir el <code>map</code>. Lo escribiste tú; la IA solo te lo explica de otra forma.</p>
+</div></div></div>
+<div class="archivo-ficha"><span class="archivo-accion">Crear</span><span class="archivo-nombre">datos.js</span><span class="archivo-ruta">pulsofit/</span></div>
+<p>Es el archivo donde viven los datos de PulsoFit, separados del código que los pinta. En el Módulo 2 este archivo desaparecerá: los datos llegarán desde tu FastAPI. Separarlo hoy hace que ese cambio toque un solo lugar.</p>
+</div></section>
+<section class="section view" data-accent="1" data-escena="construccion" data-layout="canvas" hidden="" id="js-modulos"><div class="sec-head"><span class="sec-n">JavaScript · 17</span><h2 class="sec-t">Separar los datos del código</h2></div><div class="body"><h3>Separar los datos del código</h3>
+<article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">datos.js</span><span class="archivo-ruta">pulsofit/</span></div><div class="lectura"><div class="lectura-head"><span class="lectura-num">4</span><h4 class="lectura-titulo">Separar los datos del código</h4><div class="lectura-proposito"><p><strong>Necesidad:</strong> <code>app.js</code> mezcla dos responsabilidades: <strong>qué</strong> clases hay y <strong>cómo</strong> se pintan. Cuando los datos vengan del backend, no queremos tocar el código que pinta.</p><p><strong>Dónde va (1 de 2):</strong> crea <code>datos.js</code> en la carpeta <code>pulsofit</code>. <strong>Corta</strong> de <code>app.js</code> las líneas 1 a 6 (el arreglo completo) y pégalas aquí. Agrega <code>export</code> al inicio de la primera línea.</p></div></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><span class="code-context">datos.js · Líneas 1–6</span></div><pre class="line-numbers" data-start="1"><code class="language-javascript">export const clases = [
+  { id: 1, nombre: "Spinning", entrenador: "Laura Gómez", hora: "6:00 a. m.", cupos: 3 },
+  { id: 2, nombre: "Yoga", entrenador: "Andrés Pérez", hora: "7:00 a. m.", cupos: 8 },
+  { id: 3, nombre: "Funcional", entrenador: "Daniela Ríos", hora: "6:00 p. m.", cupos: 1 },
+  { id: 4, nombre: "Boxeo", entrenador: "Camilo Torres", hora: "7:30 p. m.", cupos: 0 },
+];</code></pre></div><ol class="notas"><li class="nota" data-lineas="1"><div class="nota-cabeza"><span class="nota-lineas">L1</span><span class="nota-codigo"><code>export const clases = [</code></span></div><p>🟨 Lenguaje · <code>export</code> hace que <code>clases</code> se pueda usar desde otros archivos. Sin <code>export</code>, lo que se declara en un módulo es privado de ese archivo.</p></li><li class="nota" data-lineas="2-6"><div class="nota-cabeza"><span class="nota-lineas">L2-6</span><span class="nota-codigo">el arreglo</span></div><p>🟪 Decisión del proyecto · Los mismos datos del paso 2, sin ningún cambio.</p></li></ol></div></div></article>
+<article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">app.js</span><span class="archivo-ruta">pulsofit/</span></div><div class="lectura"><div class="lectura-head"><span class="lectura-num">4</span><h4 class="lectura-titulo">Separar los datos del código</h4><div class="lectura-proposito"><p><strong>Dónde va (2 de 2):</strong> en <code>app.js</code>, después de cortar el arreglo el archivo empieza con una línea en blanco. Ubícate al inicio del archivo y escribe esta línea como <strong>primera línea</strong>:</p></div></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><span class="code-context">app.js · Líneas 1–1</span></div><pre class="line-numbers" data-start="1"><code class="language-javascript">import { clases } from "./datos.js";</code></pre></div><ol class="notas"><li class="nota" data-lineas="1"><div class="nota-cabeza"><span class="nota-lineas">L1</span><span class="nota-codigo"><code>import { clases } from "./datos.js";</code></span></div><p>🟨 Lenguaje · Trae <code>clases</code> desde <code>datos.js</code>. Las llaves dicen <strong>qué</strong> se trae, por su nombre exacto; <code>from</code> dice <strong>de dónde</strong>. 🟩 En el navegador la ruta debe empezar con <code>./</code> (misma carpeta) y llevar la extensión <code>.js</code>.</p></li></ol></div></div></article><p><strong>línea en blanco</strong> ⬜ Convención · Separa los <code>import</code> del resto del código. Asegúrate de que entre el <code>import</code> y <code>const lista</code> quede solo una línea en blanco.</p>
+<h4 class="build-step-title">Pruébalo</h4>
+<div class="consola"><pre><code class="language-plaintext">Entrada: guarda los dos archivos y recarga
+Salida esperada: las mismas 4 tarjetas del paso 3, sin ningún cambio visual
+En la terminal de Python aparece una petición nueva: "GET /datos.js HTTP/1.1" 200</code></pre></div>
+<div class="callout" data-tone="warning"><span class="callout-icon">!</span><div><h4>Quítala y mira</h4><p>borra la palabra <code>export</code> de <code>datos.js</code> y recarga. La página queda sin tarjetas y la consola muestra un <code>SyntaxError</code> que dice que <code>./datos.js</code> <strong>does not provide an export named 'clases'</strong>. Se lee así: <code>app.js</code> pidió algo llamado <code>clases</code> y <code>datos.js</code> no lo ofrece. Vuelve a escribir <code>export</code>.</p></div></div>
+<details class="code-reveal" data-archivo="datos.js"><summary><span><span class="code-reveal-title">datos.js · archivo completo</span><span class="code-reveal-note">6 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Editar</span><span class="code-file">datos.js</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-javascript">export const clases = [
+  { id: 1, nombre: "Spinning", entrenador: "Laura Gómez", hora: "6:00 a. m.", cupos: 3 },
+  { id: 2, nombre: "Yoga", entrenador: "Andrés Pérez", hora: "7:00 a. m.", cupos: 8 },
+  { id: 3, nombre: "Funcional", entrenador: "Daniela Ríos", hora: "6:00 p. m.", cupos: 1 },
+  { id: 4, nombre: "Boxeo", entrenador: "Camilo Torres", hora: "7:30 p. m.", cupos: 0 },
+];</code></pre></div></div></details>
+<details class="code-reveal" data-archivo="app.js"><summary><span><span class="code-reveal-title">app.js · archivo completo</span><span class="code-reveal-note">17 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Editar</span><span class="code-file">app.js</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-javascript">import { clases } from "./datos.js";
+
+const lista = document.querySelector("#lista-clases");
+
+lista.innerHTML = clases
+  .map(
+    (clase) =&gt; `
+      &lt;article class="tarjeta"&gt;
+        &lt;h3&gt;${clase.nombre}&lt;/h3&gt;
+        &lt;p&gt;Entrena: ${clase.entrenador}&lt;/p&gt;
+        &lt;p&gt;Hora: ${clase.hora}&lt;/p&gt;
+        &lt;p&gt;Cupos: ${clase.cupos}&lt;/p&gt;
+        &lt;button class="btn-reservar"&gt;Reservar&lt;/button&gt;
+      &lt;/article&gt;
+    `
+  )
+  .join("");</code></pre></div></div></details>
+<details class="code-reveal" data-archivo="index.html"><summary><span><span class="code-reveal-title">index.html · archivo completo</span><span class="code-reveal-note">26 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Editar</span><span class="code-file">index.html</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;PulsoFit · Clases de hoy&lt;/title&gt;
+  &lt;link rel="stylesheet" href="estilos.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header class="encabezado"&gt;
+    &lt;h1&gt;PulsoFit&lt;/h1&gt;
+    &lt;p&gt;Reserva tu clase en segundos&lt;/p&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;h2&gt;Clases de hoy&lt;/h2&gt;
+    &lt;section id="lista-clases" class="lista-clases"&gt;&lt;/section&gt;
+  &lt;/main&gt;
+
+  &lt;footer&gt;
+    &lt;p&gt;PulsoFit · Abierto de lunes a sábado, de 5:00 a. m. a 10:00 p. m.&lt;/p&gt;
+  &lt;/footer&gt;
+
+  &lt;script type="module" src="app.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div></div></details>
+</div></section>
+<section class="section view" data-accent="1" data-escena="construccion" data-layout="canvas" hidden="" id="eventos"><div class="sec-head"><span class="sec-n">Reservar · 18</span><h2 class="sec-t">Eventos y la función renderizar</h2></div><div class="body"><div class="mision"><div class="mision-head"><span class="mision-titulo">Misión del bloque</span></div><div class="mision-grid"><div class="mision-item"><span class="component-label">Para Valeria</span><p>reservar con un botón, descontar cupos y no dejar reservar una clase llena.</p>
+</div><div class="mision-item"><span class="component-label">Lo que hacemos</span><p>escuchamos los clics, cambiamos los datos y volvemos a pintar la pantalla.</p>
+</div><div class="mision-item" data-resultado=""><span class="component-label">Cómo sabemos que quedó</span><p>al reservar, los cupos bajan, el contador sube y las clases en cero se bloquean.</p>
+</div></div></div>
+<h3>18.1 · Eventos</h3>
+<h3>18.2 · Qué es un evento</h3>
+<ul>
+<li><strong>Técnica:</strong> un evento es una señal que el navegador emite cuando pasa algo: un clic, una tecla, el envío de un formulario. JavaScript puede <strong>escuchar</strong> un evento y ejecutar una función cuando ocurre.</li>
+<li><strong>En la vida real:</strong> el timbre de la recepción del gimnasio. Nadie está mirando la puerta todo el tiempo; el timbre avisa y alguien reacciona.</li>
+</ul>
+<div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">app.js</span><span class="archivo-ruta">pulsofit/</span></div>
+<p>Hasta ahora <code>app.js</code> pinta una sola vez y se queda quieto. En este momento aprende a reaccionar: cuando alguien toca Reservar, cambia los datos y vuelve a pintar. Cada paso nace de un problema que vas a ver en tu pantalla.</p>
+<h3>18.3 · Poder pintar más de una vez</h3>
+<article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">app.js</span><span class="archivo-ruta">pulsofit/</span></div><div class="lectura"><div class="lectura-head"><span class="lectura-num">1</span><h4 class="lectura-titulo">Poder pintar más de una vez</h4><div class="lectura-proposito"><p><strong>Necesidad:</strong> cuando alguien reserve, los cupos cambian y habrá que pintar las tarjetas <strong>otra vez</strong>. Hoy el código de pintar está suelto y corre una sola vez al cargar.</p><p><strong>Dónde va:</strong> en <code>app.js</code>, envuelve las líneas 5 a 17 (desde <code>lista.innerHTML</code> hasta <code>.join("");</code>) dentro de una función y llámala al final. Corre todo ese bloque dos espacios a la derecha.</p></div></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><span class="code-context">app.js · Líneas 5–21</span></div><pre class="line-numbers" data-start="5"><code class="language-javascript">function renderizar() {
+  lista.innerHTML = clases
+    .map(
+      (clase) =&gt; `
+        &lt;article class="tarjeta"&gt;
+          &lt;h3&gt;${clase.nombre}&lt;/h3&gt;
+          &lt;p&gt;Entrena: ${clase.entrenador}&lt;/p&gt;
+          &lt;p&gt;Hora: ${clase.hora}&lt;/p&gt;
+          &lt;p&gt;Cupos: ${clase.cupos}&lt;/p&gt;
+          &lt;button class="btn-reservar"&gt;Reservar&lt;/button&gt;
+        &lt;/article&gt;
+      `
+    )
+    .join("");
+}
+
+renderizar();</code></pre></div><ol class="notas"><li class="nota" data-lineas="5"><div class="nota-cabeza"><span class="nota-lineas">L5</span><span class="nota-codigo"><code>function renderizar() {</code></span></div><p>🟨 Lenguaje · <code>function</code> declara una función con nombre, como <code>def</code> en Python; las llaves reemplazan los dos puntos y la sangría. 🟪 <code>renderizar</code> es nuestro nombre: en desarrollo frontend, <em>renderizar</em> significa "convertir datos en pantalla". Vas a escuchar esta palabra todo el curso.</p></li><li class="nota" data-lineas="6-18"><div class="nota-cabeza"><span class="nota-lineas">L6-18</span><span class="nota-codigo">el mismo código, con sangría</span></div><p>🟨 Lenguaje · No cambió nada adentro; ahora vive en la función y se puede ejecutar cuantas veces queramos.</p></li><li class="nota" data-lineas="19"><div class="nota-cabeza"><span class="nota-lineas">L19</span><span class="nota-codigo"><code>}</code></span></div><p>🟨 Lenguaje · Cierra la función.</p></li><li class="nota" data-lineas="21"><div class="nota-cabeza"><span class="nota-lineas">L21</span><span class="nota-codigo"><code>renderizar();</code></span></div><p>🟨 Lenguaje · Los paréntesis <strong>ejecutan</strong> la función. Declararla solo la guarda; esta línea la usa por primera vez, al cargar la página. Si la borras, la lista queda vacía: la función existe, pero nadie la llamó.</p></li></ol></div></div></article>
+<h4 class="build-step-title">Pruébalo</h4>
+<div class="consola"><pre><code class="language-plaintext">Entrada: guarda y recarga
+Salida esperada: las mismas 4 tarjetas. Nada cambió a la vista, y eso es lo correcto.</code></pre></div>
+</div></section>
+<section class="section view" data-accent="1" data-escena="construccion" data-layout="canvas" hidden="" id="clic"><div class="sec-head"><span class="sec-n">Reservar · 19</span><h2 class="sec-t">Escuchar el clic de cada botón</h2></div><div class="body"><h3>Escuchar el clic de cada botón</h3>
+<article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">app.js</span><span class="archivo-ruta">pulsofit/</span></div><div class="lectura"><div class="lectura-head"><span class="lectura-num">2</span><h4 class="lectura-titulo">Escuchar el clic de cada botón</h4><div class="lectura-proposito"><p><strong>Necesidad:</strong> el botón Reservar no hace nada. Hay que escuchar el clic y saber <strong>de qué clase</strong> es cada botón.</p><p><strong>Dónde va:</strong> en <code>app.js</code>, tres cambios en la misma zona (las líneas 15 a 18 no cambian):</p><ol>
+<li>Línea 14: el botón ahora lleva <code>data-id</code>.</li>
+<li>Después de <code>.join("");</code>, dentro de la función, una línea en blanco y el bloque <code>forEach</code>.</li>
+<li>Después de la llave que cierra <code>renderizar</code>, una línea en blanco y la función <code>reservar</code>.</li>
+</ol></div></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><span class="code-context">app.js · Líneas 14–29</span></div><pre class="line-numbers" data-start="14"><code class="language-javascript">          &lt;button class="btn-reservar" data-id="${clase.id}"&gt;Reservar&lt;/button&gt;
+        &lt;/article&gt;
+      `
+    )
+    .join("");
+
+  document.querySelectorAll(".btn-reservar").forEach((boton) =&gt; {
+    boton.addEventListener("click", () =&gt; reservar(Number(boton.dataset.id)));
+  });
+}
+
+function reservar(id) {
+  const clase = clases.find((c) =&gt; c.id === id);
+  clase.cupos -= 1;
+  console.log(`${clase.nombre} ahora tiene ${clase.cupos} cupos`);
+}</code></pre></div><ol class="notas"><li class="nota" data-lineas="14"><div class="nota-cabeza"><span class="nota-lineas">L14</span><span class="nota-codigo"><code>data-id="${clase.id}"</code></span></div><p>🟨 Lenguaje · Los atributos que empiezan por <code>data-</code> son para guardar datos propios en un elemento HTML. 🟪 Guardamos el <code>id</code> de la clase en su botón: así, al tocarlo, sabremos cuál fue.</p></li><li class="nota" data-lineas="20"><div class="nota-cabeza"><span class="nota-lineas">L20</span><span class="nota-codigo"><code>document.querySelectorAll(".btn-reservar")</code></span></div><p>🟩 Plataforma · Como <code>querySelector</code>, pero devuelve <strong>todos</strong> los elementos que coinciden: aquí, los 4 botones. <em>Ya lo viste:</em> <code>.btn-reservar</code> es la clase del Momento 6.</p></li><li class="nota" data-lineas="20"><div class="nota-cabeza"><span class="nota-lineas">L20</span><span class="nota-codigo"><code>.forEach((boton) =&gt; {</code></span></div><p>🟨 Lenguaje · <code>forEach</code> recorre la lista y ejecuta la función con cada botón. A diferencia de <code>map</code>, no devuelve nada: solo <strong>hace</strong> algo con cada uno. Es tu <code>for boton in botones:</code>.</p></li><li class="nota" data-lineas="21"><div class="nota-cabeza"><span class="nota-lineas">L21</span><span class="nota-codigo"><code>boton.addEventListener("click", …)</code></span></div><p>🟩 Plataforma · Le pide al botón: "cuando ocurra un <code>click</code>, ejecuta esta función". La función no corre ahora; corre cada vez que alguien hace clic.</p></li><li class="nota" data-lineas="21"><div class="nota-cabeza"><span class="nota-lineas">L21</span><span class="nota-codigo"><code>() =&gt; reservar(Number(boton.dataset.id))</code></span></div><p>🟨 Lenguaje · La función que se ejecutará en el clic. <code>boton.dataset.id</code> lee el atributo <code>data-id</code> del botón. 🟩 Llega como texto (<code>"1"</code>), por eso <code>Number()</code> lo convierte en número (<code>1</code>) antes de pasárselo a <code>reservar</code>.</p></li><li class="nota" data-lineas="22-23"><div class="nota-cabeza"><span class="nota-lineas">L22-23</span><span class="nota-codigo"><code>});</code> y <code>}</code></span></div><p>🟨 Lenguaje · Cierran el <code>forEach</code> y la función <code>renderizar</code>.</p></li><li class="nota" data-lineas="25"><div class="nota-cabeza"><span class="nota-lineas">L25</span><span class="nota-codigo"><code>function reservar(id) {</code></span></div><p>🟪 Decisión del proyecto · La acción que pidió Valeria, en una función con nombre. Recibe el <code>id</code> de la clase que se tocó.</p></li><li class="nota" data-lineas="26"><div class="nota-cabeza"><span class="nota-lineas">L26</span><span class="nota-codigo"><code>clases.find((c) =&gt; c.id === id)</code></span></div><p>🟨 Lenguaje · <code>find</code> recorre el arreglo y devuelve el <strong>primer</strong> objeto para el que la función dé <code>true</code>. <code>===</code> compara valor <strong>y</strong> tipo: por eso convertimos el <code>id</code> a número en la línea 21.</p></li><li class="nota" data-lineas="27"><div class="nota-cabeza"><span class="nota-lineas">L27</span><span class="nota-codigo"><code>clase.cupos -= 1;</code></span></div><p>🟨 Lenguaje · Resta 1 a los cupos de esa clase. Es lo mismo que <code>clase.cupos = clase.cupos - 1</code>.</p></li><li class="nota" data-lineas="28"><div class="nota-cabeza"><span class="nota-lineas">L28</span><span class="nota-codigo"><code>console.log(…)</code></span></div><p>🟩 Plataforma · Para verificar en la consola que el dato sí cambió.</p></li></ol></div></div></article>
+<h4 class="build-step-title">Pruébalo</h4>
+<div class="consola"><pre><code class="language-plaintext">Entrada: guarda, recarga, abre la consola y haz clic en Reservar de Spinning
+Salida esperada en la consola:
+Spinning ahora tiene 2 cupos
+Salida esperada en la página:
+Spinning sigue diciendo "Cupos: 3"</code></pre></div>
+<div class="micro-task"><span class="component-label">Para pensar</span><p class="micro-task-q">La consola dice que Spinning tiene 2 cupos, pero la tarjeta sigue mostrando 3. ¿Quién tiene la razón?</p><details class="micro-reveal"><summary>Comprobar</summary><p class="micro-answer">Los datos. El arreglo <code>clases</code> sí cambió; la pantalla no se enteró porque nadie volvió a pintarla. <strong>Cambiar un dato no cambia la pantalla</strong>: hay que volver a llamar a <code>renderizar</code>. Esta es la idea más importante de la clase.</p></details></div>
+</div></section>
+<section class="section view" data-accent="1" data-escena="construccion" data-layout="canvas" hidden="" id="repintar"><div class="sec-head"><span class="sec-n">Reservar · 20</span><h2 class="sec-t">Volver a pintar después de reservar</h2></div><div class="body"><h3>Volver a pintar después de reservar</h3>
+<article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">app.js</span><span class="archivo-ruta">pulsofit/</span></div><div class="lectura"><div class="lectura-head"><span class="lectura-num">3</span><h4 class="lectura-titulo">Volver a pintar después de reservar</h4><div class="lectura-proposito"><p><strong>Necesidad:</strong> los datos cambian, pero la pantalla se queda con la versión vieja.</p><p><strong>Dónde va:</strong> en <code>app.js</code>, <strong>reemplaza</strong> la línea 28 (el <code>console.log</code>) por:</p></div></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><span class="code-context">app.js · Líneas 28–28</span></div><pre class="line-numbers" data-start="28"><code class="language-javascript">  renderizar();</code></pre></div><ol class="notas"><li class="nota" data-lineas="28"><div class="nota-cabeza"><span class="nota-lineas">L28</span><span class="nota-codigo"><code>renderizar();</code></span></div><p>🟪 Decisión del proyecto · Después de cambiar los datos, se vuelven a pintar todas las tarjetas desde el arreglo actualizado. Como <code>renderizar</code> también vuelve a poner los <code>addEventListener</code>, los botones nuevos siguen funcionando.</p></li></ol></div></div></article>
+<h4 class="build-step-title">Pruébalo</h4>
+<div class="consola"><pre><code class="language-plaintext">Entrada: guarda, recarga y haz clic una vez en Reservar de Spinning
+Salida esperada: Spinning muestra "Cupos: 2"
+Entrada: haz clic dos veces en Reservar de Funcional
+Salida esperada: Funcional muestra "Cupos: -1"</code></pre></div>
+</div></section>
+<section class="section view" data-accent="1" data-escena="construccion" data-layout="canvas" hidden="" id="agotadas"><div class="sec-head"><span class="sec-n">Reservar · 21</span><h2 class="sec-t">Una clase llena no se puede reservar</h2></div><div class="body"><h3>Una clase llena no se puede reservar</h3>
+<article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">app.js</span><span class="archivo-ruta">pulsofit/</span></div><div class="lectura"><div class="lectura-head"><span class="lectura-num">4</span><h4 class="lectura-titulo">Una clase llena no se puede reservar</h4><div class="lectura-proposito"><p><strong>Necesidad:</strong> Valeria lo pidió en el correo: si una clase no tiene cupos, que no deje reservar. Hay que protegerlo en los datos y mostrarlo en la pantalla.</p><p><strong>Dónde va (1 de 2):</strong> en <code>app.js</code>, <strong>reemplaza</strong> la línea 14 (el <code>&lt;button …&gt;Reservar&lt;/button&gt;</code>) por estas tres líneas:</p></div></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><span class="code-context">app.js · Líneas 14–16</span></div><pre class="line-numbers" data-start="14"><code class="language-javascript">          &lt;button class="btn-reservar" data-id="${clase.id}" ${clase.cupos === 0 ? "disabled" : ""}&gt;
+            ${clase.cupos === 0 ? "Agotada" : "Reservar"}
+          &lt;/button&gt;</code></pre></div><ol class="notas"><li class="nota" data-lineas="14"><div class="nota-cabeza"><span class="nota-lineas">L14</span><span class="nota-codigo"><code>${clase.cupos === 0 ? "disabled" : ""}</code></span></div><p>🟨 Lenguaje · Un <strong>ternario</strong>, un "si… entonces… si no" en una sola línea: <code>condición ? valorSiEsVerdad : valorSiEsFalso</code>. Si la clase tiene 0 cupos, escribe el atributo <code>disabled</code>; si no, no escribe nada (<code>""</code>). 🟨 <code>disabled</code> es un atributo de HTML que desactiva el botón.</p></li><li class="nota" data-lineas="15"><div class="nota-cabeza"><span class="nota-lineas">L15</span><span class="nota-codigo"><code>${clase.cupos === 0 ? "Agotada" : "Reservar"}</code></span></div><p>🟨 Lenguaje · El mismo ternario decide el texto del botón. Es tu <code>"Agotada" if cupos == 0 else "Reservar"</code> de Python.</p></li><li class="nota" data-lineas="16"><div class="nota-cabeza"><span class="nota-lineas">L16</span><span class="nota-codigo"><code>&lt;/button&gt;</code></span></div><p>🟨 Lenguaje · El botón ahora ocupa tres líneas para que se lea mejor; al navegador le da igual.</p></li></ol></div></div></article>
+<article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">app.js</span><span class="archivo-ruta">pulsofit/</span></div><div class="lectura"><div class="lectura-head"><span class="lectura-num">4</span><h4 class="lectura-titulo">Una clase llena no se puede reservar</h4><div class="lectura-proposito"><p><strong>Dónde va (2 de 2):</strong> en <code>app.js</code>, dentro de <code>reservar</code>, agrega esta línea <strong>entre</strong> el <code>const clase = …</code> y el <code>clase.cupos -= 1;</code> (queda como línea 29):</p></div></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><span class="code-context">app.js · Líneas 29–29</span></div><pre class="line-numbers" data-start="29"><code class="language-javascript">  if (clase.cupos === 0) return;</code></pre></div><ol class="notas"><li class="nota" data-lineas="29"><div class="nota-cabeza"><span class="nota-lineas">L29</span><span class="nota-codigo"><code>if (clase.cupos === 0) return;</code></span></div><p>🟨 Lenguaje · <code>if</code> evalúa la condición entre paréntesis; <code>return</code> sale de la función en ese instante, sin ejecutar lo que sigue. 🟪 Es la regla de negocio de Valeria escrita en código: sin cupos, no se resta nada.</p></li></ol></div></div></article>
+<h4 class="build-step-title">Pruébalo</h4>
+<div class="consola"><pre><code class="language-plaintext">Entrada: guarda y recarga
+Salida esperada: Boxeo muestra un botón gris que dice "Agotada"; el cursor muestra el círculo tachado
+Entrada: haz clic una vez en Reservar de Funcional
+Salida esperada: Funcional muestra "Cupos: 0" y su botón cambia a "Agotada" en gris
+Entrada: intenta hacer clic otra vez en Funcional
+Salida esperada: no pasa nada; los cupos se quedan en 0</code></pre></div>
+</div></section>
+<section class="section view" data-accent="1" data-escena="construccion" data-layout="canvas" hidden="" id="contador"><div class="sec-head"><span class="sec-n">Reservar · 22</span><h2 class="sec-t">Contar mis reservas</h2></div><div class="body"><h3>Contar mis reservas</h3>
+<article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">index.html</span><span class="archivo-ruta">pulsofit/</span></div><div class="lectura"><div class="lectura-head"><span class="lectura-num">5</span><h4 class="lectura-titulo">Contar mis reservas</h4><div class="lectura-proposito"><p><strong>Necesidad:</strong> la persona no sabe cuántas reservas lleva. Agregamos un contador en la cabecera, y aquí vas a ver por qué sincronizar la pantalla a mano es frágil.</p><p><strong>Dónde va (1 de 4):</strong> en <code>index.html</code>, <strong>reemplaza</strong> la línea 12 (el lema) por:</p></div></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><span class="code-context">index.html · Líneas 12–12</span></div><pre class="line-numbers" data-start="12"><code class="language-markup">    &lt;p&gt;Mis reservas: &lt;span id="contador"&gt;0&lt;/span&gt;&lt;/p&gt;</code></pre></div><ol class="notas"><li class="nota" data-lineas="12"><div class="nota-cabeza"><span class="nota-lineas">L12</span><span class="nota-codigo"><code>&lt;span id="contador"&gt;0&lt;/span&gt;</code></span></div><p>🟨 Lenguaje · <code>span</code> es un contenedor <strong>en línea</strong>: envuelve un trozo de texto sin romper el párrafo. 🟪 El <code>id</code> permite que JavaScript encuentre solo el número y lo cambie.</p></li></ol></div></div></article>
+<article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">app.js</span><span class="archivo-ruta">pulsofit/</span></div><div class="lectura"><div class="lectura-head"><span class="lectura-num">5</span><h4 class="lectura-titulo">Contar mis reservas</h4><div class="lectura-proposito"><p><strong>Dónde va (2 de 4):</strong> en <code>app.js</code>, debajo de <code>const lista = …</code> (línea 3):</p></div></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><span class="code-context">app.js · Líneas 4–5</span></div><pre class="line-numbers" data-start="4"><code class="language-javascript">const contador = document.querySelector("#contador");
+let misReservas = 0;</code></pre></div><ol class="notas"><li class="nota" data-lineas="4"><div class="nota-cabeza"><span class="nota-lineas">L4</span><span class="nota-codigo"><code>const contador = …</code></span></div><p>🟩 Plataforma · Busca el <code>span</code> del contador, igual que buscamos la lista.</p></li><li class="nota" data-lineas="5"><div class="nota-cabeza"><span class="nota-lineas">L5</span><span class="nota-codigo"><code>let misReservas = 0;</code></span></div><p>🟨 Lenguaje · <code>let</code> crea una variable que <strong>sí</strong> se puede reasignar: este número va a subir. Con <code>const</code> daría error al sumar.</p></li></ol></div></div></article>
+<article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">app.js</span><span class="archivo-ruta">pulsofit/</span></div><div class="lectura"><div class="lectura-head"><span class="lectura-num">5</span><h4 class="lectura-titulo">Contar mis reservas</h4><div class="lectura-proposito"><p><strong>Dónde va (3 de 4):</strong> en <code>app.js</code>, dentro de <code>renderizar</code>, después de <code>.join("");</code> y una línea en blanco (queda como línea 24):</p></div></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><span class="code-context">app.js · Líneas 24–24</span></div><pre class="line-numbers" data-start="24"><code class="language-javascript">  contador.textContent = misReservas;</code></pre></div><ol class="notas"><li class="nota" data-lineas="24"><div class="nota-cabeza"><span class="nota-lineas">L24</span><span class="nota-codigo"><code>contador.textContent = misReservas;</code></span></div><p>🟩 Plataforma · <code>textContent</code> cambia el texto de un elemento. A diferencia de <code>innerHTML</code>, no interpreta HTML: es más seguro para mostrar un número o un texto.</p></li></ol></div></div></article>
+<article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">app.js</span><span class="archivo-ruta">pulsofit/</span></div><div class="lectura"><div class="lectura-head"><span class="lectura-num">5</span><h4 class="lectura-titulo">Contar mis reservas</h4><div class="lectura-proposito"><p><strong>Dónde va (4 de 4):</strong> en <code>app.js</code>, dentro de <code>reservar</code>, entre <code>clase.cupos -= 1;</code> y <code>renderizar();</code> (queda como línea 35):</p></div></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><span class="code-context">app.js · Líneas 35–35</span></div><pre class="line-numbers" data-start="35"><code class="language-javascript">  misReservas += 1;</code></pre></div><ol class="notas"><li class="nota" data-lineas="35"><div class="nota-cabeza"><span class="nota-lineas">L35</span><span class="nota-codigo"><code>misReservas += 1;</code></span></div><p>🟨 Lenguaje · Suma 1 a la variable. 🟪 Cada reserva exitosa cuenta; si la clase estaba llena, el <code>return</code> de la línea 33 sale antes y no se cuenta.</p></li></ol></div></div></article>
+<h4 class="build-step-title">Pruébalo</h4>
+<div class="consola"><pre><code class="language-plaintext">Entrada: guarda los dos archivos, recarga y haz clic: 2 veces en Spinning y 1 vez en Yoga
+Salida esperada:
+Cabecera: Mis reservas: 3
+Spinning: Cupos: 1
+Yoga: Cupos: 7</code></pre></div>
+<div class="callout" data-tone="warning"><span class="callout-icon">!</span><div><h4>Quítala y mira</h4><p>borra la línea 24 (<code>contador.textContent = misReservas;</code>) y repite las mismas tres reservas. Los cupos bajan, pero la cabecera se queda en <strong>Mis reservas: 0</strong>. El dato <code>misReservas</code> vale 3; la pantalla no se enteró porque olvidamos actualizar ese pedazo. Vuelve a escribirla.</p></div></div>
+<details class="code-reveal" data-archivo="app.js"><summary><span><span class="code-reveal-title">app.js · archivo completo</span><span class="code-reveal-note">39 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Editar</span><span class="code-file">app.js</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-javascript">import { clases } from "./datos.js";
+
+const lista = document.querySelector("#lista-clases");
+const contador = document.querySelector("#contador");
+let misReservas = 0;
+
+function renderizar() {
+  lista.innerHTML = clases
+    .map(
+      (clase) =&gt; `
+        &lt;article class="tarjeta"&gt;
+          &lt;h3&gt;${clase.nombre}&lt;/h3&gt;
+          &lt;p&gt;Entrena: ${clase.entrenador}&lt;/p&gt;
+          &lt;p&gt;Hora: ${clase.hora}&lt;/p&gt;
+          &lt;p&gt;Cupos: ${clase.cupos}&lt;/p&gt;
+          &lt;button class="btn-reservar" data-id="${clase.id}" ${clase.cupos === 0 ? "disabled" : ""}&gt;
+            ${clase.cupos === 0 ? "Agotada" : "Reservar"}
+          &lt;/button&gt;
+        &lt;/article&gt;
+      `
+    )
+    .join("");
+
+  contador.textContent = misReservas;
+
+  document.querySelectorAll(".btn-reservar").forEach((boton) =&gt; {
+    boton.addEventListener("click", () =&gt; reservar(Number(boton.dataset.id)));
+  });
+}
+
+function reservar(id) {
+  const clase = clases.find((c) =&gt; c.id === id);
+  if (clase.cupos === 0) return;
+  clase.cupos -= 1;
+  misReservas += 1;
+  renderizar();
+}
+
+renderizar();</code></pre></div></div></details>
+<details class="code-reveal" data-archivo="index.html"><summary><span><span class="code-reveal-title">index.html · archivo completo</span><span class="code-reveal-note">26 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Editar</span><span class="code-file">index.html</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;PulsoFit · Clases de hoy&lt;/title&gt;
+  &lt;link rel="stylesheet" href="estilos.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header class="encabezado"&gt;
+    &lt;h1&gt;PulsoFit&lt;/h1&gt;
+    &lt;p&gt;Mis reservas: &lt;span id="contador"&gt;0&lt;/span&gt;&lt;/p&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;h2&gt;Clases de hoy&lt;/h2&gt;
+    &lt;section id="lista-clases" class="lista-clases"&gt;&lt;/section&gt;
+  &lt;/main&gt;
+
+  &lt;footer&gt;
+    &lt;p&gt;PulsoFit · Abierto de lunes a sábado, de 5:00 a. m. a 10:00 p. m.&lt;/p&gt;
+  &lt;/footer&gt;
+
+  &lt;script type="module" src="app.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div></div></details>
+</div></section>
+<section class="section view" data-accent="1" data-escena="concepto" data-layout="canvas" hidden="" id="traza"><div class="sec-head"><span class="sec-n">Reservar · 23</span><h2 class="sec-t">Un clic en Reservar de Funcional</h2></div><div class="body"><figure class="figura"><div class="figura-stage"><img alt="La recepción actualiza el tablero de clases después de una reserva" src="img/tablero-reservas.png"/></div><figcaption>Actualizar el tablero de clases de la recepción cada vez que alguien reserva.<span class="figura-credito">Ilustración original creada para la clase.</span></figcaption></figure><h3>23.1 · Traza de ejecución: un clic en Reservar de Funcional</h3>
+<h3>23.2 · Estado inicial</h3>
+<p>Funcional tiene <code>cupos: 1</code> y <code>misReservas</code> vale <code>0</code>.</p>
+<div class="code-block"><div class="code-head"><span class="code-context">Referencia</span><button class="copy-btn" type="button">Copiar</button></div><pre><code class="language-plaintext">La persona hace clic en el botón de Funcional (data-id="3")
+↓
+El navegador dispara el evento "click" en ese botón
+↓
+Se ejecuta la flecha del addEventListener (línea 27)
+boton.dataset.id = "3"  →  Number("3") = 3
+↓
+reservar(3)
+↓
+clases.find(...)  →  clase = { id: 3, nombre: "Funcional", …, cupos: 1 }
+↓
+if (clase.cupos === 0)  →  1 === 0 es false  →  sigue
+↓
+clase.cupos -= 1        →  cupos pasa de 1 a 0 (dentro del arreglo clases)
+misReservas += 1        →  misReservas pasa de 0 a 1
+↓
+renderizar()
+↓
+map construye 4 textos; el de Funcional ahora trae disabled y "Agotada"
+↓
+join los une  →  innerHTML destruye las 4 tarjetas viejas y crea 4 nuevas
+↓
+contador.textContent = 1   →  la cabecera dice "Mis reservas: 1"
+↓
+querySelectorAll encuentra 4 botones nuevos  →  addEventListener a cada uno
+↓
+La pantalla muestra Funcional en 0 cupos, con botón gris "Agotada"</code></pre></div>
+<div class="flow"><div class="flow-step"><strong>Datos antes</strong><span>cupos: 1 · misReservas: 0</span></div><span aria-hidden="true" class="flow-arrow">→</span><div class="flow-step"><strong>Clic</strong><span>Reservar</span></div><span aria-hidden="true" class="flow-arrow">→</span><div class="flow-step"><strong>Datos después</strong><span>cupos: 0 · misReservas: 1</span></div><span aria-hidden="true" class="flow-arrow">→</span><div class="flow-step"><strong>Pantalla repintada</strong><span>renderizar()</span></div></div><p>la pantalla solo cambia en el último cuadro, cuando se llama a <code>renderizar</code>.</p>
+</div></section>
+<section class="section view" data-accent="1" data-escena="concepto" data-layout="canvas" hidden="" id="react"><div class="sec-head"><span class="sec-n">El siguiente paso · 24</span><h2 class="sec-t">Por qué existe React</h2></div><div class="body"><h3>24.1 · Lo que te costó hoy</h3>
+<p>Para que PulsoFit funcionara tuviste que encargarte, a mano, de tres cosas:</p>
+<ol>
+<li>Construir el HTML como <strong>texto</strong> dentro de JavaScript.</li>
+<li>Acordarte de llamar a <code>renderizar()</code> <strong>cada vez</strong> que cambia un dato.</li>
+<li>Acordarte de actualizar <strong>cada pedazo</strong> de pantalla (el contador) y volver a conectar los botones.</li>
+</ol>
+<p>Si olvidas una sola, la pantalla miente. Lo viste con el contador en cero.</p>
+<h3>24.2 · La idea de React, en una frase</h3>
+<blockquote>
+<p><strong>La pantalla es una función de los datos.</strong> Tú describes cómo se ve la página para unos datos dados; cuando los datos cambian, React vuelve a pintar lo necesario por ti.</p>
+</blockquote>
+<h3>24.3 · Hoy vs. la Clase 1</h3>
+<div class="table-wrap"><table class="data-table">
+<thead>
+<tr>
+<th>Lo que hiciste hoy a mano</th>
+<th>Lo que hará React por ti</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Template literal con <code>${}</code> que genera HTML</td>
+<td>JSX: HTML dentro de JavaScript con <code>{}</code></td>
+</tr>
+<tr>
+<td><code>function renderizar()</code></td>
+<td>Un <strong>componente</strong>: una función que devuelve lo que se ve</td>
+</tr>
+<tr>
+<td><code>let misReservas</code> + llamar <code>renderizar()</code></td>
+<td><code>useState</code>: al cambiar el dato, React repinta solo</td>
+</tr>
+<tr>
+<td><code>addEventListener</code> después de cada pintura</td>
+<td><code>onClick</code> escrito directamente en el botón</td>
+</tr>
+<tr>
+<td><code>class="tarjeta"</code></td>
+<td><code>className="tarjeta"</code> (o clases de Tailwind)</td>
+</tr>
+<tr>
+<td><code>python -m http.server</code></td>
+<td>Vite: el servidor de desarrollo de React</td>
+</tr>
+</tbody></table></div>
+<h3>24.4 · Un vistazo, solo para mirar</h3>
+<p>Así se verá la tarjeta de una clase en React. No lo copies: la próxima clase lo construimos línea por línea.</p>
+<div class="code-block"><div class="code-head"><span class="code-context">Referencia</span><button class="copy-btn" type="button">Copiar</button></div><pre><code class="language-jsx">function TarjetaClase({ clase, onReservar }) {
+  return (
+    &lt;article className="tarjeta"&gt;
+      &lt;h3&gt;{clase.nombre}&lt;/h3&gt;
+      &lt;p&gt;Cupos: {clase.cupos}&lt;/p&gt;
+      &lt;button disabled={clase.cupos === 0} onClick={() =&gt; onReservar(clase.id)}&gt;
+        {clase.cupos === 0 ? "Agotada" : "Reservar"}
+      &lt;/button&gt;
+    &lt;/article&gt;
+  );
+}</code></pre></div>
+<div class="micro-task"><span class="component-label">Para pensar</span><p class="micro-task-q">Busca en ese fragmento tres cosas que ya escribiste hoy.</p><details class="micro-reveal"><summary>Comprobar</summary><p class="micro-answer">Además del HTML: la función flecha <code>() =&gt; onReservar(clase.id)</code>, el ternario <code>clase.cupos === 0 ? "Agotada" : "Reservar"</code> y la lectura de objetos <code>clase.nombre</code>. React es el JavaScript de hoy, organizado para que la pantalla no se desincronice.</p></details></div>
+</div></section>
+<section class="section view" data-accent="1" data-escena="prueba" data-layout="canvas" hidden="" id="practica"><div class="sec-head"><span class="sec-n">El siguiente paso · 25</span><h2 class="sec-t">Práctica: ampliar PulsoFit</h2></div><div class="body"><h3>Ejercicio 1 · Una clase nueva sin tocar el HTML</h3>
+<p>Valeria abre una clase de <strong>Pilates</strong> a las 8:00 a. m. con <strong>Sofía Mejía</strong> y 10 cupos. Agrégala de modo que aparezca en la página sin modificar <code>index.html</code> ni <code>app.js</code>.</p>
+<h3>Ejercicio 2 · Avisar que quedan pocos cupos</h3>
+<p>Valeria quiere que, cuando a una clase le queden 1 o 2 cupos, la tarjeta muestre el texto <strong>¡Últimos cupos!</strong> debajo de los cupos. Cuando tenga 0 o más de 2, no debe aparecer.</p>
+<div class="sin-ia"><span class="component-label">Sin IA aquí</span><p>Estos dos ejercicios usan solo lo que escribiste hoy. Resolverlos tú es la prueba de que la base quedó; si te bloqueas, vuelve a la tabla Python ↔ JavaScript del Momento 7.</p>
+</div>
+</div></section><section class="section view" data-accent="1" data-escena="construccion" data-layout="canvas" hidden="" id="node"><div class="sec-head"><span class="sec-n">El siguiente paso · 26</span><h2 class="sec-t">Preparar Node.js para la Clase 1</h2></div><div class="body"><h3>Antes del lunes: instala Node.js</h3>
+<p>La Clase 1 usa Vite para crear el proyecto de React, y Vite necesita <strong>Node.js</strong>: el programa que permite ejecutar JavaScript fuera del navegador, como Python ejecuta tus archivos <code>.py</code>.</p>
+<ol>
+<li>Entra a <strong>nodejs.org</strong> y descarga la versión marcada como <strong>LTS</strong> (soporte a largo plazo).</li>
+<li>Instálala con las opciones por defecto.</li>
+<li>Cierra y vuelve a abrir la terminal.</li>
+</ol>
+<h4 class="build-step-title">Pruébalo</h4>
+<div class="consola"><pre><code class="language-plaintext">Entrada: node -v
+Salida esperada: v24.x.x o un número mayor (por ejemplo v26.x.x)
+Entrada: npm -v
+Salida esperada: un número de versión, por ejemplo 11.x.x</code></pre></div>
+</div></section>
+<section class="section view" data-accent="1" data-escena="cierre" data-layout="canvas" hidden="" id="cierre"><div class="sec-head"><span class="sec-n">Cerrar · 27</span><h2 class="sec-t">PulsoFit ya permite reservar</h2></div><div class="body"><h3>27.1 · Lo que resolvimos</h3>
+<p>Valeria pidió tres cosas: ver las clases del día, reservar con un botón y que una clase llena no se pueda reservar. PulsoFit ya hace las tres.</p>
+<h3>27.2 · Las tres ideas de hoy</h3>
+<ol>
+<li><strong>HTML es estructura, CSS es presentación, JavaScript es comportamiento.</strong> Cada uno en su archivo, cada uno con una sola razón para cambiar.</li>
+<li><strong>La pantalla se pinta desde los datos.</strong> Un arreglo de objetos, un <code>map</code> y un template literal reemplazan copiar HTML a mano.</li>
+<li><strong>Cambiar un dato no cambia la pantalla.</strong> Hay que repintar, y hacerlo a mano es frágil. React existe para eso.</li>
+</ol>
+<h3>27.3 · La decisión técnica más importante</h3>
+<p>Separar <code>datos.js</code> de <code>app.js</code>. El día que los datos lleguen de FastAPI, solo cambia el lugar de donde vienen.</p>
+<h3>27.4 · Lo que queda abierto</h3>
+<ul>
+<li>Si recargas la página, los cupos vuelven a su valor inicial: los datos no se guardan en ningún lado. Lo resuelve el backend (Módulo 2).</li>
+<li>Repintar a mano es frágil. Lo resuelve React (Clase 1).</li>
+</ul>
+<article class="correo"><div class="correo-head"><span class="correo-avatar">ED</span><div><div class="correo-remitente">Equipo de desarrollo</div><div class="correo-ruta">Para: Valeria Cárdenas · <a href="mailto:valeria@pulsofit.co">valeria@pulsofit.co</a></div></div><span class="correo-fecha">26 oct 2026</span></div><div class="correo-asunto">RE: Las reservas por WhatsApp nos están desbordando</div><div class="correo-body"><p>Hola, Valeria:</p>
+<p>Ya tenemos una primera versión de la página de PulsoFit. Muestra las clases del día con entrenador, hora y cupos; permite reservar con un botón, descuenta el cupo y bloquea las clases que se llenan.</p>
+<p>Por ahora las reservas se borran si se recarga la página: en las próximas semanas la conectaremos con un servidor para que queden guardadas, y le daremos una base más sólida para que crezca con sus 20 clases.</p>
+<p>Le mostramos el avance el próximo lunes.</p>
+<p>Equipo de desarrollo</p>
+</div></article>
+<h3>27.5 · ¿Ya puedo…?</h3>
+<div class="autoevaluacion"><ul>
+<li><label><input type="checkbox"/> Explicar qué hace cada capa de la web (HTML, CSS y JavaScript), señalando en PulsoFit qué archivo da la estructura, cuál la presentación y cuál el comportamiento.</label></li>
+<li><label><input type="checkbox"/> Construir una lista que se pinta desde un arreglo de datos, y agregar una clase nueva en <code>datos.js</code> que aparece sin tocar el HTML.</label></li>
+<li><label><input type="checkbox"/> Detectar por qué sincronizar datos y pantalla a mano es frágil: quitar la línea del contador y explicar por qué React existe para evitarlo.</label></li>
+</ul></div>
+<h3>27.6 · El lunes</h3>
+<p>En la <strong>Clase 1</strong> construimos este mismo PulsoFit con <strong>React, Vite y Tailwind</strong>. Vas a reconocer cada pieza de hoy, y vas a ver cómo React elimina el problema del contador.</p>
+</div></section>
+<section class="section view" data-accent="1" data-escena="consulta" data-layout="canvas" hidden="" id="errores"><div class="sec-head"><span class="sec-n">Consultar · 28</span><h2 class="sec-t">Errores frecuentes y cómo leerlos</h2></div><div class="body">
+<h3>28.1 · La consola menciona <code>CORS policy</code> y <code>origin 'null'</code></h3>
+<ul>
+<li><strong>Cómo se lee:</strong> el navegador bloqueó la carga de <code>app.js</code> porque la página no llegó desde un servidor.</li>
+<li><strong>Causa:</strong> abriste <code>index.html</code> con doble clic (la barra dice <code>file:///</code>).</li>
+<li><strong>Solución:</strong> levanta <code>python -m http.server 5500</code> en la carpeta <code>pulsofit</code> y abre <code>http://localhost:5500</code>.</li>
+</ul>
+<h3>28.2 · La página se ve sin estilos</h3>
+<ul>
+<li><strong>Cómo se lee:</strong> en la terminal de Python aparece <code>"GET /estilos.css HTTP/1.1" 404</code>: el archivo no se encontró.</li>
+<li><strong>Causa:</strong> el <code>href</code> del <code>link</code> y el nombre del archivo no coinciden, o el archivo está en otra carpeta.</li>
+<li><strong>Solución:</strong> revisa letra por letra y que los dos archivos estén en <code>pulsofit</code>.</li>
+</ul>
+<h3>28.3 · <code>TypeError: Cannot set properties of null (setting 'innerHTML')</code></h3>
+<ul>
+<li><strong>Cómo se lee:</strong> intentaste escribir <code>innerHTML</code> en algo que vale <code>null</code>, es decir, que no existe.</li>
+<li><strong>Causa:</strong> <code>querySelector</code> no encontró el elemento; el <code>id</code> en el HTML y el de <code>app.js</code> son distintos.</li>
+<li><strong>Solución:</strong> compara <code>id="lista-clases"</code> con <code>"#lista-clases"</code>: mismo nombre y el <code>#</code> solo en JavaScript.</li>
+</ul>
+<h3>28.4 · <code>SyntaxError: … does not provide an export named 'clases'</code></h3>
+<ul>
+<li><strong>Cómo se lee:</strong> <code>app.js</code> pidió <code>clases</code> y <code>datos.js</code> no lo exporta con ese nombre.</li>
+<li><strong>Causa:</strong> falta <code>export</code> en <code>datos.js</code> o el nombre no coincide (<code>Clases</code> ≠ <code>clases</code>).</li>
+<li><strong>Solución:</strong> <code>export const clases</code> en <code>datos.js</code> e <code>import { clases }</code> en <code>app.js</code>.</li>
+</ul>
+<h3>28.5 · <code>Failed to resolve module specifier "datos.js"</code></h3>
+<ul>
+<li><strong>Cómo se lee:</strong> el navegador no supo dónde buscar el archivo importado.</li>
+<li><strong>Causa:</strong> la ruta del <code>import</code> no empieza por <code>./</code>.</li>
+<li><strong>Solución:</strong> <code>from "./datos.js"</code>.</li>
+</ul>
+<h3>28.6 · Aparecen comas entre las tarjetas</h3>
+<ul>
+<li><strong>Cómo se lee:</strong> no hay error en consola; la página muestra <code>,</code> sueltas.</li>
+<li><strong>Causa:</strong> falta <code>.join("")</code> después del <code>map</code>.</li>
+<li><strong>Solución:</strong> agrégalo al final de la cadena.</li>
+</ul>
+<h3>28.7 · Reservar funciona una vez y después los botones no responden</h3>
+<ul>
+<li><strong>Cómo se lee:</strong> no hay error en consola; los botones nuevos simplemente no escuchan.</li>
+<li><strong>Causa:</strong> el <code>forEach</code> con <code>addEventListener</code> quedó <strong>fuera</strong> de <code>renderizar</code>, y cada pintura crea botones nuevos sin listener.</li>
+<li><strong>Solución:</strong> el <code>forEach</code> va dentro de <code>renderizar</code>, después de <code>innerHTML</code>.</li>
+</ul>
+<h3>28.8 · La terminal dice <code>Address already in use</code> o <code>WinError 10048</code></h3>
+<ul>
+<li><strong>Cómo se lee:</strong> el puerto 5500 ya está ocupado por otro programa (o por otro servidor que dejaste abierto).</li>
+<li><strong>Solución:</strong> cierra la otra terminal con <code>Ctrl+C</code> o usa otro puerto: <code>python -m http.server 5501</code>.</li>
+</ul>
+</div></section>
+<section class="section view" data-accent="1" data-escena="consulta" data-layout="canvas" hidden="" id="archivos"><div class="sec-head"><span class="sec-n">Consultar · 29</span><h2 class="sec-t">Mapa final de archivos</h2></div><div class="body"><div class="table-wrap"><table class="data-table">
+<thead>
+<tr>
+<th>Archivo</th>
+<th>Ruta</th>
+<th>Acción</th>
+<th>Estado final</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>index.html</code></td>
+<td><code>pulsofit/</code></td>
+<td>Crear y editar en los Momentos 5, 6, 7 y 8</td>
+<td>Completo · 26 líneas</td>
+</tr>
+<tr>
+<td><code>estilos.css</code></td>
+<td><code>pulsofit/</code></td>
+<td>Crear (Momento 6)</td>
+<td>Completo · 63 líneas</td>
+</tr>
+<tr>
+<td><code>app.js</code></td>
+<td><code>pulsofit/</code></td>
+<td>Crear (Momento 7) y editar (Momento 8)</td>
+<td>Completo · 39 líneas</td>
+</tr>
+<tr>
+<td><code>datos.js</code></td>
+<td><code>pulsofit/</code></td>
+<td>Crear (Momento 7)</td>
+<td>Completo · 6 líneas</td>
+</tr>
+<tr>
+<td><code>settings.json</code> de VS Code</td>
+<td>Configuración de usuario</td>
+<td>Editar (solo si usas VS Code con Copilot)</td>
+<td>Sugerencias en línea apagadas</td>
+</tr>
+</tbody></table></div>
+<div class="code-block"><div class="code-head"><span class="code-context">Referencia</span><button class="copy-btn" type="button">Copiar</button></div><pre><code class="language-plaintext">pulsofit/
+├── index.html    → estructura
+├── estilos.css   → presentación
+├── datos.js      → los datos de las clases
+└── app.js        → comportamiento: pintar y reservar</code></pre></div>
+</div></section>
+<section class="section view" data-accent="1" data-escena="consulta" data-layout="canvas" hidden="" id="glosario"><div class="sec-head"><span class="sec-n">Consultar · 30</span><h2 class="sec-t">Glosario de la clase</h2></div><div class="body"><dl class="glosario"><div class="glos-item" data-termino="navegador"><dt class="glos-termino">Navegador</dt><dd class="glos-tecnica">programa que pide archivos por HTTP, los interpreta y los dibuja en pantalla.</dd><dd class="glos-vida">un traductor que convierte instrucciones escritas en algo que ves y tocas.</dd><dd class="glos-donde">3 · Cómo funciona una página web</dd></div><div class="glos-item" data-termino="html"><dt class="glos-termino">HTML</dt><dd class="glos-tecnica">lenguaje de marcado que describe la estructura y el significado del contenido de una página.</dd><dd class="glos-vida">las paredes y los salones del gimnasio.</dd><dd class="glos-donde">3 · Las tres capas · 5 · HTML</dd></div><div class="glos-item" data-termino="elemento"><dt class="glos-termino">Elemento</dt><dd class="glos-tecnica">pieza de una página formada por etiqueta de apertura, contenido y etiqueta de cierre.</dd><dd class="glos-vida">una caja de mudanza con su etiqueta "Cocina".</dd><dd class="glos-donde">5 · La pieza básica</dd></div><div class="glos-item" data-termino="atributo"><dt class="glos-termino">Atributo</dt><dd class="glos-tecnica">dato extra dentro de la etiqueta de apertura, con la forma <code>nombre="valor"</code> (<code>class</code>, <code>id</code>, <code>href</code>, <code>data-id</code>).</dd><dd class="glos-vida">la talla escrita en la etiqueta de una camiseta: no es la camiseta, pero la describe.</dd><dd class="glos-donde">5 · Anatomía de un elemento</dd></div><div class="glos-item" data-termino="css"><dt class="glos-termino">CSS</dt><dd class="glos-tecnica">lenguaje de estilos que define cómo se ve cada elemento: color, tamaño, espacio y posición.</dd><dd class="glos-vida">la pintura, la luz y la distribución de las máquinas.</dd><dd class="glos-donde">3 · Las tres capas · 6 · CSS</dd></div><div class="glos-item" data-termino="modelo-de-caja"><dt class="glos-termino">Modelo de caja</dt><dd class="glos-tecnica">forma en que el navegador dibuja cada elemento: contenido, relleno, borde y margen.</dd><dd class="glos-vida">un cuadro en la pared: foto, paspartú, marco y espacio hasta el siguiente.</dd><dd class="glos-donde">6 · Paso 2 y Paso 3</dd></div><div class="glos-item" data-termino="flexbox"><dt class="glos-termino">Flexbox</dt><dd class="glos-tecnica">sistema de CSS que acomoda los hijos de un contenedor en una fila o columna (<code>display: flex</code>).</dd><dd class="glos-vida">el mueble de casilleros que decide cómo se alinean sus puertas.</dd><dd class="glos-donde">6 · Paso 4</dd></div><div class="glos-item" data-termino="javascript"><dt class="glos-termino">JavaScript</dt><dd class="glos-tecnica">lenguaje de programación que corre en el navegador y hace que la página reaccione.</dd><dd class="glos-vida">el torniquete que se abre cuando pones tu huella.</dd><dd class="glos-donde">3 · Las tres capas · 7 y 8</dd></div><div class="glos-item" data-termino="dom"><dt class="glos-termino">DOM</dt><dd class="glos-tecnica">árbol de objetos que el navegador construye a partir del HTML y que JavaScript puede modificar.</dd><dd class="glos-vida">el gimnasio construido, frente al plano en papel que es el HTML.</dd><dd class="glos-donde">7 · El DOM</dd></div><div class="glos-item" data-termino="arreglo-de-objetos"><dt class="glos-termino">Arreglo de objetos</dt><dd class="glos-tecnica">lista ordenada (<code>[ ]</code>) cuyos elementos son objetos con datos nombrados (<code>{ clave: valor }</code>).</dd><dd class="glos-vida">la planilla de clases del gimnasio: una fila por clase, una columna por dato.</dd><dd class="glos-donde">7 · Paso 2</dd></div><div class="glos-item" data-termino="map"><dt class="glos-termino"><code>map</code></dt><dd class="glos-tecnica">método de los arreglos que aplica una función a cada elemento y devuelve un arreglo nuevo con los resultados.</dd><dd class="glos-vida">una impresora de carnés: entra la lista de socios, sale un carné por cada uno.</dd><dd class="glos-donde">7 · Paso 3</dd></div><div class="glos-item" data-termino="template-literal"><dt class="glos-termino">Template literal</dt><dd class="glos-tecnica">texto entre comillas invertidas que admite varias líneas y valores con <code>${ }</code>.</dd><dd class="glos-vida">un formulario con espacios en blanco que se llenan con los datos de cada persona.</dd><dd class="glos-donde">7 · Paso 3</dd></div><div class="glos-item" data-termino="modulo"><dt class="glos-termino">Módulo</dt><dd class="glos-tecnica">archivo de JavaScript con su propio alcance, que comparte con <code>export</code> y recibe con <code>import</code>.</dd><dd class="glos-vida">un área del gimnasio con llave: solo sale lo que la encargada entrega.</dd><dd class="glos-donde">7 · Paso 4</dd></div><div class="glos-item" data-termino="evento"><dt class="glos-termino">Evento</dt><dd class="glos-tecnica">señal que emite el navegador cuando ocurre algo (un clic) y que se puede escuchar con <code>addEventListener</code>.</dd><dd class="glos-vida">el timbre de la recepción: avisa y alguien reacciona.</dd><dd class="glos-donde">8 · Paso 2</dd></div><div class="glos-item" data-termino="renderizar"><dt class="glos-termino">Renderizar</dt><dd class="glos-tecnica">convertir los datos actuales en lo que se ve en pantalla.</dd><dd class="glos-vida">actualizar el tablero de clases de la recepción cada vez que alguien reserva.</dd><dd class="glos-donde">8 · Paso 1 y 9 · Por qué existe React</dd></div></dl></div></section>
+<section class="section view" data-accent="1" data-escena="consulta" data-layout="canvas" hidden="" id="documentacion"><div class="sec-head"><span class="sec-n">Consultar · 31</span><h2 class="sec-t">Documentación para profundizar</h2></div><div class="body"><ul class="docs"><li><div class="doc-meta"><span class="doc-fuente">MDN Web Docs · Mozilla</span><span class="doc-idioma">Español</span></div><a class="doc-titulo" href="https://developer.mozilla.org/es/docs/Web/HTML/Reference/Elements" rel="noopener" target="_blank">Referencia de elementos HTML</a><p class="doc-que-leer">las secciones "Seccionamiento del contenido" y "Formularios": ahí están <code>header</code>, <code>main</code>, <code>section</code>, <code>article</code> y <code>button</code>, que usamos hoy.</p></li><li><div class="doc-meta"><span class="doc-fuente">MDN Web Docs · Mozilla</span><span class="doc-idioma">Español</span></div><a class="doc-titulo" href="https://developer.mozilla.org/es/docs/Web/CSS/Guides/Box_model" rel="noopener" target="_blank">Modelo de caja de CSS</a><p class="doc-que-leer">las propiedades de márgenes y rellenos; es lo que hicimos con <code>.tarjeta</code> en el Paso 2 del Momento 6.</p></li><li><div class="doc-meta"><span class="doc-fuente">MDN Web Docs · Mozilla</span><span class="doc-idioma">Español</span></div><a class="doc-titulo" href="https://developer.mozilla.org/es/docs/Web/CSS/Guides/Flexible_box_layout/Basic_concepts" rel="noopener" target="_blank">Conceptos básicos de Flexbox</a><p class="doc-que-leer">el eje principal y <code>justify-content</code>; explican por qué las tarjetas quedaron en fila y la cabecera repartida.</p></li><li><div class="doc-meta"><span class="doc-fuente">MDN Web Docs · Mozilla</span><span class="doc-idioma">Español</span></div><a class="doc-titulo" href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/map" rel="noopener" target="_blank"><code>Array.prototype.map()</code></a><p class="doc-que-leer">la descripción y el primer ejemplo; es el mismo patrón con el que pintamos las tarjetas.</p></li><li><div class="doc-meta"><span class="doc-fuente">MDN Web Docs · Mozilla</span><span class="doc-idioma">Español</span></div><a class="doc-titulo" href="https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Modules" rel="noopener" target="_blank">Módulos JavaScript</a><p class="doc-que-leer">"Exportar características" e "Importar características"; y en "Solución de problemas", por qué los módulos necesitan un servidor.</p></li><li><div class="doc-meta"><span class="doc-fuente">react.dev · documentación oficial de React</span><span class="doc-idioma">Inglés</span></div><a class="doc-titulo" href="https://react.dev/learn/thinking-in-react" rel="noopener" target="_blank">Thinking in React</a><p class="doc-que-leer">solo la introducción y el paso 1, como adelanto del lunes: vas a reconocer la idea de "la pantalla desde los datos".</p></li></ul><p class="doc-foot">© 2026 Ana Alvarado · Educadora Tech &amp; Desarrolladora Full Stack · Todos los derechos reservados · linkedin.com/in/ana-alvarado-instructora-full-stack</p></div></section></div>
+<nav aria-label="Navegación entre secciones" class="view-controls" id="viewControls">
+<button aria-label="Sección anterior" class="view-btn" id="prevView" type="button">←</button>
+<span aria-live="polite" class="view-position" id="viewPosition">Portada</span>
+<button aria-label="Sección siguiente" class="view-btn" id="nextView" type="button">→</button>
+</nav>
+</main>
+</div>
+<div aria-hidden="true" class="watermark">© 2026 ANA ALVARADO</div>
+<script src="vendor/prism.min.js"></script><script src="vendor/prism-jsx.min.js"></script><script src="vendor/prism-json.min.js"></script><script src="vendor/prism-line-numbers.min.js"></script><script src="anaclase-v12.js"></script>
+</body>
+</html>

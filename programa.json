@@ -1,0 +1,311 @@
+{
+  "modules": [
+    "React Moderno con Vite y Tailwind – Interfaces Dinámicas para Aplicaciones Full Stack",
+    "Integración Full Stack con Python, FastAPI y Autenticación JWT",
+    "Seguridad Avanzada, Calidad y Proyecto Full Stack Profesional"
+  ],
+  "lessons": [
+    {
+      "module": 1,
+      "number": 0,
+      "title": "Introducción a JavaScript, HTML y CSS",
+      "objectives": [
+        "Comprender cómo HTML, CSS y JavaScript trabajan juntos en una página web.",
+        "Construir una interfaz sencilla e incorporar interacción con JavaScript.",
+        "Preparar las bases para trabajar con componentes y eventos en React."
+      ],
+      "contents": [
+        "HTML: estructura del documento, etiquetas semánticas, enlaces y formularios.",
+        "CSS: selectores, cascada, modelo de caja, Flexbox y diseño adaptable.",
+        "JavaScript: variables, tipos de datos, operadores y funciones.",
+        "Arrays y objetos; métodos de recorrido y transformación.",
+        "DOM: selección de elementos, eventos y actualización de contenido.",
+        "JavaScript moderno: let, const, funciones flecha y módulos."
+      ],
+      "practice": [
+        "Crear una página con encabezado, tarjetas y un formulario.",
+        "Aplicar estilos adaptables con CSS.",
+        "Capturar un evento del formulario y actualizar una lista con JavaScript."
+      ]
+    },
+    {
+      "module": 1,
+      "number": 1,
+      "title": "Fundamentos de React JS y Entorno Moderno con Vite + Tailwind",
+      "objectives": [
+        "Configurar un entorno moderno para desarrollar interfaces con React",
+        "Comprender los conceptos fundamentales de React",
+        "Crear los primeros componentes funcionales",
+        "Entender la estructura base de un proyecto frontend profesional"
+      ],
+      "contents": [
+        "¿Qué es React y por qué se utiliza en el frontend profesional?",
+        "Configuración del entorno con Vite",
+        "Estructura moderna de proyectos en React",
+        "Componentes funcionales",
+        "JSX",
+        "Props",
+        "Manejo básico de eventos",
+        "Introducción a Tailwind CSS para estilos modernos"
+      ],
+      "practice": [
+        "Crear aplicación React desde cero",
+        "Construir vista principal con componentes base",
+        "Mostrar datos estáticos en pantalla con estructura profesional"
+      ]
+    },
+    {
+      "module": 1,
+      "number": 2,
+      "title": "Componentes Reutilizables, Formularios y Estado Local",
+      "objectives": [
+        "Construir interfaces reutilizables",
+        "Manejar estado local en React",
+        "Implementar formularios funcionales con validaciones básicas"
+      ],
+      "contents": [
+        "Composición y reutilización de componentes",
+        "useState",
+        "Formularios controlados",
+        "Validación manual de campos",
+        "Feedback visual en la interfaz",
+        "Separación entre lógica y presentación"
+      ],
+      "practice": [
+        "Crear formulario dinámico",
+        "Agregar elementos a una lista interactiva",
+        "Validar entradas y mostrar mensajes visuales"
+      ]
+    },
+    {
+      "module": 1,
+      "number": 3,
+      "title": "Navegación y Consumo de APIs con React Router + Axios",
+      "objectives": [
+        "Implementar navegación profesional en una aplicación React",
+        "Consumir APIs REST desde el frontend",
+        "Organizar el flujo de usuario en múltiples vistas"
+      ],
+      "contents": [
+        "React Router DOM",
+        "Rutas y navegación entre vistas",
+        "BrowserRouter, Routes, Route y Link",
+        "Navegación programática",
+        "Consumo de APIs con Axios",
+        "Manejo de respuestas JSON",
+        "Estados de carga y error",
+        "Organización de servicios HTTP"
+      ],
+      "practice": [
+        "Crear vistas principales: inicio, listado y detalle",
+        "Consumir una API real desde React",
+        "Mostrar datos dinámicos obtenidos desde el backend"
+      ]
+    },
+    {
+      "module": 1,
+      "number": 4,
+      "title": "Integración Frontend Profesional y Preparación para Full Stack",
+      "objectives": [
+        "Consolidar un frontend conectado a servicios reales",
+        "Preparar la aplicación para autenticación e integración full stack",
+        "Aplicar buenas prácticas de estructura y mantenibilidad"
+      ],
+      "contents": [
+        "Organización profesional del frontend",
+        "Separación de componentes, páginas y servicios",
+        "Manejo de errores en consumo de APIs",
+        "Preparación para autenticación con JWT",
+        "Flujo general frontend ↔ backend",
+        "Refactorización y limpieza de código"
+      ],
+      "practice": [
+        "Integrar frontend completo con una API existente",
+        "Validar navegación, consumo de datos y estructura del proyecto",
+        "Dejar la base lista para autenticación en el siguiente módulo"
+      ]
+    },
+    {
+      "module": 2,
+      "number": 1,
+      "title": "Integración React + FastAPI y Consumo de APIs Reales",
+      "objectives": [
+        "Conectar frontend React con backend FastAPI",
+        "Consumir APIs REST de manera profesional",
+        "Entender el flujo de comunicación entre cliente y servidor"
+      ],
+      "contents": [
+        "Arquitectura full stack moderna (React + FastAPI)",
+        "Configuración de conexión entre frontend y backend",
+        "Consumo de endpoints REST desde React",
+        "Manejo de respuestas JSON",
+        "Organización de servicios HTTP en frontend",
+        "Buenas prácticas de integración entre sistemas"
+      ],
+      "practice": [
+        "Conectar React con backend existente",
+        "Consumir endpoints desde el frontend",
+        "Mostrar datos reales obtenidos desde la API"
+      ]
+    },
+    {
+      "module": 2,
+      "number": 2,
+      "title": "Autenticación con JWT y Manejo de Sesión en Frontend",
+      "objectives": [
+        "Implementar autenticación en aplicaciones full stack",
+        "Gestionar la sesión del usuario en el frontend"
+      ],
+      "contents": [
+        "Flujo completo de autenticación JWT",
+        "Envío de credenciales al backend",
+        "Recepción y almacenamiento del token",
+        "Manejo de sesión del usuario",
+        "Servicios de autenticación en React",
+        "Login y logout"
+      ],
+      "practice": [
+        "Crear pantalla de login funcional",
+        "Almacenar el token JWT",
+        "Mantener sesión activa en la aplicación"
+      ]
+    },
+    {
+      "module": 2,
+      "number": 3,
+      "title": "Interceptores, Rutas Protegidas y Flujo de Usuario",
+      "objectives": [
+        "Automatizar el envío de tokens en peticiones HTTP",
+        "Proteger rutas dentro de la aplicación",
+        "Construir el flujo real de un usuario autenticado"
+      ],
+      "contents": [
+        "Envío automático de JWT en headers",
+        "Manejo de errores de autenticación (401, 403)",
+        "Protección de rutas privadas",
+        "Redirección de usuarios no autenticados",
+        "Estado de autenticación en frontend",
+        "Flujo de navegación autenticado"
+      ],
+      "practice": [
+        "Implementar protección de rutas",
+        "Restringir navegación de usuarios no autenticados",
+        "Integrar login, sesión y consumo de API protegida"
+      ]
+    },
+    {
+      "module": 2,
+      "number": 4,
+      "title": "Integración Completa de Autenticación y Preparación para Proyecto Final",
+      "objectives": [
+        "Consolidar la autenticación en aplicaciones full stack",
+        "Dejar la base funcional para el proyecto final",
+        "Aplicar buenas prácticas de estructura y mantenibilidad"
+      ],
+      "contents": [
+        "Flujo completo:login acceso a rutas protegidas consumo de APIs manejo de estado de autenticación",
+        "Logout y limpieza de sesión",
+        "Buenas prácticas de seguridad en frontend",
+        "Integración estable entre React y FastAPI",
+        "Refactorización y limpieza del código"
+      ],
+      "practice": [
+        "Implementar flujo completo de autenticación funcional",
+        "Integrar login, rutas protegidas y consumo de API",
+        "Dejar la aplicación preparada para el proyecto del módulo 3"
+      ]
+    },
+    {
+      "module": 3,
+      "number": 1,
+      "title": "Roles, Permisos y Control de Acceso Full Stack",
+      "objectives": [
+        "Implementar control de acceso basado en roles en aplicaciones full stack",
+        "Sincronizar permisos entre backend y frontend",
+        "Construir interfaces dinámicas según el perfil del usuario"
+      ],
+      "contents": [
+        "Roles y permisos en backend",
+        "Configuración de control de acceso en FastAPI",
+        "Envío de roles dentro del JWT",
+        "Lectura y uso de roles en React",
+        "Protección de funcionalidades según permisos",
+        "Renderizado dinámico de la interfaz según tipo de usuario"
+      ],
+      "practice": [
+        "Implementar sistema con roles (ADMIN, USER)",
+        "Mostrar u ocultar funcionalidades según permisos",
+        "Restringir acceso a rutas y acciones específicas"
+      ]
+    },
+    {
+      "module": 3,
+      "number": 2,
+      "title": "Calidad de Software y Validación del Sistema",
+      "objectives": [
+        "Mejorar la robustez y estabilidad de la aplicación",
+        "Detectar errores y validar funcionalidades reales",
+        "Aplicar prácticas básicas de calidad en frontend y backend"
+      ],
+      "contents": [
+        "Validación de flujos completos de usuario",
+        "Pruebas de endpoints backend",
+        "Validación de formularios y navegación frontend",
+        "Manejo de errores en frontend y backend",
+        "Revisión de calidad del código",
+        "Buenas prácticas para sistemas mantenibles"
+      ],
+      "practice": [
+        "Validar flujos de autenticación",
+        "Probar endpoints protegidos",
+        "Revisar formularios, rutas y errores del sistema"
+      ]
+    },
+    {
+      "module": 3,
+      "number": 3,
+      "title": "Desarrollo del Proyecto Full Stack Completo",
+      "objectives": [
+        "Diseñar y construir un sistema full stack profesional",
+        "Integrar frontend, backend y base de datos en un solo flujo",
+        "Aplicar arquitectura real de desarrollo"
+      ],
+      "contents": [
+        "Definición del proyecto final",
+        "Arquitectura del sistema:frontend React backend FastAPI base de datos",
+        "Implementación de funcionalidades principales",
+        "Integración completa del sistema",
+        "Organización profesional del proyecto"
+      ],
+      "practice": [
+        "Desarrollo del sistema completo",
+        "Implementación de funcionalidades principales",
+        "Integración entre frontend, backend y base de datos"
+      ]
+    },
+    {
+      "module": 3,
+      "number": 4,
+      "title": "Validación, Optimización y Entrega Profesional del Proyecto",
+      "objectives": [
+        "Validar calidad y funcionamiento del sistema completo",
+        "Optimizar estructura, seguridad y rendimiento",
+        "Preparar el proyecto para presentación profesional y portafolio"
+      ],
+      "contents": [
+        "Testing final del sistema",
+        "Optimización de rendimiento",
+        "Validación de seguridad (JWT, roles, rutas protegidas)",
+        "Buenas prácticas de entrega de proyectos",
+        "Documentación técnica del sistema",
+        "Preparación para portafolio profesional",
+        "Revisión final del flujo full stack completo"
+      ],
+      "practice": [
+        "Presentación del proyecto completo",
+        "Entrega en GitHub con documentación profesional",
+        "Validación funcional end-to-end"
+      ]
+    }
+  ]
+}

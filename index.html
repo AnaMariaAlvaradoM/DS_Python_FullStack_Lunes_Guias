@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="es" data-empresa="dev-senior">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      Python Full Stack Developer · Ana Alvarado
+    </title>
+    <meta name="author" content="Ana Alvarado">
+    <meta name="description" content="Biblioteca de guías y materiales del curso.">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <link rel="stylesheet" href="portal.css">
+    <link rel="stylesheet" href="sesion.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#guias">
+      Saltar a las guías
+    </a>
+    <header class="portal-topbar" id="barraPortal">
+      <a class="portal-brand" href="./index.html" id="irInicio" aria-label="Inicio del portal">
+        <span class="portal-brand-mark" aria-hidden="true">
+          A
+        </span>
+        <span class="portal-brand-copy">
+          <strong>
+            Ana Alvarado
+          </strong>
+          <small>
+            Dev Senior Code · Python Full Stack Developer
+          </small>
+        </span>
+      </a>
+      <nav class="visor-nav" id="visorNav" aria-label="Navegación de la guía" hidden>
+        <a class="visor-inicio" href="./index.html" id="volverBiblioteca">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m3 11 9-8 9 8"/>
+            <path d="M5 10v10h14V10"/>
+            <path d="M9 20v-6h6v6"/>
+          </svg>
+          <span>
+            Todas las guías
+          </span>
+        </a>
+        <div class="visor-ubicacion" aria-live="polite">
+          <span class="visor-modulo" id="visorModulo">
+          </span>
+          <strong class="visor-clase" id="visorClase">
+          </strong>
+        </div>
+        <div class="visor-pasos">
+          <button class="ctrl-btn" id="guiaAnterior" type="button" aria-label="Guía anterior" title="Guía anterior">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 18l-6-6 6-6"/>
+            </svg>
+          </button>
+          <button class="ctrl-btn" id="guiaSiguiente" type="button" aria-label="Guía siguiente" title="Guía siguiente">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 6l6 6-6 6"/>
+            </svg>
+          </button>
+          <a class="ctrl-btn" id="abrirSola" href="#" target="_blank" rel="noopener" aria-label="Abrir la guía sola en otra pestaña" title="Abrir sola (para imprimir o pantalla completa)">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 4h6v6"/>
+              <path d="M20 4l-9 9"/>
+              <path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>
+            </svg>
+          </a>
+        </div>
+      </nav>
+      <button class="ctrl-btn" id="temaBtn" type="button" aria-label="Activar tema oscuro" title="Activar tema oscuro">
+        ☾
+      </button>
+    </header>
+    <section class="visor" id="visor" aria-label="Guía abierta" hidden>
+      <iframe class="visor-frame" id="visorFrame" title="Guía de clase" allow="fullscreen; clipboard-write">
+      </iframe>
+    </section>
+    <main class="wrap" id="biblioteca">
+      <p class="eyebrow">
+        DEV SENIOR CODE · LUNES
+      </p>
+      <h1>
+        Python Full Stack Developer
+      </h1>
+      <p class="lead">
+        De las interfaces con React a una aplicación completa con Python y FastAPI. Consulta el programa de cada clase y avanza por los tres módulos del curso.
+      </p>
+      <section class="library-head" id="guias" aria-labelledby="tituloBiblioteca">
+        <div class="library-heading">
+          <span class="section-label">
+            Biblioteca
+          </span>
+          <h2 id="tituloBiblioteca">
+            Clases por módulo
+          </h2>
+          <p class="library-meta">
+            <strong data-module-count>
+              3
+            </strong>
+            módulos ·
+            <strong data-resource-count>
+              13
+            </strong>
+            temarios disponibles
+          </p>
+        </div>
+        <div class="library-actions">
+          <button class="text-btn" id="mostrarBusqueda" type="button" aria-expanded="false" aria-controls="panelBusqueda" aria-label="Buscar una guía">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="7">
+              </circle>
+              <path d="m20 20-3.5-3.5">
+              </path>
+            </svg>
+            <span data-search-label>
+              Buscar
+            </span>
+          </button>
+          <button class="text-btn" id="expandirModulos" type="button" aria-expanded="false">
+            Expandir
+          </button>
+        </div>
+        <div class="search-panel" id="panelBusqueda" hidden>
+          <label class="search-field">
+            <span class="sr-only">
+              Buscar por clase, tema o tecnología
+            </span>
+            <input class="search-input" id="buscarGuia" type="search" autocomplete="off" placeholder="Escribe una clase, tema o tecnología…">
+            <button class="search-clear" id="limpiarBusqueda" type="button" aria-label="Limpiar búsqueda" title="Limpiar búsqueda" hidden>
+              ×
+            </button>
+          </label>
+        </div>
+        <p class="sr-only" id="estadoResultados" role="status" aria-live="polite">
+        </p>
+      </section>
+      <div class="modulos" id="lista-guias" aria-label="Módulos y clases">
+        <details class="modulo" open>
+          <summary>
+            <span class="mod-punto">
+            </span>
+            <span class="mod-info">
+              <span class="mod-titulo">
+                Módulo 1
+              </span>
+              <span class="mod-meta">
+                React Moderno con Vite y Tailwind – Interfaces Dinámicas para Aplicaciones Full Stack
+              </span>
+            </span>
+            <span class="mod-badge activo">
+              Temario
+            </span>
+            <span class="mod-chevron">
+              ▶
+            </span>
+          </summary>
+          <div class="clases">
+
+            <!-- Módulo 1 · Clase 0: pega la ruta de tu SPA en el href de abajo. -->
+            <a class="clase" href="docs/Modulo1/Clase0/index.html">
+              <span class="num">
+                00
+              </span>
+              <span class="clase-info">
+                <span class="clase-titulo">
+                  Clase 0 · Nivelación
+                </span>
+                <span class="clase-temas">
+                  Introducción a JavaScript, HTML y CSS
+                </span>
+              </span>
+              <span class="flecha">
+                →
+              </span>
+            </a>
+
+            <!-- Módulo 1 · Clase 1: pega la ruta de tu SPA en el href de abajo. -->
+            <a class="clase" href="">
+              <span class="num">
+                01
+              </span>
+              <span class="clase-info">
+                <span class="clase-titulo">
+                  Clase 1
+                </span>
+                <span class="clase-temas">
+                  Fundamentos de React JS y Entorno Moderno con Vite + Tailwind
+                </span>
+              </span>
+              <span class="flecha">
+                →
+              </span>
+            </a>
+
+            <!-- Módulo 1 · Clase 2: pega la ruta de tu SPA en el href de abajo. -->
+            <a class="clase" href="">
+              <span class="num">
+                02
+              </span>
+              <span class="clase-info">
+                <span class="clase-titulo">
+                  Clase 2
+                </span>
+                <span class="clase-temas">
+                  Componentes Reutilizables, Formularios y Estado Local
+                </span>
+              </span>
+              <span class="flecha">
+                →
+              </span>
+            </a>
+
+            <!-- Módulo 1 · Clase 3: pega la ruta de tu SPA en el href de abajo. -->
+            <a class="clase" href="">
+              <span class="num">
+                03
+              </span>
+              <span class="clase-info">
+                <span class="clase-titulo">
+                  Clase 3
+                </span>
+                <span class="clase-temas">
+                  Navegación y Consumo de APIs con React Router + Axios
+                </span>
+              </span>
+              <span class="flecha">
+                →
+              </span>
+            </a>
+
+            <!-- Módulo 1 · Clase 4: pega la ruta de tu SPA en el href de abajo. -->
+            <a class="clase" href="">
+              <span class="num">
+                04
+              </span>
+              <span class="clase-info">
+                <span class="clase-titulo">
+                  Clase 4
+                </span>
+                <span class="clase-temas">
+                  Integración Frontend Profesional y Preparación para Full Stack
+                </span>
+              </span>
+              <span class="flecha">
+                →
+              </span>
+            </a>
+          </div>
+        </details>
+        <details class="modulo" >
+          <summary>
+            <span class="mod-punto">
+            </span>
+            <span class="mod-info">
+              <span class="mod-titulo">
+                Módulo 2
+              </span>
+              <span class="mod-meta">
+                Integración Full Stack con Python, FastAPI y Autenticación JWT
+              </span>
+            </span>
+            <span class="mod-badge activo">
+              Temario
+            </span>
+            <span class="mod-chevron">
+              ▶
+            </span>
+          </summary>
+          <div class="clases">
+
+            <!-- Módulo 2 · Clase 1: pega la ruta de tu SPA en el href de abajo. -->
+            <a class="clase" href="">
+              <span class="num">
+                01
+              </span>
+              <span class="clase-info">
+                <span class="clase-titulo">
+                  Clase 1
+                </span>
+                <span class="clase-temas">
+                  Integración React + FastAPI y Consumo de APIs Reales
+                </span>
+              </span>
+              <span class="flecha">
+                →
+              </span>
+            </a>
+
+            <!-- Módulo 2 · Clase 2: pega la ruta de tu SPA en el href de abajo. -->
+            <a class="clase" href="">
+              <span class="num">
+                02
+              </span>
+              <span class="clase-info">
+                <span class="clase-titulo">
+                  Clase 2
+                </span>
+                <span class="clase-temas">
+                  Autenticación con JWT y Manejo de Sesión en Frontend
+                </span>
+              </span>
+              <span class="flecha">
+                →
+              </span>
+            </a>
+
+            <!-- Módulo 2 · Clase 3: pega la ruta de tu SPA en el href de abajo. -->
+            <a class="clase" href="">
+              <span class="num">
+                03
+              </span>
+              <span class="clase-info">
+                <span class="clase-titulo">
+                  Clase 3
+                </span>
+                <span class="clase-temas">
+                  Interceptores, Rutas Protegidas y Flujo de Usuario
+                </span>
+              </span>
+              <span class="flecha">
+                →
+              </span>
+            </a>
+
+            <!-- Módulo 2 · Clase 4: pega la ruta de tu SPA en el href de abajo. -->
+            <a class="clase" href="">
+              <span class="num">
+                04
+              </span>
+              <span class="clase-info">
+                <span class="clase-titulo">
+                  Clase 4
+                </span>
+                <span class="clase-temas">
+                  Integración Completa de Autenticación y Preparación para Proyecto Final
+                </span>
+              </span>
+              <span class="flecha">
+                →
+              </span>
+            </a>
+          </div>
+        </details>
+        <details class="modulo" >
+          <summary>
+            <span class="mod-punto">
+            </span>
+            <span class="mod-info">
+              <span class="mod-titulo">
+                Módulo 3
+              </span>
+              <span class="mod-meta">
+                Seguridad Avanzada, Calidad y Proyecto Full Stack Profesional
+              </span>
+            </span>
+            <span class="mod-badge activo">
+              Temario
+            </span>
+            <span class="mod-chevron">
+              ▶
+            </span>
+          </summary>
+          <div class="clases">
+
+            <!-- Módulo 3 · Clase 1: pega la ruta de tu SPA en el href de abajo. -->
+            <a class="clase" href="">
+              <span class="num">
+                01
+              </span>
+              <span class="clase-info">
+                <span class="clase-titulo">
+                  Clase 1
+                </span>
+                <span class="clase-temas">
+                  Roles, Permisos y Control de Acceso Full Stack
+                </span>
+              </span>
+              <span class="flecha">
+                →
+              </span>
+            </a>
+
+            <!-- Módulo 3 · Clase 2: pega la ruta de tu SPA en el href de abajo. -->
+            <a class="clase" href="">
+              <span class="num">
+                02
+              </span>
+              <span class="clase-info">
+                <span class="clase-titulo">
+                  Clase 2
+                </span>
+                <span class="clase-temas">
+                  Calidad de Software y Validación del Sistema
+                </span>
+              </span>
+              <span class="flecha">
+                →
+              </span>
+            </a>
+
+            <!-- Módulo 3 · Clase 3: pega la ruta de tu SPA en el href de abajo. -->
+            <a class="clase" href="">
+              <span class="num">
+                03
+              </span>
+              <span class="clase-info">
+                <span class="clase-titulo">
+                  Clase 3
+                </span>
+                <span class="clase-temas">
+                  Desarrollo del Proyecto Full Stack Completo
+                </span>
+              </span>
+              <span class="flecha">
+                →
+              </span>
+            </a>
+
+            <!-- Módulo 3 · Clase 4: pega la ruta de tu SPA en el href de abajo. -->
+            <a class="clase" href="">
+              <span class="num">
+                04
+              </span>
+              <span class="clase-info">
+                <span class="clase-titulo">
+                  Clase 4
+                </span>
+                <span class="clase-temas">
+                  Validación, Optimización y Entrega Profesional del Proyecto
+                </span>
+              </span>
+              <span class="flecha">
+                →
+              </span>
+            </a>
+          </div>
+        </details>
+      </div>
+      <p>
+        <a class="text-btn" href="brochure.pdf" target="_blank" rel="noopener">
+          Consultar brochure del programa ↗
+        </a>
+      </p>
+      <aside class="workshop">
+        <p class="eyebrow">
+          EXPERIENCIA DE CIERRE · 4 HORAS
+        </p>
+        <h2>
+          Workshop Premium: Proyecto Real Full Stack
+        </h2>
+        <p>
+          Sesión intensiva dirigida por un referente de la industria para conocer cómo se analiza, estructura y desarrolla una solución full stack en un entorno profesional real.
+        </p>
+        <p>
+          Criterios técnicos, toma de decisiones, integración entre frontend y backend, organización del trabajo y buenas prácticas utilizadas en la industria.
+        </p>
+      </aside>
+      <p class="empty-state" id="sinResultados" hidden>
+        <strong>
+          No encontramos esa guía.
+        </strong>
+        Prueba con otro tema, número de clase o tecnología.
+      </p>
+      <details class="legal-mini">
+        <summary>
+          © Aviso de autoría y uso del material
+        </summary>
+        <p>
+          Este material es de
+          <strong>
+            autoría exclusiva de Ana Alvarado
+          </strong>
+          y está destinado a las y los estudiantes del curso. No se permite su reproducción o redistribución fuera de clase sin autorización escrita.
+        </p>
+      </details>
+    </main>
+    <footer id="piePortal">
+      <p>
+        © 2026 Ana Alvarado · Educadora Tech
+        &amp;
+        Desarrolladora Full Stack · Todos los derechos reservados
+      </p>
+      <p>
+        linkedin.com/in/ana-alvarado-instructora-full-stack
+      </p>
+    </footer>
+    <script src="portal.js" defer>
+    </script>
+  </body>
+</html>
