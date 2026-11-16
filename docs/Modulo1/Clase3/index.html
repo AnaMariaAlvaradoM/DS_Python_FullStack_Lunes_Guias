@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="es" data-tema="oscuro" data-tema-base="oscuro" data-empresa="dev-senior" data-paleta="caribe">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ana Alvarado">
+  <meta name="copyright" content="© 2026 Ana Alvarado — Todos los derechos reservados">
+  <meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+  <title>Clase 3 · React Router, Axios y FastAPI · Ana Alvarado</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&amp;family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+  <link rel="stylesheet" href="anaestilos-v12.css">
+</head>
+<body>
+  <a class="skip-link" href="#apertura">Saltar al contenido</a>
+  <div class="topline" id="topline" aria-hidden="true"></div>
+  <div class="controls" aria-label="Controles">
+    <button class="ctrl" id="temaBtn" type="button" aria-label="Cambiar tema">☀</button>
+    <button class="ctrl" id="fullscreenBtn" type="button" aria-label="Pantalla completa">⛶</button>
+  </div>
+
+  <div class="shell" id="shell" data-collapsed="false">
+    <aside class="sidebar" aria-label="Índice de la clase">
+      <div class="sb-top"><span class="brand-mark">A</span><div class="sb-title"><b>Python Full Stack · Módulo 1</b><span>Clase 3 · Dev Senior</span></div></div>
+      <button class="sb-toggle" id="collapseBtn" type="button" aria-label="Colapsar menú">‹</button>
+      <nav class="sb-nav" id="nav" aria-label="Secciones">
+        <a class="nav-item active" href="#portada"><span class="nav-index">00</span><span class="nav-label">Portada</span></a>
+        <span class="nav-group">Problema</span>
+        <a class="nav-item" href="#apertura"><span class="nav-index">01</span><span class="nav-label">Dos personas, un cupo</span></a>
+        <a class="nav-item" href="#objetivos"><span class="nav-index">02</span><span class="nav-label">Lo que lograrás hoy</span></a>
+        <span class="nav-group">Navegación</span>
+        <a class="nav-item" href="#router-concepto"><span class="nav-index">03</span><span class="nav-label">Una dirección por pantalla</span></a>
+        <a class="nav-item" href="#router-ejemplo"><span class="nav-index">04</span><span class="nav-label">Biblioteca con rutas</span></a>
+        <a class="nav-item" href="#router-aplicacion-1"><span class="nav-index">05</span><span class="nav-label">Las pantallas de PulsoFit</span></a>
+        <a class="nav-item" href="#router-aplicacion-2"><span class="nav-index">06</span><span class="nav-label">El enlace de cada clase</span></a>
+        <a class="nav-item" href="#router-limites"><span class="nav-index">07</span><span class="nav-label">Límites de las rutas</span></a>
+        <span class="nav-group">API y Axios</span>
+        <a class="nav-item" href="#api-concepto"><span class="nav-index">08</span><span class="nav-label">Datos que llegan después</span></a>
+        <a class="nav-item" href="#api-ejemplo"><span class="nav-index">09</span><span class="nav-label">Frutas desde una API</span></a>
+        <a class="nav-item" href="#api-backend"><span class="nav-index">10</span><span class="nav-label">Backend FastAPI</span></a>
+        <a class="nav-item" href="#api-clases"><span class="nav-index">11</span><span class="nav-label">Las clases llegan del servidor</span></a>
+        <a class="nav-item" href="#api-reservas"><span class="nav-index">12</span><span class="nav-label">Reservar en el servidor</span></a>
+        <a class="nav-item" href="#api-limites"><span class="nav-index">13</span><span class="nav-label">Límites del consumo</span></a>
+        <span class="nav-group">Carga y error</span>
+        <a class="nav-item" href="#estados-concepto"><span class="nav-index">14</span><span class="nav-label">La pantalla siempre responde</span></a>
+        <a class="nav-item" href="#estados-ejemplo"><span class="nav-index">15</span><span class="nav-label">Clima: carga, error y datos</span></a>
+        <a class="nav-item" href="#estados-aplicacion-1"><span class="nav-index">16</span><span class="nav-label">Lista y detalle honestos</span></a>
+        <a class="nav-item" href="#estados-aplicacion-2"><span class="nav-index">17</span><span class="nav-label">El último cupo</span></a>
+        <a class="nav-item" href="#estados-limites"><span class="nav-index">18</span><span class="nav-label">Límites de los estados</span></a>
+        <span class="nav-group">Aplicar</span>
+        <a class="nav-item" href="#practica"><span class="nav-index">19</span><span class="nav-label">GolPark · Fase 3</span></a>
+        <span class="nav-group">Cerrar</span>
+        <a class="nav-item" href="#cierre"><span class="nav-index">20</span><span class="nav-label">Lo que cambió</span></a>
+        <span class="nav-group">Consultar</span>
+        <a class="nav-item" href="#glosario"><span class="nav-index">21</span><span class="nav-label">Glosario</span></a>
+        <a class="nav-item" href="#documentacion"><span class="nav-index">22</span><span class="nav-label">Documentación</span></a>
+      </nav>
+      <div class="sb-prog"><div class="lbl"><span>Progreso</span><span id="progPct">0%</span></div><div class="track"><div class="fill" id="progFill"></div></div></div>
+    </aside>
+
+    <main class="main">
+      <header class="hero view" id="portada" data-accent="1">
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <span class="eyebrow">Dev Senior · Python Full Stack · Módulo 1</span>
+            <h1 class="hero-title">De una pantalla a un sistema compartido</h1>
+            <p class="hero-lead">React Router da una dirección a cada pantalla; Axios y FastAPI ponen los datos en un servidor; los estados de carga y error cuentan siempre qué está pasando.</p>
+            <div class="meta"><span class="pill" data-hot>Clase 3 de 5</span><span class="pill">React Router 8.5</span><span class="pill">Axios 1.21</span><span class="pill">FastAPI 0.162</span></div>
+          </div>
+          <figure class="hero-visual">
+            <img src="img/ultimo-cupo-servidor.png" alt="Dos personas intentan tomar el mismo último cupo mientras un servidor central decide cuál reserva se acepta">
+            <figcaption class="hero-note">Dos navegadores pueden mostrar el mismo cupo; una sola autoridad debe decidir quién lo obtiene.</figcaption>
+          </figure>
+        </div>
+      </header>
+
+      <div class="content">
+        <section class="section view" id="apertura" data-accent="1" data-layout="canvas" data-escena="apertura" hidden>
+          <div class="sec-head"><span class="sec-n">El problema</span><h2 class="sec-t">Dos personas llegaron a un solo cupo</h2><p class="sec-s">PulsoFit abre una sede en Medellín, pero cada navegador conserva una copia distinta de los cupos.</p></div>
+          <div class="body">
+            <div class="micro-task"><span class="component-label">Recuerda</span><p class="micro-task-q">En la Clase 2, ¿dónde vivía la lista de clases con sus cupos, y qué pasaba con ella al recargar la página?</p><details class="micro-reveal"><summary>Comprobar</summary><p class="micro-answer">Vivía en el <strong>estado</strong> de <code>App</code> (<code>listaClases</code>), que arrancaba con los datos de <code>clases.js</code>. El estado es memoria de la pestaña: al recargar, React vuelve a empezar desde <code>clases.js</code> y se pierden los cupos que bajaron. Por eso hoy los datos se van a un servidor.</p></details></div>
+            <article class="correo">
+              <div class="correo-head"><span class="correo-avatar">VC</span><div><div class="correo-remitente">Valeria Cárdenas · valeria@pulsofit.co</div><div class="correo-ruta">Para: Equipo de desarrollo</div></div><span class="correo-fecha">13 nov 2026</span></div>
+              <div class="correo-asunto">Abrimos sede en Medellín 🎉 (y un problema)</div>
+              <div class="correo-body"><p>Hola, equipo: el viernes Laura reservó el último cupo de Funcional desde su celular, y Camilo, en el computador de la recepción, lo seguía viendo libre y también reservó. Llegaron dos personas a un solo cupo.</p><p>Para el lunes necesito:</p><ol><li>Que <strong>todos</strong> vean los mismos cupos, en cualquier computador o celular, y que no se borren al recargar.</li><li>Poder mandar por WhatsApp <strong>el enlace de una clase</strong> para que la persona entre directo a reservar.</li><li>Que si alguien llega tarde al último cupo, el sistema <strong>se lo diga</strong>, en vez de aceptarlo.</li></ol><p>Valeria</p></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section view" id="objetivos" data-accent="1" data-layout="canvas" data-escena="objetivos" hidden>
+          <div class="sec-head"><span class="sec-n">Ruta de hoy</span><h2 class="sec-t">Lo que lograrás en esta sesión</h2></div>
+          <div class="body">
+            <div class="estado-proyecto" role="group" aria-label="El proyecto antes y después de la clase"><div class="estado-antes"><span class="component-label">Antes de hoy</span><p>PulsoFit es una sola pantalla; los cupos viven en cada navegador y se pierden al recargar.</p></div><div class="estado-flecha" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div><div class="estado-despues"><span class="component-label">Al terminar</span><p>Cada pantalla tiene su dirección, los datos llegan de un servidor FastAPI que es igual para todos, y la pantalla siempre dice si está cargando o si algo falló.</p></div></div>
+            <ol class="objetivos">
+              <li><div><p class="obj-texto"><strong>Construir</strong> la navegación de una aplicación con React Router.</p><p class="obj-evidencia">abres <code>http://localhost:5173/clases/3</code> en una pestaña nueva y ves Funcional, y <code>/cualquier-cosa</code> muestra “Esta página no existe”.</p></div></li>
+              <li><div><p class="obj-texto"><strong>Explicar</strong> cómo llegan los datos de una API a la pantalla con <code>useEffect</code> y Axios.</p><p class="obj-evidencia">cambias un cupo en <code>datos.py</code>, recargas y lo ves, y dices en qué momento corre la petición.</p></div></li>
+              <li><div><p class="obj-texto"><strong>Construir</strong> pantallas que muestran carga y error.</p><p class="obj-evidencia">con el backend apagado <code>/clases</code> dice “No pudimos cargar las clases…”, y con dos pestañas el segundo en reservar el último cupo de Funcional recibe el aviso.</p></div></li>
+              <li><div><p class="obj-texto"><strong>Reconocer</strong> estos conceptos en un negocio distinto a PulsoFit.</p><p class="obj-evidencia">respondes las preguntas de transferencia de una tienda en línea, un banco y una app de domicilios.</p></div></li>
+            </ol>
+          </div>
+        </section>
+
+        <section class="section view" id="router-concepto" data-accent="1" data-layout="canvas" data-escena="concepto" hidden>
+          <div class="sec-head"><span class="sec-n">Navegación · concepto</span><h2 class="sec-t">La dirección decide qué componente se pinta</h2></div>
+          <div class="body">
+            <h3>3.1 · Para qué existe</h3>
+            <p>En un sitio hecho solo con HTML, cada pantalla es un archivo distinto: <code>inicio.html</code>, <code>clases.html</code>. Al hacer clic en un enlace, el navegador pide el archivo nuevo al servidor y <strong>recarga toda la página</strong>: se pierde lo que estaba en memoria y la pantalla parpadea.</p>
+            <p>Una aplicación de React es una sola página (<code>index.html</code>) que React va pintando. Si todo vive en esa única dirección, no puedes guardar una pantalla en favoritos, compartirla ni usar el botón <strong>Atrás</strong> del navegador. Lo que falta es que la <strong>dirección</strong> del navegador decida qué componente se pinta, sin recargar.</p>
+            <h3>3.2 · Qué es</h3>
+            <div class="definicion"><div class="def-tecnica"><span class="component-label">Definición técnica</span><p class="def-termino">Enrutamiento del lado del cliente</p><p>Es la técnica por la cual la aplicación lee la URL del navegador, la compara con una tabla de rutas y pinta el componente que corresponde; al navegar, cambia la URL con la API de historial del navegador sin pedir una página nueva al servidor. <strong>React Router</strong> es la librería que lo implementa en React: <code>BrowserRouter</code> escucha la URL, <code>Routes</code> y <code>Route</code> forman la tabla, <code>Link</code> navega y <code>useParams</code> lee las partes variables de la dirección.</p></div><div class="def-vida"><span class="component-label">Explicación sencilla</span><p>Escribes una tabla que dice “si la dirección es esta, muestra este componente”. React Router mira la dirección y pinta la fila que coincide. Cuando haces clic en un enlace, cambia la dirección y vuelve a mirar la tabla, sin recargar.</p><span class="component-label">En la vida real</span><p>El directorio de un centro comercial. Cada local tiene un número (<code>Local 214</code>); con el número llegas directo, y le puedes decir a alguien “nos vemos en el 214” sin explicarle todo el camino.</p></div></div>
+            <h3>3.3 · Cómo reconocerlo</h3>
+            <p>Hazte esta pregunta: <strong>¿alguien querría llegar directo a esta pantalla, guardarla o compartirla?</strong> Si la respuesta es sí, esa pantalla necesita su propia ruta. Y si la pantalla es “la misma para muchos elementos” (un libro, un producto, un pedido), la ruta lleva un <strong>segmento dinámico</strong> con el identificador.</p>
+            <div class="pipeline"><div class="pipe-step"><span class="component-label">Entrada</span><h3>URL</h3><ul><li>/clases/3</li></ul></div><div class="pipe-arrow">→</div><div class="pipe-step" data-emphasis><span class="component-label">Coincidencia</span><h3>Routes + useParams</h3><ul><li>/clases/:id</li><li>{ id: "3" }</li></ul></div><div class="pipe-arrow">→</div><div class="pipe-step"><span class="component-label">Salida</span><h3>Componente</h3><ul><li>DetalleClase</li></ul></div></div>
+            <div class="code-block" data-tipo="terminal"><div class="code-head"><div><span class="code-context">Terminal · desde frontend/</span></div><button class="copy-btn" type="button">Copiar</button></div><pre><code class="language-bash">npm install react-router</code></pre></div>
+          </div>
+        </section>
+
+        <section class="section view" id="router-ejemplo" data-accent="1" data-layout="canvas" data-escena="concepto" hidden>
+          <div class="sec-head"><span class="sec-n">Navegación · ejemplo aislado</span><h2 class="sec-t">Una biblioteca con una ruta dinámica</h2><p class="sec-s">Una portada con enlaces y una página que cambia según el número que trae la dirección.</p></div>
+          <div class="body">
+            <div class="micro-task"><span class="component-label">Para pensar</span><p class="micro-task-q">En el paso 1, la portada tiene un enlace a <code>/libros/1</code>, pero la tabla de rutas solo conoce <code>/</code>. Antes de hacer clic: ¿qué crees que pasa?</p><details class="micro-reveal"><summary>Comprobar</summary><p class="micro-answer">La dirección sí cambia en la barra del navegador (el enlace funciona), pero la pantalla queda en blanco: ninguna fila de la tabla coincide, así que React Router no pinta nada. En la consola aparece el aviso <code>No routes matched location "/libros/1"</code>. No hay 404 porque el navegador no le pidió nada al servidor.</p></details></div>
+            <h3>4.1 · La página del ejemplo</h3>
+            <article class="archivo"><div class="archivo-ficha" data-tipo="apoyo"><span class="archivo-accion">Crear</span><span class="archivo-nombre">index.html</span><span class="archivo-ruta">frontend/ejemplos/rutas/</span></div><p class="archivo-intro">Cada ejemplo tiene su propia página dentro de <code>frontend/ejemplos/</code>, para que el mismo <code>npm run dev</code> la sirva.</p>
+              <div class="lectura"><div class="lectura-head"><span class="lectura-num">1</span><h3 class="lectura-titulo">Una página con un hueco para React</h3><p class="lectura-proposito">El contenedor vacío y el módulo que inicia esta aplicación aislada.</p></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><div><span class="code-context">Líneas 1–7</span></div></div><pre class="line-numbers" data-start="1"><code class="language-html">&lt;!doctype html&gt;
+&lt;html lang="es"&gt;
+  &lt;body&gt;
+    &lt;div id="raiz"&gt;&lt;/div&gt;
+    &lt;script type="module" src="./Biblioteca.jsx"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre></div><ol class="notas"><li class="nota" data-lineas="1-3"><div class="nota-cabeza"><span class="nota-lineas">L1–3</span><code class="nota-codigo">doctype, html y body</code></div><p>Declaran HTML moderno en español y abren el cuerpo; Vite agrega lo demás al servir la página.</p></li><li class="nota" data-lineas="4"><div class="nota-cabeza"><span class="nota-lineas">L4</span><code class="nota-codigo">div#raiz</code></div><p>El contenedor vacío donde React va a dibujar; el <code>.jsx</code> lo busca por su <code>id</code>.</p></li><li class="nota" data-lineas="5"><div class="nota-cabeza"><span class="nota-lineas">L5</span><code class="nota-codigo">script type="module"</code></div><p>Carga el archivo de React de esta misma carpeta. <code>type="module"</code> permite que ese archivo use <code>import</code>.</p></li></ol></div></div>
+              <details class="code-reveal" data-archivo="ejemplos/rutas/index.html"><summary><span><span class="code-reveal-title">index.html · archivo completo</span><span class="code-reveal-note">7 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Crear</span><span class="code-file">index.html</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-html">&lt;!doctype html&gt;
+&lt;html lang="es"&gt;
+  &lt;body&gt;
+    &lt;div id="raiz"&gt;&lt;/div&gt;
+    &lt;script type="module" src="./Biblioteca.jsx"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre></div></div></details>
+            </article>
+            <h3>4.2 · La ruta lleva el id</h3>
+            <article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Crear</span><span class="archivo-nombre">Biblioteca.jsx</span><span class="archivo-ruta">frontend/ejemplos/rutas/</span></div><p class="archivo-intro">La portada navega sin recargar; la ruta dinámica guarda el número con el nombre <code>id</code>; <code>useParams</code> lo entrega al componente.</p>
+              <div class="lectura"><div class="lectura-head"><span class="lectura-num">1</span><h3 class="lectura-titulo">Una tabla con una parte variable</h3><p class="lectura-proposito">El número viaja de la dirección al componente.</p></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><div><span class="code-context">Líneas 1–24</span></div></div><pre class="line-numbers" data-start="1"><code class="language-jsx">import { createRoot } from "react-dom/client";
+import { BrowserRouter, Link, Route, Routes, useParams } from "react-router";
+
+function Libro() {
+  const { id } = useParams();
+  return &lt;p&gt;Estás leyendo el libro {id}. &lt;Link to="/"&gt;Volver&lt;/Link&gt;&lt;/p&gt;;
+}
+
+function Portada() {
+  return (
+    &lt;nav&gt;
+      &lt;Link to="/libros/1"&gt;Libro 1&lt;/Link&gt; · &lt;Link to="/libros/2"&gt;Libro 2&lt;/Link&gt;
+    &lt;/nav&gt;
+  );
+}
+
+createRoot(document.getElementById("raiz")).render(
+  &lt;BrowserRouter basename="/ejemplos/rutas"&gt;
+    &lt;Routes&gt;
+      &lt;Route path="/" element={&lt;Portada /&gt;} /&gt;
+      &lt;Route path="/libros/:id" element={&lt;Libro /&gt;} /&gt;
+    &lt;/Routes&gt;
+  &lt;/BrowserRouter&gt;,
+);</code></pre></div><ol class="notas"><li class="nota" data-lineas="2"><div class="nota-cabeza"><span class="nota-lineas">L2</span><code class="nota-codigo">BrowserRouter, Link, Route, Routes, useParams</code></div><p>Trae las cinco piezas de React Router, entre llaves porque son exportaciones con nombre.</p></li><li class="nota" data-lineas="5"><div class="nota-cabeza"><span class="nota-lineas">L5</span><code class="nota-codigo">const { id } = useParams()</code></div><p><code>useParams()</code> devuelve un objeto con las partes variables de la dirección actual; las llaves sacan la propiedad <code>id</code>. Si la dirección es <code>/libros/2</code>, <code>id</code> vale <code>"2"</code>.</p></li><li class="nota" data-lineas="12"><div class="nota-cabeza"><span class="nota-lineas">L12</span><code class="nota-codigo">Link to="/libros/1"</code></div><p><code>Link</code> dibuja un enlace normal, pero no recarga: cambia la dirección y vuelve a mirar la tabla.</p></li><li class="nota" data-lineas="18"><div class="nota-cabeza"><span class="nota-lineas">L18</span><code class="nota-codigo">BrowserRouter basename</code></div><p>Escucha la barra de direcciones. <code>basename</code> dice que esta aplicación vive en <code>/ejemplos/rutas</code>.</p></li><li class="nota" data-lineas="19-21"><div class="nota-cabeza"><span class="nota-lineas">L19–21</span><code class="nota-codigo">Routes y Route</code></div><p>La tabla revisa sus filas. Los dos puntos convierten <code>id</code> en un segmento dinámico: la misma fila sirve para cualquier libro.</p></li></ol></div></div>
+              <div class="active-build"><div class="build-step"><span class="build-step-index">▶</span><div class="build-step-copy"><h3 class="build-step-title">Pruébalo</h3><div class="consola"><div class="consola-head">Navegación</div><ol><li class="in">abre http://localhost:5173/ejemplos/rutas/ y haz clic en “Libro 2”</li><li class="out">Estás leyendo el libro 2. Volver</li><li class="out">Atrás vuelve a Libro 1 · Libro 2</li></ol></div></div></div></div>
+              <details class="code-reveal" data-archivo="ejemplos/rutas/Biblioteca.jsx"><summary><span><span class="code-reveal-title">Biblioteca.jsx · archivo completo</span><span class="code-reveal-note">24 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Crear</span><span class="code-file">Biblioteca.jsx</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-jsx">import { createRoot } from "react-dom/client";
+import { BrowserRouter, Link, Route, Routes, useParams } from "react-router";
+
+function Libro() {
+  const { id } = useParams();
+  return &lt;p&gt;Estás leyendo el libro {id}. &lt;Link to="/"&gt;Volver&lt;/Link&gt;&lt;/p&gt;;
+}
+
+function Portada() {
+  return (
+    &lt;nav&gt;
+      &lt;Link to="/libros/1"&gt;Libro 1&lt;/Link&gt; · &lt;Link to="/libros/2"&gt;Libro 2&lt;/Link&gt;
+    &lt;/nav&gt;
+  );
+}
+
+createRoot(document.getElementById("raiz")).render(
+  &lt;BrowserRouter basename="/ejemplos/rutas"&gt;
+    &lt;Routes&gt;
+      &lt;Route path="/" element={&lt;Portada /&gt;} /&gt;
+      &lt;Route path="/libros/:id" element={&lt;Libro /&gt;} /&gt;
+    &lt;/Routes&gt;
+  &lt;/BrowserRouter&gt;,
+);</code></pre></div></div></details>
+            </article>
+            <h3>4.3 · La misma idea en otros negocios</h3>
+            <div class="table-wrap"><table class="data-table"><caption>Rutas fijas y segmentos dinámicos</caption><thead><tr><th>Negocio</th><th>Rutas fijas</th><th>Ruta dinámica</th><th>Qué lee <code>useParams</code></th></tr></thead><tbody><tr><td>Tienda en línea</td><td><code>/</code>, <code>/carrito</code></td><td><code>/productos/:id</code></td><td>El producto que se muestra</td></tr><tr><td>Hospital</td><td><code>/citas</code>, <code>/medicos</code></td><td><code>/pacientes/:documento</code></td><td>La historia que se abre</td></tr><tr><td>Plataforma de cursos</td><td><code>/cursos</code></td><td><code>/cursos/:curso/lecciones/:leccion</code></td><td>Curso y lección</td></tr><tr><td>Edificio de oficinas</td><td>Recepción, cafetería</td><td><code>piso-:piso/:numero</code></td><td>El piso y la puerta</td></tr></tbody></table></div>
+          </div>
+        </section>
+
+        <section class="section view" id="router-aplicacion-1" data-accent="1" data-layout="canvas" data-escena="construccion" hidden>
+          <div class="sec-head"><span class="sec-n">Navegación · aplicación</span><h2 class="sec-t">Cada pantalla de PulsoFit recibe su dirección</h2><p class="sec-s">La lista pasa a <code>/clases</code>; aparecen un inicio y una página para direcciones que no existen.</p></div>
+          <div class="body">
+            <h3>5.1 · Envolver la aplicación</h3>
+            <article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">main.jsx</span><span class="archivo-ruta">pulsofit-fullstack/frontend/src/</span></div><p class="archivo-intro">Para que cualquier componente pueda usar rutas, toda la aplicación queda dentro de <code>BrowserRouter</code>.</p><details class="code-reveal" data-archivo="main.jsx"><summary><span><span class="code-reveal-title">main.jsx · como queda al terminar este momento</span><span class="code-reveal-note">13 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Editar</span><span class="code-file">main.jsx</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-jsx">import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router'
+import './index.css'
+import App from './App.jsx'
+
+createRoot(document.getElementById('root')).render(
+  &lt;StrictMode&gt;
+    &lt;BrowserRouter&gt;
+      &lt;App /&gt;
+    &lt;/BrowserRouter&gt;
+  &lt;/StrictMode&gt;,
+)</code></pre></div></div></details></article>
+            <h3>5.2 · Inicio y salida</h3>
+            <div class="dos-col"><div><article class="archivo"><div class="archivo-ficha" data-tipo="apoyo"><span class="archivo-accion">Crear</span><span class="archivo-nombre">Inicio.jsx</span><span class="archivo-ruta">pulsofit-fullstack/frontend/src/pages/</span></div><p class="archivo-intro">La dirección <code>/</code> muestra una portada y un <code>Link</code> que lleva a las clases.</p><details class="code-reveal" data-archivo="Inicio.jsx"><summary><span><span class="code-reveal-title">Inicio.jsx · archivo completo</span><span class="code-reveal-note">20 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Crear</span><span class="code-file">Inicio.jsx</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-jsx">import { Link } from "react-router";
+
+function Inicio() {
+  return (
+    &lt;section className="mx-auto max-w-xl py-10 text-center"&gt;
+      &lt;h2 className="mb-3 text-3xl font-bold"&gt;Entrena a tu ritmo&lt;/h2&gt;
+      &lt;p className="mb-6 text-slate-600"&gt;
+        Mira las clases de hoy y reserva tu cupo antes de que se agote.
+      &lt;/p&gt;
+      &lt;Link
+        to="/clases"
+        className="rounded-md bg-orange-600 px-5 py-3 font-bold text-white hover:bg-orange-700"
+      &gt;
+        Ver las clases
+      &lt;/Link&gt;
+    &lt;/section&gt;
+  );
+}
+
+export default Inicio;</code></pre></div></div></details></article></div><div><article class="archivo"><div class="archivo-ficha" data-tipo="apoyo"><span class="archivo-accion">Crear</span><span class="archivo-nombre">NoEncontrada.jsx</span><span class="archivo-ruta">pulsofit-fullstack/frontend/src/pages/</span></div><p class="archivo-intro">La ruta comodín evita una pantalla en blanco y ofrece volver.</p><details class="code-reveal" data-archivo="NoEncontrada.jsx"><summary><span><span class="code-reveal-title">NoEncontrada.jsx · archivo completo</span><span class="code-reveal-note">14 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Crear</span><span class="code-file">NoEncontrada.jsx</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-jsx">import { Link } from "react-router";
+
+function NoEncontrada() {
+  return (
+    &lt;section className="py-10 text-center"&gt;
+      &lt;h2 className="mb-3 text-2xl font-bold"&gt;Esta página no existe&lt;/h2&gt;
+      &lt;Link to="/" className="font-bold text-orange-700 underline"&gt;
+        Volver al inicio
+      &lt;/Link&gt;
+    &lt;/section&gt;
+  );
+}
+
+export default NoEncontrada;</code></pre></div></div></details></article></div></div>
+            <h3>5.3 · La tabla de rutas</h3>
+            <article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Reemplazar</span><span class="archivo-nombre">App.jsx</span><span class="archivo-ruta">pulsofit-fullstack/frontend/src/</span></div><p class="archivo-intro"><code>App</code> deja de guardar el estado y se convierte en el marco de la aplicación y la tabla que decide qué página aparece en el medio.</p><details class="code-reveal" data-archivo="App.jsx"><summary><span><span class="code-reveal-title">App.jsx · como queda al terminar este momento</span><span class="code-reveal-note">24 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Reemplazar</span><span class="code-file">App.jsx</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-jsx">import { Route, Routes } from "react-router";
+import Encabezado from "./components/Encabezado.jsx";
+import PiePagina from "./components/PiePagina.jsx";
+import Inicio from "./pages/Inicio.jsx";
+import Clases from "./pages/Clases.jsx";
+import NoEncontrada from "./pages/NoEncontrada.jsx";
+
+function App() {
+  return (
+    &lt;div className="min-h-screen bg-slate-100 text-slate-900"&gt;
+      &lt;Encabezado /&gt;
+      &lt;main className="p-6"&gt;
+        &lt;Routes&gt;
+          &lt;Route path="/" element={&lt;Inicio /&gt;} /&gt;
+          &lt;Route path="/clases" element={&lt;Clases /&gt;} /&gt;
+          &lt;Route path="*" element={&lt;NoEncontrada /&gt;} /&gt;
+        &lt;/Routes&gt;
+      &lt;/main&gt;
+      &lt;PiePagina /&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre></div></div></details></article>
+            <article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">Encabezado.jsx</span><span class="archivo-ruta">pulsofit-fullstack/frontend/src/components/</span></div><p class="archivo-intro">El encabezado aparece en todas las pantallas y usa <code>Link</code> para navegar sin recargar.</p><details class="code-reveal" data-archivo="Encabezado.jsx"><summary><span><span class="code-reveal-title">Encabezado.jsx · archivo completo</span><span class="code-reveal-note">16 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Editar</span><span class="code-file">Encabezado.jsx</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-jsx">import { Link } from "react-router";
+
+function Encabezado() {
+  return (
+    &lt;header className="flex items-center justify-between bg-slate-900 px-6 py-4 text-white"&gt;
+      &lt;h1 className="text-2xl font-bold"&gt;PulsoFit&lt;/h1&gt;
+      &lt;nav className="flex gap-4 text-sm"&gt;
+        &lt;Link to="/" className="hover:text-orange-300"&gt;Inicio&lt;/Link&gt;
+        &lt;Link to="/clases" className="hover:text-orange-300"&gt;Clases&lt;/Link&gt;
+        &lt;Link to="/mis-reservas" className="hover:text-orange-300"&gt;Mis reservas&lt;/Link&gt;
+      &lt;/nav&gt;
+    &lt;/header&gt;
+  );
+}
+
+export default Encabezado;</code></pre></div></div></details></article>
+          </div>
+        </section>
+
+        <section class="section view" id="router-aplicacion-2" data-accent="1" data-layout="canvas" data-escena="construccion" hidden>
+          <div class="sec-head"><span class="sec-n">Navegación · aplicación</span><h2 class="sec-t">El enlace de cada clase</h2><p class="sec-s">La lista ya tiene dirección; ahora cada tarjeta lleva al detalle de su clase en <code>/clases/:id</code>.</p></div>
+          <div class="body">
+            <h3>6.1 · Del botón al enlace</h3>
+            <article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">TarjetaClase.jsx</span><span class="archivo-ruta">pulsofit-fullstack/frontend/src/components/</span></div><p class="archivo-intro">La plantilla de texto arma una dirección distinta para cada id.</p><details class="code-reveal" data-archivo="TarjetaClase.jsx"><summary><span><span class="code-reveal-title">TarjetaClase.jsx · archivo completo</span><span class="code-reveal-note">20 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Editar</span><span class="code-file">TarjetaClase.jsx</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-jsx">import { Link } from "react-router";
+
+function TarjetaClase({ clase }) {
+  return (
+    &lt;article className="w-56 rounded-lg border border-slate-200 bg-white p-4 shadow-sm"&gt;
+      &lt;h3 className="mb-2 text-lg font-bold"&gt;{clase.nombre}&lt;/h3&gt;
+      &lt;p&gt;Entrena: {clase.entrenador}&lt;/p&gt;
+      &lt;p&gt;Hora: {clase.hora}&lt;/p&gt;
+      &lt;p&gt;Cupos: {clase.cupos}&lt;/p&gt;
+      &lt;Link
+        to={`/clases/${clase.id}`}
+        className="mt-3 block rounded-md bg-orange-600 py-2 text-center font-bold text-white hover:bg-orange-700"
+      &gt;
+        {clase.cupos === 0 ? "Ver clase (agotada)" : "Ver y reservar"}
+      &lt;/Link&gt;
+    &lt;/article&gt;
+  );
+}
+
+export default TarjetaClase;</code></pre></div></div></details></article>
+            <article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">ListaClases.jsx</span><span class="archivo-ruta">pulsofit-fullstack/frontend/src/components/</span></div><p class="archivo-intro">La lista deja de pasar una función que las tarjetas ya no usan.</p><details class="code-reveal" data-archivo="ListaClases.jsx"><summary><span><span class="code-reveal-title">ListaClases.jsx · archivo completo</span><span class="code-reveal-note">13 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Editar</span><span class="code-file">ListaClases.jsx</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-jsx">import TarjetaClase from "./TarjetaClase.jsx";
+
+function ListaClases({ clases }) {
+  return (
+    &lt;section className="flex flex-wrap gap-4"&gt;
+      {clases.map((clase) =&gt; (
+        &lt;TarjetaClase key={clase.id} clase={clase} /&gt;
+      ))}
+    &lt;/section&gt;
+  );
+}
+
+export default ListaClases;</code></pre></div></div></details></article>
+            <h3>6.2 · Leer el id</h3>
+            <article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Crear</span><span class="archivo-nombre">DetalleClase.jsx</span><span class="archivo-ruta">pulsofit-fullstack/frontend/src/pages/</span></div><p class="archivo-intro"><code>useParams</code> saca el id de la dirección. <code>Number(id)</code> lo convierte porque los id del arreglo son números.</p><details class="code-reveal" data-archivo="DetalleClase.jsx"><summary><span><span class="code-reveal-title">DetalleClase.jsx · como queda al terminar navegación</span><span class="code-reveal-note">25 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Crear</span><span class="code-file">DetalleClase.jsx</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-jsx">import { Link, useParams } from "react-router";
+import { clases } from "../data/clases.js";
+
+function DetalleClase() {
+  const { id } = useParams();
+  const clase = clases.find((item) =&gt; item.id === Number(id));
+
+  if (!clase) {
+    return &lt;p className="font-bold text-red-600"&gt;Esa clase no existe.&lt;/p&gt;;
+  }
+
+  return (
+    &lt;section className="max-w-xl"&gt;
+      &lt;Link to="/clases" className="text-sm font-bold text-orange-700 underline"&gt;
+        ← Todas las clases
+      &lt;/Link&gt;
+      &lt;h2 className="mt-3 text-2xl font-bold"&gt;{clase.nombre}&lt;/h2&gt;
+      &lt;p&gt;Entrena: {clase.entrenador}&lt;/p&gt;
+      &lt;p&gt;Hora: {clase.hora}&lt;/p&gt;
+      &lt;p className="mb-6"&gt;Cupos: {clase.cupos}&lt;/p&gt;
+    &lt;/section&gt;
+  );
+}
+
+export default DetalleClase;</code></pre></div></div></details></article>
+            <div class="checkpoint"><span class="component-label">Checkpoint</span><h3>El enlace ya se puede compartir.</h3><p>Abre <code>http://localhost:5173/clases/3</code> en una pestaña nueva: llegas directo a Funcional.</p></div>
+          </div>
+        </section>
+
+        <section class="section view" id="router-limites" data-accent="1" data-layout="canvas" data-escena="concepto" hidden>
+          <div class="sec-head"><span class="sec-n">Navegación · límites</span><h2 class="sec-t">Una ruta es para un lugar</h2></div>
+          <div class="body">
+            <h3>7.1 · Cuándo no usarlo</h3><p>Una ruta es para un <strong>lugar</strong>: algo que se guarda en favoritos, se comparte o se visita con Atrás. Lo que cambia dentro de una pantalla (abrir un menú, mostrar un mensaje, pasar de un paso a otro en un formulario corto) es estado, no ruta. Si lo vuelves ruta, el botón Atrás empieza a “deshacer” clics pequeños y la persona se pierde.</p><p>Tampoco hace falta React Router en una página que de verdad tiene una sola pantalla (una calculadora, un formulario de contacto): sumarías una librería sin necesidad.</p>
+            <h3>7.2 · Con qué se confunde</h3><div class="table-wrap"><table class="data-table"><caption><code>Link</code> frente a <code>a href</code></caption><thead><tr><th></th><th><code>&lt;Link to="/clases"&gt;</code></th><th><code>&lt;a href="/clases"&gt;</code></th></tr></thead><tbody><tr><td>¿Recarga?</td><td>No</td><td>Sí: pide todo otra vez</td></tr><tr><td>¿Se pierde el estado?</td><td>No</td><td>Sí</td></tr><tr><td>¿Para qué sirve?</td><td>Otra pantalla de tu aplicación</td><td>Otro sitio</td></tr></tbody></table></div>
+            <h3>7.3 · Errores frecuentes</h3><div class="cards"><div class="card"><b>Fuera del router</b><p><code>Cannot destructure property 'basename'…</code>: revisa que <code>App</code> esté dentro de <code>BrowserRouter</code>.</p></div><div class="card"><b>Nombre sin importar</b><p><code>Link is not defined</code> o <code>BrowserRouter is not defined</code>: el nombre no existe hasta que se importa.</p></div><div class="card"><b>Parámetro sin convertir</b><p><code>useParams</code> entrega texto; <code>"3" === 3</code> es falso.</p></div></div>
+            <h3>7.4 · Conexión</h3><p>En la Clase 1 armaste la pantalla con componentes y en la Clase 2 le diste memoria con el estado. Hoy cada pantalla tiene su dirección: Valeria ya puede mandar <code>/clases/3</code> por WhatsApp. Pero la página que abre la persona en su celular muestra los datos de <code>clases.js</code> <strong>de su propio navegador</strong>, y si Laura reservó desde otro, no se entera. Hace falta que los datos vengan de un solo lugar para todos.</p>
+            <div class="socratica"><span class="component-label">Para pensar</span><p class="socratica-q">Una app de domicilios tiene: la lista de restaurantes, el menú de <strong>un</strong> restaurante, el carrito y el seguimiento de <strong>un</strong> pedido. Al tocar un plato se abre una ventanita con sus ingredientes. Escribe la tabla de rutas. ¿Cuáles llevan segmento dinámico y qué queda por fuera?</p><details class="reveal"><summary>Ver respuesta</summary><div class="reveal-body"><p class="lead-answer"><code>/restaurantes</code>, <code>/restaurantes/:id</code>, <code>/carrito</code> y <code>/pedidos/:id</code>, más <code>*</code>.</p><p>Llevan segmento dinámico el menú y el seguimiento. La ventanita de ingredientes queda por fuera: nadie comparte “el plato abierto”; es estado dentro de la pantalla del menú.</p></div></details></div>
+          </div>
+        </section>
+
+        <section class="section view" id="api-concepto" data-accent="1" data-layout="canvas" data-escena="concepto" hidden>
+          <div class="sec-head"><span class="sec-n">API y Axios · concepto</span><h2 class="sec-t">Los datos llegan después de la primera pintada</h2></div>
+          <div class="body">
+            <h3>8.1 · Para qué existe</h3><p>Hasta hoy, los datos de la pantalla estaban escritos en el código: un arreglo dentro de un archivo <code>.js</code>. Cada persona que abre la página recibe su propia copia y la cambia en su propio navegador. Nadie más se entera.</p><p>Cuando los datos tienen que ser <strong>los mismos para todos</strong> (cupos, saldos, inventario), viven en un servidor, y la pantalla los pide por la red. La respuesta <strong>tarda</strong> y llega después de que la pantalla ya se dibujó.</p>
+            <h3>8.2 · Qué es</h3><div class="definicion"><div class="def-tecnica"><span class="component-label">Definición técnica</span><p class="def-termino">API HTTP + Axios + useEffect</p><p>Una <strong>API HTTP</strong> es un conjunto de direcciones de un servidor que responden datos según el método. <strong>Axios</strong> hace peticiones y devuelve una promesa. Con <code>await</code> se espera sin bloquear la página. En React, la petición que debe hacerse cuando un componente aparece se escribe en <code>useEffect</code>; la respuesta se guarda con la función <code>set…</code>, y eso provoca una nueva pintada.</p></div><div class="def-vida"><span class="component-label">Explicación sencilla</span><p>El componente se dibuja primero con una lista vacía. Después, <code>useEffect</code> le pide los datos al servidor con Axios. Cuando llegan, los guardas en el estado y React vuelve a dibujar.</p><span class="component-label">En la vida real</span><p>Un restaurante. El mesero te sienta y pone la mesa vacía; después lleva el pedido a la cocina; cuando está listo, lo trae y tu mesa cambia.</p></div></div>
+            <figure class="figura"><div class="figura-stage"><img src="img/ciclo-peticion-estado.png" alt="Una pantalla vacía envía una petición a un servidor, recibe datos, los guarda en el estado y se vuelve a pintar con contenido"></div><figcaption>Primero se pinta; después sale la petición; la respuesta cambia el estado y produce otra pintada.<span class="figura-credito">Ilustración original creada para esta clase.</span></figcaption></figure>
+            <div class="code-block" data-tipo="terminal"><div class="code-head"><div><span class="code-context">Terminal · desde frontend/</span></div><button class="copy-btn" type="button">Copiar</button></div><pre><code class="language-bash">npm install axios</code></pre></div>
+          </div>
+        </section>
+
+        <section class="section view" id="api-ejemplo" data-accent="1" data-layout="canvas" data-escena="concepto" hidden>
+          <div class="sec-head"><span class="sec-n">API y Axios · ejemplo aislado</span><h2 class="sec-t">Una lista que arranca vacía y se llena</h2></div>
+          <div class="body">
+            <div class="micro-task"><span class="component-label">Para pensar</span><p class="micro-task-q">El componente arranca con <code>useState([])</code> y, dentro de <code>useEffect</code>, pide las frutas. ¿La primera pintada muestra frutas?</p><details class="micro-reveal"><summary>Comprobar</summary><p class="micro-answer">No. La primera pintada usa la lista vacía. <code>useEffect</code> corre después; cuando la respuesta llega, <code>setFrutas</code> guarda las tres frutas y React pinta otra vez.</p></details></div>
+            <h3>9.1 · Los datos JSON</h3><article class="archivo"><div class="archivo-ficha" data-tipo="apoyo"><span class="archivo-accion">Crear</span><span class="archivo-nombre">frutas.json</span><span class="archivo-ruta">frontend/ejemplos/api/</span></div><p class="archivo-intro">Vite entrega este archivo por HTTP; para Axios se comporta como una respuesta JSON.</p><details class="code-reveal" data-archivo="ejemplos/api/frutas.json"><summary><span><span class="code-reveal-title">frutas.json · archivo completo</span><span class="code-reveal-note">5 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Crear</span><span class="code-file">frutas.json</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-json">[
+  { "id": 1, "nombre": "Mango", "precio": 2500 },
+  { "id": 2, "nombre": "Banano", "precio": 800 },
+  { "id": 3, "nombre": "Fresa", "precio": 4200 }
+]</code></pre></div></div></details></article>
+            <h3>9.2 · Pedir y guardar</h3><article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Crear</span><span class="archivo-nombre">Frutas.jsx</span><span class="archivo-ruta">frontend/ejemplos/api/</span></div><p class="archivo-intro">El efecto pide las frutas una sola vez; <code>setFrutas</code> provoca la segunda pintada.</p><div class="lectura"><div class="lectura-head"><span class="lectura-num">1</span><h3 class="lectura-titulo">La petición ocurre entre dos pintadas</h3><p class="lectura-proposito">El arreglo de dependencias vacío corta el ciclo.</p></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><div><span class="code-context">Líneas 1–27</span></div></div><pre class="line-numbers" data-start="1"><code class="language-jsx">import { useEffect, useState } from "react";
+import { createRoot } from "react-dom/client";
+import axios from "axios";
+
+function Frutas() {
+  const [frutas, setFrutas] = useState([]);
+
+  useEffect(() =&gt; {
+    async function cargar() {
+      const respuesta = await axios.get("/ejemplos/api/frutas.json");
+      setFrutas(respuesta.data);
+    }
+    cargar();
+  }, []);
+
+  return (
+    &lt;ul&gt;
+      {frutas.map((fruta) =&gt; (
+        &lt;li key={fruta.id}&gt;
+          {fruta.nombre}: ${fruta.precio}
+        &lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}
+
+createRoot(document.getElementById("raiz")).render(&lt;Frutas /&gt;);</code></pre></div><ol class="notas"><li class="nota" data-lineas="6"><div class="nota-cabeza"><span class="nota-lineas">L6</span><code class="nota-codigo">useState([])</code></div><p>El estado arranca vacío para que <code>map</code> funcione desde la primera pintada.</p></li><li class="nota" data-lineas="8"><div class="nota-cabeza"><span class="nota-lineas">L8</span><code class="nota-codigo">useEffect</code></div><p>Ejecuta la petición después de que React pinta el componente.</p></li><li class="nota" data-lineas="9-11"><div class="nota-cabeza"><span class="nota-lineas">L9–11</span><code class="nota-codigo">async, await y respuesta.data</code></div><p><code>await</code> espera la promesa sin congelar la página. Axios deja el cuerpo convertido en JavaScript dentro de <code>data</code>.</p></li><li class="nota" data-lineas="14"><div class="nota-cabeza"><span class="nota-lineas">L14</span><code class="nota-codigo">[]</code></div><p>El arreglo de dependencias vacío significa que el efecto se ejecuta cuando el componente aparece, no después de cada pintada.</p></li><li class="nota" data-lineas="18-22"><div class="nota-cabeza"><span class="nota-lineas">L18–22</span><code class="nota-codigo">frutas.map</code></div><p>La segunda pintada recorre los datos que ya llegaron y crea un elemento por fruta.</p></li></ol></div></div><details class="code-reveal" data-archivo="ejemplos/api/Frutas.jsx"><summary><span><span class="code-reveal-title">Frutas.jsx · archivo completo</span><span class="code-reveal-note">27 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Crear</span><span class="code-file">Frutas.jsx</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-jsx">import { useEffect, useState } from "react";
+import { createRoot } from "react-dom/client";
+import axios from "axios";
+
+function Frutas() {
+  const [frutas, setFrutas] = useState([]);
+
+  useEffect(() =&gt; {
+    async function cargar() {
+      const respuesta = await axios.get("/ejemplos/api/frutas.json");
+      setFrutas(respuesta.data);
+    }
+    cargar();
+  }, []);
+
+  return (
+    &lt;ul&gt;
+      {frutas.map((fruta) =&gt; (
+        &lt;li key={fruta.id}&gt;
+          {fruta.nombre}: ${fruta.precio}
+        &lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}
+
+createRoot(document.getElementById("raiz")).render(&lt;Frutas /&gt;);</code></pre></div></div></details></article>
+            <h3>9.3 · Cómo reconocerlo</h3><p>¿Los datos tienen que ser iguales para todos o sobrevivir a una recarga? Entonces viven en un servidor. ¿Hay que pedirlos apenas aparece la pantalla? Entonces la petición va en <code>useEffect</code>. Si la petición la provoca un clic, va en la función del evento.</p>
+          </div>
+        </section>
+
+        <section class="section view" id="api-backend" data-accent="1" data-layout="canvas" data-escena="construccion" hidden>
+          <div class="sec-head"><span class="sec-n">API y Axios · aplicación</span><h2 class="sec-t">El servidor de PulsoFit</h2><p class="sec-s">Las clases y las reservas viven en un solo proceso FastAPI que responde el mismo contrato a todos los navegadores.</p></div>
+          <div class="body">
+            <h3>10.1 · Preparar el backend</h3><div class="code-block" data-tipo="terminal"><div class="code-head"><div><span class="code-context">Terminal · desde pulsofit-fullstack/</span></div><button class="copy-btn" type="button">Copiar</button></div><pre><code class="language-bash">mkdir backend
+cd backend
+python -m venv .venv</code></pre></div>
+            <article class="archivo"><div class="archivo-ficha" data-tipo="apoyo"><span class="archivo-accion">Crear</span><span class="archivo-nombre">requirements.txt</span><span class="archivo-ruta">pulsofit-fullstack/backend/</span></div><details class="code-reveal" data-archivo="requirements.txt"><summary><span><span class="code-reveal-title">requirements.txt · archivo completo</span><span class="code-reveal-note">1 línea · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Crear</span><span class="code-file">requirements.txt</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre><code class="language-plaintext">fastapi[standard]</code></pre></div></div></details></article>
+            <div class="code-block" data-tipo="terminal"><div class="code-head"><div><span class="code-context">Terminal · con el entorno activo</span></div><button class="copy-btn" type="button">Copiar</button></div><pre><code class="language-bash">pip install -r requirements.txt</code></pre></div>
+            <h3>10.2 · Datos y contrato</h3>
+            <article class="archivo"><div class="archivo-ficha" data-tipo="apoyo"><span class="archivo-accion">Crear</span><span class="archivo-nombre">datos.py</span><span class="archivo-ruta">pulsofit-fullstack/backend/</span></div><p class="archivo-intro">Las listas se crean una vez al arrancar el servidor; todos los navegadores ven la misma memoria.</p><details class="code-reveal" data-archivo="datos.py"><summary><span><span class="code-reveal-title">datos.py · archivo completo</span><span class="code-reveal-note">15 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Crear</span><span class="code-file">datos.py</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-python">clases = [
+    {"id": 1, "nombre": "Spinning", "entrenador": "Laura Gómez", "hora": "6:00 a. m.", "cupos": 3},
+    {"id": 2, "nombre": "Yoga", "entrenador": "Andrés Pérez", "hora": "7:00 a. m.", "cupos": 8},
+    {"id": 3, "nombre": "Funcional", "entrenador": "Daniela Ríos", "hora": "6:00 p. m.", "cupos": 1},
+    {"id": 4, "nombre": "Boxeo", "entrenador": "Camilo Torres", "hora": "7:30 p. m.", "cupos": 0},
+]
+
+reservas = []
+
+
+def buscar_clase(clase_id):
+    for clase in clases:
+        if clase["id"] == clase_id:
+            return clase
+    return None</code></pre></div></div></details></article>
+            <article class="archivo"><div class="archivo-ficha" data-tipo="apoyo"><span class="archivo-accion">Crear</span><span class="archivo-nombre">modelos.py</span><span class="archivo-ruta">pulsofit-fullstack/backend/</span></div><p class="archivo-intro">Pydantic escribe la forma de lo que entra y lo que sale.</p><details class="code-reveal" data-archivo="modelos.py"><summary><span><span class="code-reveal-title">modelos.py · archivo completo</span><span class="code-reveal-note">21 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Crear</span><span class="code-file">modelos.py</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-python">from pydantic import BaseModel, EmailStr, Field
+
+
+class Clase(BaseModel):
+    id: int
+    nombre: str
+    entrenador: str
+    hora: str
+    cupos: int
+
+
+class ReservaCrear(BaseModel):
+    clase_id: int
+    nombre: str = Field(min_length=3)
+    correo: EmailStr
+
+
+class Reserva(ReservaCrear):
+    id: int
+    clase: str
+    hora: str</code></pre></div></div></details></article>
+            <h3>10.3 · Endpoints y regla del último cupo</h3>
+            <div class="table-wrap"><table class="data-table"><caption>Contrato del frontend</caption><thead><tr><th>Método</th><th>Ruta</th><th>Respuesta correcta</th><th>Errores</th></tr></thead><tbody><tr><td>GET</td><td><code>/clases</code></td><td>200 · lista</td><td></td></tr><tr><td>GET</td><td><code>/clases/{clase_id}</code></td><td>200 · una clase</td><td>404</td></tr><tr><td>POST</td><td><code>/reservas</code></td><td>201 · reserva creada</td><td>404 · 409 · 422</td></tr><tr><td>GET</td><td><code>/reservas</code></td><td>200 · lista</td><td></td></tr></tbody></table></div>
+            <div class="dos-col"><div><article class="archivo"><div class="archivo-ficha" data-tipo="apoyo"><span class="archivo-accion">Crear</span><span class="archivo-nombre">clases.py</span><span class="archivo-ruta">pulsofit-fullstack/backend/routers/</span></div><details class="code-reveal" data-archivo="clases.py"><summary><span><span class="code-reveal-title">clases.py · archivo completo</span><span class="code-reveal-note">19 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Crear</span><span class="code-file">clases.py</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-python">from fastapi import APIRouter, HTTPException
+
+from datos import buscar_clase, clases
+from modelos import Clase
+
+router = APIRouter(prefix="/clases", tags=["clases"])
+
+
+@router.get("", response_model=list[Clase])
+def listar_clases():
+    return clases
+
+
+@router.get("/{clase_id}", response_model=Clase)
+def obtener_clase(clase_id: int):
+    clase = buscar_clase(clase_id)
+    if clase is None:
+        raise HTTPException(status_code=404, detail="Esa clase no existe.")
+    return clase</code></pre></div></div></details></article></div><div><article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Crear</span><span class="archivo-nombre">reservas.py</span><span class="archivo-ruta">pulsofit-fullstack/backend/routers/</span></div><details class="code-reveal" data-archivo="reservas.py"><summary><span><span class="code-reveal-title">reservas.py · archivo completo</span><span class="code-reveal-note">29 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Crear</span><span class="code-file">reservas.py</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-python">from fastapi import APIRouter, HTTPException
+
+from datos import buscar_clase, reservas
+from modelos import Reserva, ReservaCrear
+
+router = APIRouter(prefix="/reservas", tags=["reservas"])
+
+
+@router.post("", response_model=Reserva, status_code=201)
+def crear_reserva(datos: ReservaCrear):
+    clase = buscar_clase(datos.clase_id)
+    if clase is None:
+        raise HTTPException(status_code=404, detail="Esa clase no existe.")
+    if clase["cupos"] == 0:
+        raise HTTPException(status_code=409, detail="Esa clase ya no tiene cupos.")
+    clase["cupos"] -= 1
+    reserva = {
+        "id": len(reservas) + 1,
+        "clase": clase["nombre"],
+        "hora": clase["hora"],
+        **datos.model_dump(),
+    }
+    reservas.append(reserva)
+    return reserva
+
+
+@router.get("", response_model=list[Reserva])
+def listar_reservas():
+    return reservas</code></pre></div></div></details></article></div></div>
+            <div class="momento-ia"><div class="momento-ia-head"><span class="momento-ia-titulo">Momento IA</span><span class="ia-nivel">Nivel 2 · Copiloto</span><span class="ia-herramienta">Chat o Tab de Cursor</span></div><div class="momento-ia-body"><div class="ia-grid"><div><span class="component-label">Primero razonas tú</span><p>Antes de pedir nada, escribe en un comentario qué código responde cada caso del contrato (200, 201, 404, 409, 422) y en qué línea se decidiría cada uno.</p></div><div class="ia-no-delega"><span class="component-label">No se delega</span><p>La regla del 409 y su orden. Tampoco se pega en el chat ningún dato real de clientes.</p></div></div><div class="code-block" data-tipo="prompt"><div class="code-head"><div><span class="code-context">Prompt sugerido</span><span class="code-file">Chat de Cursor</span></div><button class="copy-btn" type="button">Copiar</button></div><pre><code class="language-plaintext">Estoy construyendo un backend con FastAPI para reservas de clases de gimnasio. Ya tengo datos.py con las listas clases y reservas y la función buscar_clase(clase_id), y modelos.py con Clase, ReservaCrear y Reserva. Escribe routers/clases.py y routers/reservas.py según esta tabla: [pega la tabla del contrato]. Usa rutas "" para que no haya barra final. No cambies los modelos ni los datos. Explícame en una línea qué hace cada endpoint.</code></pre></div><div><span class="component-label">Cómo validar la respuesta</span><ul class="checklist"><li>Compara contra los archivos de la guía, línea por línea.</li><li>¿El POST responde 201?</li><li>¿El 409 se revisa antes de restar el cupo?</li><li>¿Usa <code>response_model</code> e importa solo lo que existe?</li><li>Prueba Funcional dos veces en <code>/docs</code>: confirma 201 y 409.</li></ul></div></div></div>
+            <h3>10.4 · Arrancar la aplicación</h3><article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Crear</span><span class="archivo-nombre">main.py</span><span class="archivo-ruta">pulsofit-fullstack/backend/</span></div><details class="code-reveal" data-archivo="main.py"><summary><span><span class="code-reveal-title">main.py · como queda al terminar este momento</span><span class="code-reveal-note">8 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Crear</span><span class="code-file">main.py</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-python">from fastapi import FastAPI
+
+from routers import clases, reservas
+
+app = FastAPI(title="API de PulsoFit")
+
+app.include_router(clases.router)
+app.include_router(reservas.router)</code></pre></div></div></details></article><div class="code-block" data-tipo="terminal"><div class="code-head"><div><span class="code-context">Terminal · desde backend/</span></div><button class="copy-btn" type="button">Copiar</button></div><pre><code class="language-bash">uvicorn main:app --reload</code></pre></div>
+          </div>
+        </section>
+
+        <section class="section view" id="api-clases" data-accent="1" data-layout="canvas" data-escena="construccion" hidden>
+          <div class="sec-head"><span class="sec-n">API y Axios · aplicación</span><h2 class="sec-t">Las pantallas piden las clases</h2><p class="sec-s">Los componentes no llaman a Axios directamente: las peticiones viven en servicios con nombres del negocio.</p></div>
+          <div class="body">
+            <h3>11.1 · Servicio de clases</h3><article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Crear</span><span class="archivo-nombre">clasesService.js</span><span class="archivo-ruta">pulsofit-fullstack/frontend/src/services/</span></div><p class="archivo-intro">Las páginas llaman <code>listarClases</code> u <code>obtenerClase</code> y no necesitan conocer Axios.</p><details class="code-reveal" data-archivo="clasesService.js"><summary><span><span class="code-reveal-title">clasesService.js · archivo completo</span><span class="code-reveal-note">13 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Crear</span><span class="code-file">clasesService.js</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-javascript">import axios from "axios";
+
+const URL_API = "http://localhost:8000";
+
+export async function listarClases() {
+  const respuesta = await axios.get(`${URL_API}/clases`);
+  return respuesta.data;
+}
+
+export async function obtenerClase(id) {
+  const respuesta = await axios.get(`${URL_API}/clases/${id}`);
+  return respuesta.data;
+}</code></pre></div></div></details></article>
+            <h3>11.2 · Pedir al aparecer</h3><article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">Clases.jsx</span><span class="archivo-ruta">pulsofit-fullstack/frontend/src/pages/</span></div><p class="archivo-intro">La página conserva el mismo JSX; solo cambia de dónde vienen los datos.</p><details class="code-reveal" data-archivo="Clases.jsx"><summary><span><span class="code-reveal-title">Clases.jsx · como queda antes de estados de carga</span><span class="code-reveal-note">24 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Editar</span><span class="code-file">Clases.jsx</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-jsx">import { useEffect, useState } from "react";
+import ListaClases from "../components/ListaClases.jsx";
+import { listarClases } from "../services/clasesService.js";
+
+function Clases() {
+  const [clases, setClases] = useState([]);
+
+  useEffect(() =&gt; {
+    async function cargar() {
+      const datos = await listarClases();
+      setClases(datos);
+    }
+    cargar();
+  }, []);
+
+  return (
+    &lt;section&gt;
+      &lt;h2 className="mb-4 text-xl font-bold"&gt;Clases de hoy&lt;/h2&gt;
+      &lt;ListaClases clases={clases} /&gt;
+    &lt;/section&gt;
+  );
+}
+
+export default Clases;</code></pre></div></div></details></article>
+            <h3>11.3 · Autorizar el origen</h3><div class="callout" data-tone="warning"><span class="callout-icon">!</span><div><h3>CORS</h3><p><code>localhost:5173</code> y <code>localhost:8000</code> son orígenes distintos por el puerto. El navegador solo deja leer la respuesta si el servidor autoriza el origen exacto.</p></div></div><article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">main.py</span><span class="archivo-ruta">pulsofit-fullstack/backend/</span></div><details class="code-reveal" data-archivo="main.py"><summary><span><span class="code-reveal-title">main.py · archivo completo con CORS</span><span class="code-reveal-note">16 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Editar</span><span class="code-file">main.py</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-python">from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+from routers import clases, reservas
+
+app = FastAPI(title="API de PulsoFit")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(clases.router)
+app.include_router(reservas.router)</code></pre></div></div></details></article>
+            <div class="checkpoint"><span class="component-label">Checkpoint</span><h3>Los datos ya no viven en el navegador.</h3><p>Cambia los cupos de Yoga en <code>backend/datos.py</code>, guarda y recarga <code>/clases</code>: la tarjeta muestra el nuevo valor.</p></div>
+          </div>
+        </section>
+
+        <section class="section view" id="api-reservas" data-accent="1" data-layout="canvas" data-escena="construccion" hidden>
+          <div class="sec-head"><span class="sec-n">API y Axios · aplicación</span><h2 class="sec-t">Reservar contra el servidor</h2><p class="sec-s">El formulario espera la respuesta; el servidor resta el cupo; la aplicación navega a las reservas confirmadas.</p></div>
+          <div class="body">
+            <h3>12.1 · Servicio de reservas</h3><article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Crear</span><span class="archivo-nombre">reservasService.js</span><span class="archivo-ruta">pulsofit-fullstack/frontend/src/services/</span></div><details class="code-reveal" data-archivo="reservasService.js"><summary><span><span class="code-reveal-title">reservasService.js · archivo completo</span><span class="code-reveal-note">13 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Crear</span><span class="code-file">reservasService.js</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-javascript">import axios from "axios";
+
+const URL_API = "http://localhost:8000";
+
+export async function crearReserva(datos) {
+  const respuesta = await axios.post(`${URL_API}/reservas`, datos);
+  return respuesta.data;
+}
+
+export async function listarReservas() {
+  const respuesta = await axios.get(`${URL_API}/reservas`);
+  return respuesta.data;
+}</code></pre></div></div></details></article>
+            <h3>12.2 · Esperar antes de celebrar</h3><article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">FormularioReserva.jsx</span><span class="archivo-ruta">pulsofit-fullstack/frontend/src/components/</span></div><p class="archivo-intro">La función <code>enviar</code> pasa a ser <code>async</code> y espera <code>onConfirmar</code>. Si falla, el mensaje de éxito y la limpieza no se ejecutan.</p><details class="code-reveal" data-archivo="FormularioReserva.jsx"><summary><span><span class="code-reveal-title">FormularioReserva.jsx · archivo completo</span><span class="code-reveal-note">65 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Editar</span><span class="code-file">FormularioReserva.jsx</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-jsx">import { useState } from "react";
+import { validarReserva } from "../utils/validarReserva.js";
+
+function FormularioReserva({ clase, onConfirmar }) {
+  const [nombre, setNombre] = useState("");
+  const [correo, setCorreo] = useState("");
+  const [errores, setErrores] = useState({});
+  const [mensaje, setMensaje] = useState("");
+
+  async function enviar(evento) {
+    evento.preventDefault();
+    const encontrados = validarReserva({ nombre, correo });
+    setErrores(encontrados);
+    if (Object.keys(encontrados).length &gt; 0) {
+      return;
+    }
+    await onConfirmar({ nombre: nombre.trim(), correo: correo.trim() });
+    setMensaje(`¡Listo, ${nombre.trim()}! Tu cupo en ${clase.nombre} quedó reservado.`);
+    setNombre("");
+    setCorreo("");
+  }
+
+  return (
+    &lt;form onSubmit={enviar} noValidate className="rounded-lg border border-slate-200 bg-white p-4"&gt;
+      &lt;h2 className="mb-2 text-xl font-bold"&gt;Reserva tu cupo&lt;/h2&gt;
+      {mensaje &amp;&amp; &lt;p className="mb-2 font-bold text-green-700"&gt;{mensaje}&lt;/p&gt;}
+      &lt;p className="mb-4 text-slate-600"&gt;
+        {clase ? `${clase.nombre} · ${clase.hora}` : "Elige una clase con el botón Reservar."}
+      &lt;/p&gt;
+
+      &lt;label htmlFor="nombre" className="mb-1 block font-bold"&gt;
+        Nombre
+      &lt;/label&gt;
+      &lt;input
+        id="nombre"
+        value={nombre}
+        onChange={(evento) =&gt; setNombre(evento.target.value)}
+        className="w-full rounded-md border border-slate-300 px-3 py-2"
+      /&gt;
+      {errores.nombre &amp;&amp; &lt;p className="mt-1 text-sm text-red-600"&gt;{errores.nombre}&lt;/p&gt;}
+
+      &lt;label htmlFor="correo" className="mt-4 mb-1 block font-bold"&gt;
+        Correo
+      &lt;/label&gt;
+      &lt;input
+        id="correo"
+        type="email"
+        value={correo}
+        onChange={(evento) =&gt; setCorreo(evento.target.value)}
+        className="w-full rounded-md border border-slate-300 px-3 py-2"
+      /&gt;
+      {errores.correo &amp;&amp; &lt;p className="mt-1 text-sm text-red-600"&gt;{errores.correo}&lt;/p&gt;}
+
+      &lt;button
+        type="submit"
+        disabled={!clase}
+        className="mt-4 w-full cursor-pointer rounded-md bg-orange-600 py-2 font-bold text-white hover:bg-orange-700 disabled:cursor-not-allowed disabled:bg-slate-400"
+      &gt;
+        Confirmar reserva
+      &lt;/button&gt;
+    &lt;/form&gt;
+  );
+}
+
+export default FormularioReserva;</code></pre></div></div></details></article>
+            <h3>12.3 · Confirmar y navegar</h3><article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">DetalleClase.jsx</span><span class="archivo-ruta">pulsofit-fullstack/frontend/src/pages/</span></div><p class="archivo-intro">El formulario llama <code>confirmar</code>; esta función envía la reserva y solo navega cuando el servidor responde con éxito.</p><div class="code-block" data-role="fragment"><div class="code-head"><div><span class="code-context">Líneas 20–23</span></div></div><pre class="line-numbers" data-start="20"><code class="language-jsx">  async function confirmar(datos) {
+    await crearReserva({ clase_id: clase.id, ...datos });
+    navigate("/mis-reservas");
+  }</code></pre></div></article>
+            <h3>12.4 · La página de reservas</h3><article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Mover y editar</span><span class="archivo-nombre">MisReservas.jsx</span><span class="archivo-ruta">pulsofit-fullstack/frontend/src/pages/</span></div><p class="archivo-intro">Ya no recibe la lista por props: pide las reservas al servidor cuando aparece.</p><details class="code-reveal" data-archivo="MisReservas.jsx"><summary><span><span class="code-reveal-title">MisReservas.jsx · antes de estados de carga</span><span class="code-reveal-note">33 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Mover y editar</span><span class="code-file">MisReservas.jsx</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-jsx">import { useEffect, useState } from "react";
+import { listarReservas } from "../services/reservasService.js";
+
+function MisReservas() {
+  const [reservas, setReservas] = useState([]);
+
+  useEffect(() =&gt; {
+    async function cargar() {
+      const datos = await listarReservas();
+      setReservas(datos);
+    }
+    cargar();
+  }, []);
+
+  return (
+    &lt;section className="rounded-lg border border-slate-200 bg-white p-4"&gt;
+      &lt;h2 className="mb-2 text-xl font-bold"&gt;Mis reservas ({reservas.length})&lt;/h2&gt;
+      {reservas.length === 0 ? (
+        &lt;p className="text-slate-600"&gt;Aún no tienes reservas.&lt;/p&gt;
+      ) : (
+        &lt;ul className="list-disc pl-5"&gt;
+          {reservas.map((reserva) =&gt; (
+            &lt;li key={reserva.id}&gt;
+              {reserva.clase} · {reserva.hora} · {reserva.nombre}
+            &lt;/li&gt;
+          ))}
+        &lt;/ul&gt;
+      )}
+    &lt;/section&gt;
+  );
+}
+
+export default MisReservas;</code></pre></div></div></details></article>
+            <h3>12.5 · Las cinco rutas</h3><article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">App.jsx</span><span class="archivo-ruta">pulsofit-fullstack/frontend/src/</span></div><details class="code-reveal" data-archivo="App.jsx"><summary><span><span class="code-reveal-title">App.jsx · versión final</span><span class="code-reveal-note">28 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Editar</span><span class="code-file">App.jsx</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-jsx">import { Route, Routes } from "react-router";
+import Encabezado from "./components/Encabezado.jsx";
+import PiePagina from "./components/PiePagina.jsx";
+import Inicio from "./pages/Inicio.jsx";
+import Clases from "./pages/Clases.jsx";
+import DetalleClase from "./pages/DetalleClase.jsx";
+import MisReservas from "./pages/MisReservas.jsx";
+import NoEncontrada from "./pages/NoEncontrada.jsx";
+
+function App() {
+  return (
+    &lt;div className="min-h-screen bg-slate-100 text-slate-900"&gt;
+      &lt;Encabezado /&gt;
+      &lt;main className="p-6"&gt;
+        &lt;Routes&gt;
+          &lt;Route path="/" element={&lt;Inicio /&gt;} /&gt;
+          &lt;Route path="/clases" element={&lt;Clases /&gt;} /&gt;
+          &lt;Route path="/clases/:id" element={&lt;DetalleClase /&gt;} /&gt;
+          &lt;Route path="/mis-reservas" element={&lt;MisReservas /&gt;} /&gt;
+          &lt;Route path="*" element={&lt;NoEncontrada /&gt;} /&gt;
+        &lt;/Routes&gt;
+      &lt;/main&gt;
+      &lt;PiePagina /&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre></div></div></details></article>
+            <div class="checkpoint"><span class="component-label">Checkpoint</span><h3>El servidor decide.</h3><p>Dos pestañas pueden mostrar “Cupos: 1”, pero la primera reserva recibe 201 y la segunda 409. La pantalla aún debe convertir ese error en un mensaje claro.</p></div>
+          </div>
+        </section>
+
+        <section class="section view" id="api-limites" data-accent="1" data-layout="canvas" data-escena="concepto" hidden>
+          <div class="sec-head"><span class="sec-n">API y Axios · límites</span><h2 class="sec-t"><code>useEffect</code> no es “el lugar del código asíncrono”</h2></div>
+          <div class="body">
+            <h3>13.1 · Cuándo no usarlo</h3><p>Reservar es la respuesta a una <strong>acción</strong> (el clic en “Confirmar”), así que va en la función del evento. <code>useEffect</code> es para lo que debe pasar porque la pantalla apareció o porque una dependencia cambió, no por un clic.</p><p>Lo que se puede calcular con datos que ya tienes (un total, una lista filtrada) no necesita efecto ni petición: se calcula al pintar.</p>
+            <h3>13.2 · Axios y fetch</h3><div class="table-wrap"><table class="data-table"><caption>Dos clientes HTTP</caption><thead><tr><th></th><th>Axios</th><th><code>fetch</code></th></tr></thead><tbody><tr><td>JSON</td><td><code>respuesta.data</code></td><td><code>await respuesta.json()</code></td></tr><tr><td>POST</td><td><code>axios.post(url, datos)</code></td><td>método, headers y <code>JSON.stringify</code></td></tr><tr><td>404 o 409</td><td>Rechaza la promesa</td><td>No la rechaza: revisa <code>respuesta.ok</code></td></tr></tbody></table></div>
+            <h3>13.3 · Errores frecuentes</h3><div class="cards"><div class="card"><b>CORS</b><p>Se corrige en el backend con el origen exacto, no en React.</p></div><div class="card"><b>Servidor apagado</b><p><code>ERR_CONNECTION_REFUSED</code>: nadie contestó en el puerto.</p></div><div class="card"><b>Respuesta completa</b><p>Guardar la respuesta sin <code>.data</code> produce <code>map is not a function</code>.</p></div><div class="card"><b>Sin await</b><p>Guardas una promesa en lugar del arreglo.</p></div><div class="card"><b>Sin dependencias</b><p>El efecto corre después de cada pintada y crea un ciclo de peticiones.</p></div></div>
+            <h3>13.4 · Conexión</h3><p>PulsoFit ya cumple lo principal: todos ven los mismos cupos y el servidor no deja pasar a dos personas por uno. Pero la pantalla todavía calla: mientras carga muestra cosas a medias, con el servidor apagado se queda vacía y Camilo no se entera de por qué no pudo reservar.</p>
+            <div class="socratica"><span class="component-label">Para pensar</span><p class="socratica-q">En una app de banco, “Mis movimientos” muestra los de la cuenta de la dirección. Un botón “Transferir” envía dinero. ¿Qué va en <code>useEffect</code>, con qué dependencias, y qué va en la función del botón?</p><details class="reveal"><summary>Ver respuesta</summary><div class="reveal-body"><p class="lead-answer">Pedir movimientos va en <code>useEffect</code> con <code>[numeroCuenta]</code>; transferir va en el evento del botón.</p><p>La primera acción ocurre al aparecer o cambiar la cuenta. La segunda la provoca una persona; ponerla en un efecto podría enviar dinero cada vez que la pantalla se pinta.</p></div></details></div>
+          </div>
+        </section>
+
+        <section class="section view" id="estados-concepto" data-accent="1" data-layout="canvas" data-escena="concepto" hidden>
+          <div class="sec-head"><span class="sec-n">Carga y error · concepto</span><h2 class="sec-t">La pantalla siempre dice qué está pasando</h2></div>
+          <div class="body">
+            <h3>14.1 · Para qué existe</h3><p>Una petición por la red tiene tres finales posibles: <strong>todavía no responde</strong>, <strong>respondió con datos</strong> o <strong>falló</strong>. Si la pantalla solo sabe pintar los datos, en los otros casos muestra algo a medias o nada.</p>
+            <h3>14.2 · Qué es</h3><div class="definicion"><div class="def-tecnica"><span class="component-label">Definición técnica</span><p class="def-termino">Estados de carga y error</p><p>Son valores en el estado que representan en qué punto está una operación asíncrona. El componente usa renderizado condicional: un indicador mientras los datos son <code>null</code>, un mensaje si <code>error</code> tiene texto y los datos cuando llegan. <code>try/catch</code> atrapa el error alrededor de <code>await</code>.</p></div><div class="def-vida"><span class="component-label">Explicación sencilla</span><p>Mientras espera, dice “Cargando…”. Si algo sale mal, dice qué pasó. Si todo sale bien, muestra los datos.</p><span class="component-label">En la vida real</span><p>El tablero de vuelos: Programado, Abordando, Retrasado o Cancelado. Aunque la noticia sea mala, el pasajero sabe qué hacer.</p></div></div>
+            <div class="pipeline"><div class="pipe-step"><span class="component-label">Mientras espera</span><h3>Carga</h3><ul><li>clima === null</li></ul></div><div class="pipe-arrow">→</div><div class="pipe-step" data-emphasis><span class="component-label">La promesa termina</span><h3>Resultado</h3><ul><li>setClima(datos)</li><li>setError(mensaje)</li></ul></div><div class="pipe-arrow">→</div><div class="pipe-step"><span class="component-label">Renderizado condicional</span><h3>Vista</h3><ul><li>datos o mensaje</li></ul></div></div>
+            <h3>14.3 · Cómo reconocerlo</h3><p>¿Lo que muestra esta pantalla depende de algo que tarda o puede fallar? Si la respuesta es sí —una petición, subir un archivo, un pago— la pantalla necesita un estado para “esperando” y otro para “falló”, cada uno con un mensaje que la persona entienda.</p>
+            <div class="table-wrap"><table class="data-table"><caption>La misma idea en otros negocios</caption><thead><tr><th>Negocio</th><th>Cargando</th><th>Error</th><th>Datos</th></tr></thead><tbody><tr><td>Domicilios</td><td>Buscando restaurantes cerca de ti…</td><td>No pudimos ubicarte.</td><td>Lista de restaurantes</td></tr><tr><td>Banco</td><td>Consultando tu saldo…</td><td>Servicio no disponible.</td><td>Saldo</td></tr><tr><td>Pago</td><td>Procesando tu pago…</td><td>Tu banco rechazó la transacción.</td><td>Pago aprobado</td></tr><tr><td>Notaría</td><td>Revisando el documento</td><td>Falta una firma</td><td>Documento autenticado</td></tr></tbody></table></div>
+          </div>
+        </section>
+
+        <section class="section view" id="estados-ejemplo" data-accent="1" data-layout="canvas" data-escena="concepto" hidden>
+          <div class="sec-head"><span class="sec-n">Carga y error · ejemplo aislado</span><h2 class="sec-t">El clima puede cargar, fallar o llegar</h2></div>
+          <div class="body">
+            <div class="micro-task"><span class="component-label">Para pensar</span><p class="micro-task-q">El estado <code>clima</code> arranca en <code>null</code> y el componente pinta <code>clima.ciudad</code>. El archivo responde en milisegundos. ¿Alcanza a mostrar el clima?</p><details class="micro-reveal"><summary>Comprobar</summary><p class="micro-answer">No: la primera pintada ocurre antes de la petición. <code>clima</code> es <code>null</code> y leer <code>null.ciudad</code> rompe la página.</p></details></div>
+            <article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Crear</span><span class="archivo-nombre">Clima.jsx</span><span class="archivo-ruta">frontend/ejemplos/carga/</span></div><p class="archivo-intro">Dos variables representan tres historias: carga, error y datos.</p><div class="lectura"><div class="lectura-head"><span class="lectura-num">1</span><h3 class="lectura-titulo">Cada combinación pinta una respuesta</h3><p class="lectura-proposito">El error se revisa antes que la carga: cuando falla, los datos también siguen en <code>null</code>.</p></div><div class="lectura-cuerpo"><div class="code-block" data-role="fragment"><div class="code-head"><div><span class="code-context">Líneas 1–32</span></div></div><pre class="line-numbers" data-start="1"><code class="language-jsx">import { useEffect, useState } from "react";
+import { createRoot } from "react-dom/client";
+import axios from "axios";
+
+function Clima() {
+  const [clima, setClima] = useState(null);
+  const [error, setError] = useState("");
+
+  useEffect(() =&gt; {
+    async function cargar() {
+      try {
+        const respuesta = await axios.get("/ejemplos/carga/bogota.json");
+        setClima(respuesta.data);
+      } catch {
+        setError("No pudimos traer el clima. Intenta más tarde.");
+      }
+    }
+    cargar();
+  }, []);
+
+  if (error) {
+    return &lt;p&gt;{error}&lt;/p&gt;;
+  }
+
+  if (clima === null) {
+    return &lt;p&gt;Cargando el clima…&lt;/p&gt;;
+  }
+
+  return &lt;p&gt;En {clima.ciudad} hacen {clima.grados} °C.&lt;/p&gt;;
+}
+
+createRoot(document.getElementById("raiz")).render(&lt;Clima /&gt;);</code></pre></div><ol class="notas"><li class="nota" data-lineas="6-7"><div class="nota-cabeza"><span class="nota-lineas">L6–7</span><code class="nota-codigo">clima y error</code></div><p><code>null</code> significa que todavía no hay clima; texto vacío significa que no hay error.</p></li><li class="nota" data-lineas="11-16"><div class="nota-cabeza"><span class="nota-lineas">L11–16</span><code class="nota-codigo">try / catch</code></div><p>Si la petición se rechaza, la ejecución salta al <code>catch</code> y guarda un mensaje en palabras de la persona.</p></li><li class="nota" data-lineas="21-27"><div class="nota-cabeza"><span class="nota-lineas">L21–27</span><code class="nota-codigo">retornos tempranos</code></div><p>Primero el error, después la carga. Así un fallo no queda escondido detrás de “Cargando…”.</p></li><li class="nota" data-lineas="29"><div class="nota-cabeza"><span class="nota-lineas">L29</span><code class="nota-codigo">datos</code></div><p>Solo se llega a esta línea cuando no hay error y <code>clima</code> ya no es <code>null</code>.</p></li></ol></div></div><details class="code-reveal" data-archivo="ejemplos/carga/Clima.jsx"><summary><span><span class="code-reveal-title">Clima.jsx · archivo completo</span><span class="code-reveal-note">32 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Crear</span><span class="code-file">Clima.jsx</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-jsx">import { useEffect, useState } from "react";
+import { createRoot } from "react-dom/client";
+import axios from "axios";
+
+function Clima() {
+  const [clima, setClima] = useState(null);
+  const [error, setError] = useState("");
+
+  useEffect(() =&gt; {
+    async function cargar() {
+      try {
+        const respuesta = await axios.get("/ejemplos/carga/bogota.json");
+        setClima(respuesta.data);
+      } catch {
+        setError("No pudimos traer el clima. Intenta más tarde.");
+      }
+    }
+    cargar();
+  }, []);
+
+  if (error) {
+    return &lt;p&gt;{error}&lt;/p&gt;;
+  }
+
+  if (clima === null) {
+    return &lt;p&gt;Cargando el clima…&lt;/p&gt;;
+  }
+
+  return &lt;p&gt;En {clima.ciudad} hacen {clima.grados} °C.&lt;/p&gt;;
+}
+
+createRoot(document.getElementById("raiz")).render(&lt;Clima /&gt;);</code></pre></div></div></details></article>
+          </div>
+        </section>
+
+        <section class="section view" id="estados-aplicacion-1" data-accent="1" data-layout="canvas" data-escena="construccion" hidden>
+          <div class="sec-head"><span class="sec-n">Carga y error · aplicación</span><h2 class="sec-t">Lista y detalle que no mienten</h2><p class="sec-s"><code>null</code> distingue “todavía no llega” de “llegó una lista vacía”.</p></div>
+          <div class="body">
+            <h3>16.1 · La lista</h3><article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">Clases.jsx</span><span class="archivo-ruta">pulsofit-fullstack/frontend/src/pages/</span></div><p class="archivo-intro">La página muestra un mensaje distinto para carga, error y datos.</p><details class="code-reveal" data-archivo="Clases.jsx"><summary><span><span class="code-reveal-title">Clases.jsx · versión final</span><span class="code-reveal-note">37 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Editar</span><span class="code-file">Clases.jsx</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-jsx">import { useEffect, useState } from "react";
+import ListaClases from "../components/ListaClases.jsx";
+import { listarClases } from "../services/clasesService.js";
+
+function Clases() {
+  const [clases, setClases] = useState(null);
+  const [error, setError] = useState("");
+
+  useEffect(() =&gt; {
+    async function cargar() {
+      try {
+        const datos = await listarClases();
+        setClases(datos);
+      } catch {
+        setError("No pudimos cargar las clases. Revisa tu conexión e intenta de nuevo.");
+      }
+    }
+    cargar();
+  }, []);
+
+  if (error) {
+    return &lt;p className="font-bold text-red-600"&gt;{error}&lt;/p&gt;;
+  }
+
+  if (clases === null) {
+    return &lt;p className="text-slate-600"&gt;Cargando clases…&lt;/p&gt;;
+  }
+
+  return (
+    &lt;section&gt;
+      &lt;h2 className="mb-4 text-xl font-bold"&gt;Clases de hoy&lt;/h2&gt;
+      &lt;ListaClases clases={clases} /&gt;
+    &lt;/section&gt;
+  );
+}
+
+export default Clases;</code></pre></div></div></details></article>
+            <h3>16.2 · El detalle</h3><p>El detalle separa el error de carga del error de reserva. Al cargar, un 404 dice “Esa clase no existe”; sin servidor, “No pudimos cargar la clase…”. Mientras espera, muestra “Cargando clase…”.</p><div class="code-block" data-role="fragment"><div class="code-head"><div><span class="code-context">Atrapar 404 y red</span><span class="code-file">DetalleClase.jsx</span></div></div><pre class="line-numbers" data-start="15"><code class="language-jsx">      try {
+        const datos = await obtenerClase(id);
+        setClase(datos);
+      } catch (falla) {
+        if (falla.response?.status === 404) {
+          setError("Esa clase no existe.");
+        } else {
+          setError("No pudimos cargar la clase. Revisa tu conexión e intenta de nuevo.");
+        }
+      }</code></pre></div>
+          </div>
+        </section>
+
+        <section class="section view" id="estados-aplicacion-2" data-accent="1" data-layout="canvas" data-escena="construccion" hidden>
+          <div class="sec-head"><span class="sec-n">Carga y error · aplicación</span><h2 class="sec-t">El último cupo recibe un mensaje</h2><p class="sec-s">El 409 reemplaza solo el formulario; la clase sigue visible porque sí cargó.</p></div>
+          <div class="body">
+            <h3>17.1 · Atrapar el conflicto</h3><div class="code-block" data-role="fragment"><div class="code-head"><div><span class="code-context">Líneas 31–40</span><span class="code-file">DetalleClase.jsx</span></div></div><pre class="line-numbers" data-start="31"><code class="language-jsx">    try {
+      await crearReserva({ clase_id: clase.id, ...datos });
+      navigate("/mis-reservas");
+    } catch (falla) {
+      if (falla.response?.status === 409) {
+        setErrorReserva("Alguien tomó el último cupo antes que tú. Elige otra clase.");
+      } else {
+        setErrorReserva("No pudimos guardar tu reserva. Intenta de nuevo en un momento.");
+      }
+    }</code></pre></div>
+            <h3>17.2 · Versión final del detalle</h3><article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">DetalleClase.jsx</span><span class="archivo-ruta">pulsofit-fullstack/frontend/src/pages/</span></div><details class="code-reveal" data-archivo="DetalleClase.jsx"><summary><span><span class="code-reveal-title">DetalleClase.jsx · versión final</span><span class="code-reveal-note">69 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Editar</span><span class="code-file">DetalleClase.jsx</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-jsx">import { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router";
+import FormularioReserva from "../components/FormularioReserva.jsx";
+import { obtenerClase } from "../services/clasesService.js";
+import { crearReserva } from "../services/reservasService.js";
+
+function DetalleClase() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [clase, setClase] = useState(null);
+  const [error, setError] = useState("");
+  const [errorReserva, setErrorReserva] = useState("");
+
+  useEffect(() =&gt; {
+    async function cargar() {
+      try {
+        const datos = await obtenerClase(id);
+        setClase(datos);
+      } catch (falla) {
+        if (falla.response?.status === 404) {
+          setError("Esa clase no existe.");
+        } else {
+          setError("No pudimos cargar la clase. Revisa tu conexión e intenta de nuevo.");
+        }
+      }
+    }
+    cargar();
+  }, [id]);
+
+  async function confirmar(datos) {
+    try {
+      await crearReserva({ clase_id: clase.id, ...datos });
+      navigate("/mis-reservas");
+    } catch (falla) {
+      if (falla.response?.status === 409) {
+        setErrorReserva("Alguien tomó el último cupo antes que tú. Elige otra clase.");
+      } else {
+        setErrorReserva("No pudimos guardar tu reserva. Intenta de nuevo en un momento.");
+      }
+    }
+  }
+
+  if (error) {
+    return &lt;p className="font-bold text-red-600"&gt;{error}&lt;/p&gt;;
+  }
+
+  if (clase === null) {
+    return &lt;p className="text-slate-600"&gt;Cargando clase…&lt;/p&gt;;
+  }
+
+  return (
+    &lt;section className="max-w-xl"&gt;
+      &lt;Link to="/clases" className="text-sm font-bold text-orange-700 underline"&gt;
+        ← Todas las clases
+      &lt;/Link&gt;
+      &lt;h2 className="mt-3 text-2xl font-bold"&gt;{clase.nombre}&lt;/h2&gt;
+      &lt;p&gt;Entrena: {clase.entrenador}&lt;/p&gt;
+      &lt;p&gt;Hora: {clase.hora}&lt;/p&gt;
+      &lt;p className="mb-6"&gt;Cupos: {clase.cupos}&lt;/p&gt;
+      {errorReserva ? (
+        &lt;p className="font-bold text-red-600"&gt;{errorReserva}&lt;/p&gt;
+      ) : (
+        &lt;FormularioReserva clase={clase} onConfirmar={confirmar} /&gt;
+      )}
+    &lt;/section&gt;
+  );
+}
+
+export default DetalleClase;</code></pre></div></div></details></article>
+            <h3>17.3 · Reservas con carga y error</h3><article class="archivo"><div class="archivo-ficha"><span class="archivo-accion">Editar</span><span class="archivo-nombre">MisReservas.jsx</span><span class="archivo-ruta">pulsofit-fullstack/frontend/src/pages/</span></div><p class="archivo-intro">“Cargando reservas…”, “Aún no tienes reservas” y “No pudimos cargar…” son tres situaciones diferentes.</p><details class="code-reveal" data-archivo="MisReservas.jsx"><summary><span><span class="code-reveal-title">MisReservas.jsx · versión final</span><span class="code-reveal-note">46 líneas · listo para copiar</span></span></summary><div class="code-reveal-body"><div class="code-block"><div class="code-head"><div><span class="code-context">Editar</span><span class="code-file">MisReservas.jsx</span></div><button class="copy-btn" type="button">Copiar archivo</button></div><pre class="line-numbers"><code class="language-jsx">import { useEffect, useState } from "react";
+import { listarReservas } from "../services/reservasService.js";
+
+function MisReservas() {
+  const [reservas, setReservas] = useState(null);
+  const [error, setError] = useState("");
+
+  useEffect(() =&gt; {
+    async function cargar() {
+      try {
+        const datos = await listarReservas();
+        setReservas(datos);
+      } catch {
+        setError("No pudimos cargar tus reservas. Revisa tu conexión e intenta de nuevo.");
+      }
+    }
+    cargar();
+  }, []);
+
+  if (error) {
+    return &lt;p className="font-bold text-red-600"&gt;{error}&lt;/p&gt;;
+  }
+
+  if (reservas === null) {
+    return &lt;p className="text-slate-600"&gt;Cargando reservas…&lt;/p&gt;;
+  }
+
+  return (
+    &lt;section className="rounded-lg border border-slate-200 bg-white p-4"&gt;
+      &lt;h2 className="mb-2 text-xl font-bold"&gt;Mis reservas ({reservas.length})&lt;/h2&gt;
+      {reservas.length === 0 ? (
+        &lt;p className="text-slate-600"&gt;Aún no tienes reservas.&lt;/p&gt;
+      ) : (
+        &lt;ul className="list-disc pl-5"&gt;
+          {reservas.map((reserva) =&gt; (
+            &lt;li key={reserva.id}&gt;
+              {reserva.clase} · {reserva.hora} · {reserva.nombre}
+            &lt;/li&gt;
+          ))}
+        &lt;/ul&gt;
+      )}
+    &lt;/section&gt;
+  );
+}
+
+export default MisReservas;</code></pre></div></div></details></article>
+          </div>
+        </section>
+
+        <section class="section view" id="estados-limites" data-accent="1" data-layout="canvas" data-escena="concepto" hidden>
+          <div class="sec-head"><span class="sec-n">Carga y error · límites</span><h2 class="sec-t">Solo donde algo tarda o puede fallar</h2></div>
+          <div class="body">
+            <h3>18.1 · Cuándo no usarlo</h3><p><code>Inicio</code> no pide nada a ningún servidor: su contenido está escrito en el código y aparece de inmediato. No hay nada que esperar ni nada que pueda fallar.</p>
+            <h3>18.2 · Validación frente a petición</h3><div class="table-wrap"><table class="data-table"><caption>Dos mensajes rojos, dos momentos</caption><thead><tr><th></th><th>Validación</th><th>Error de petición</th></tr></thead><tbody><tr><td>Cuándo</td><td>Antes de enviar</td><td>Después de enviar</td></tr><tr><td>Quién decide</td><td>El navegador</td><td>El servidor o la red</td></tr><tr><td>¿Se evita con buenos datos?</td><td>Sí</td><td>No siempre</td></tr></tbody></table></div>
+            <h3>18.3 · Variantes y casos límite</h3><p>Un estado <code>cargando</code> aparte es útil cuando se vuelven a pedir datos que ya están en pantalla. Un <code>finally</code> lo apaga tanto si hubo éxito como si hubo error.</p><div class="code-block"><div class="code-head"><div><span class="code-context">Solo para leer</span><span class="code-file">Variante con finally</span></div></div><pre><code class="language-jsx">try {
+  setClases(await listarClases());
+} catch {
+  setError("No pudimos cargar las clases…");
+} finally {
+  setCargando(false);
+}</code></pre></div>
+            <h3>18.4 · Errores frecuentes</h3><div class="cards"><div class="card"><b>Leer antes de tiempo</b><p><code>Cannot read properties of null</code>: revisa la carga antes de leer los datos.</p></div><div class="card"><b>Carga antes que error</b><p>Un fallo queda atrapado en “Cargando…” para siempre.</p></div><div class="card"><b>Sin try/catch</b><p>El error escapa como <code>Uncaught (in promise)</code>.</p></div><div class="card"><b>Sin encadenamiento opcional</b><p><code>falla.response</code> no existe cuando nadie respondió.</p></div></div>
+            <h3>18.5 · Conexión</h3><p>Con esto quedó lo que pidió Valeria: los mismos cupos para todos, un enlace para cada clase y un aviso claro para quien llega tarde. Queda una incomodidad: la dirección del servidor está repetida y los mensajes se escriben página por página. Eso abre la Clase 4.</p>
+            <div class="socratica"><span class="component-label">Para pensar</span><p class="socratica-q">Una tienda tiene la página de un producto con un botón “Agregar al carrito”. ¿Qué tres estados necesita al cargar, qué error especial puede tener y qué error del botón debe mostrarse sin borrar la página?</p><details class="reveal"><summary>Ver respuesta</summary><div class="reveal-body"><p class="lead-answer">Carga, error y datos; un 404 al cargar; un 409 al agregar.</p><p>El 404 dice que el producto ya no existe. El 409 del botón se muestra junto al producto: se agotó mientras la persona lo miraba.</p></div></details></div>
+          </div>
+        </section>
+
+        <section class="section view" id="practica" data-accent="1" data-layout="canvas" data-escena="prueba" hidden>
+          <div class="sec-head"><span class="sec-n">Aplicar</span><h2 class="sec-t">GolPark · Fase 3</h2><p class="sec-s">La API de GolPark y sus pantallas reutilizan el mismo recorrido con turnos y reservas.</p></div>
+          <div class="body">
+            <p>En GolPark pasa lo mismo que en PulsoFit: dos equipos reservaron la misma cancha a la misma hora desde dos celulares. Construyes la API de GolPark con FastAPI y conectas tu frontend con React Router y Axios. Todo el detalle está en <code>fases/FASE-3.md</code> de tu fork.</p>
+            <div class="table-wrap"><table class="data-table"><caption>El espejo, pieza por pieza</caption><thead><tr><th>PulsoFit</th><th>GolPark</th></tr></thead><tbody><tr><td><code>clases</code> y <code>reservas</code></td><td><code>turnos</code> y <code>reservas</code></td></tr><tr><td><code>GET /clases</code> y <code>/clases/{id}</code></td><td><code>GET /turnos</code> y <code>/turnos/{id}</code></td></tr><tr><td>409 sin cupos</td><td>409 · “Ese turno ya está ocupado.”</td></tr><tr><td><code>nombre</code> y <code>correo</code></td><td><code>equipo</code> y <code>celular</code></td></tr><tr><td><code>clasesService.js</code></td><td><code>turnosService.js</code></td></tr><tr><td><code>/clases/:id</code></td><td><code>/turnos/:id</code></td></tr><tr><td>Mensaje propio del 409</td><td>Mostrar <code>falla.response.data.detail</code></td></tr></tbody></table></div>
+            <div class="callout" data-tone="warning"><span class="callout-icon">!</span><div><h3>Dos diferencias</h3><p>La función del detalle retorna <code>true</code> si salió bien y <code>false</code> si falló. El formulario recibe una prop <code>deshabilitado</code> cuando el turno está ocupado.</p></div></div>
+            <ul class="checklist"><li>Desde la raíz de tu fork: <code>npm test -- F3</code>.</li><li>Las pruebas del frontend usan un servidor falso; revisa por separado frontend y API.</li><li>Antes de subir, prueba el escenario de las dos pestañas con tu backend.</li><li>Haz <code>git push</code> a tu fork; el Pull Request abierto en la Fase 0 se califica solo.</li></ul>
+          </div>
+        </section>
+
+        <section class="section view" id="cierre" data-accent="1" data-layout="canvas" data-escena="cierre" hidden>
+          <div class="sec-head"><span class="sec-n">Cierre</span><h2 class="sec-t">PulsoFit ya comparte, decide y explica</h2></div>
+          <div class="body">
+            <article class="correo"><div class="correo-head"><span class="correo-avatar">ED</span><div><div class="correo-remitente">Equipo de desarrollo</div><div class="correo-ruta">Para: Valeria Cárdenas · valeria@pulsofit.co</div></div><span class="correo-fecha">16 nov 2026</span></div><div class="correo-asunto">RE: Abrimos sede en Medellín 🎉 (y un problema)</div><div class="correo-body"><p>Hola, Valeria:</p><p>Ya quedó. Los cupos ahora viven en un servidor de PulsoFit: Bogotá y Medellín, el celular y la recepción ven lo mismo, y no se borran al recargar. Cada clase tiene su enlace (por ejemplo, <code>/clases/3</code> es Funcional) para que lo mandes por WhatsApp. Y si dos personas piden el último cupo, el servidor acepta a la primera y a la segunda le dice: “Alguien tomó el último cupo antes que tú. Elige otra clase.”</p><p>Un detalle honesto: “Mis reservas” hoy muestra las de todo el gimnasio, porque el sistema todavía no sabe quién es quién. Eso llega con el inicio de sesión.</p><p>Equipo de desarrollo</p></div></article>
+            <ol class="ideas"><li><span><strong>Cada pantalla compartible necesita su dirección.</strong> Una tabla decide qué componente se pinta y un segmento dinámico sirve a muchos elementos.</span></li><li><span><strong>Los datos compartidos viven en un servidor y llegan después de la primera pintada.</strong> Se piden en <code>useEffect</code> a través de un servicio; lo que provoca un clic va en el evento.</span></li><li><span><strong>La pantalla siempre dice qué está pasando.</strong> Todo lo que tarda o puede fallar tiene carga, error y datos.</span></li></ol>
+            <div class="callout" data-tone="success"><span class="callout-icon">✓</span><div><h3>La decisión técnica más importante</h3><p>La regla del último cupo vive en el servidor, no en la pantalla. La pantalla muestra; el servidor decide.</p></div></div>
+            <div class="autoevaluacion"><span class="component-label">¿Ya puedo…?</span><ul><li><label><input type="checkbox"><span>Construir la navegación con React Router y abrir <code>/clases/3</code> directamente.</span></label></li><li><label><input type="checkbox"><span>Explicar cómo llegan los datos de una API con <code>useEffect</code> y Axios.</span></label></li><li><label><input type="checkbox"><span>Construir pantallas con carga y error, incluido el conflicto del último cupo.</span></label></li><li><label><input type="checkbox"><span>Reconocer los conceptos en una app de domicilios, un banco o una tienda.</span></label></li></ul></div>
+            <div class="panel"><h3>El próximo lunes</h3><p>La dirección <code>http://localhost:8000</code> está escrita en dos archivos, los mensajes de error se repiten y el encabezado no marca en qué sección estás. En la Clase 4: un cliente HTTP, configuración, errores centralizados y un <code>Layout</code> compartido.</p></div>
+          </div>
+        </section>
+
+        <section class="section view" id="glosario" data-accent="1" data-layout="canvas" data-escena="consulta" hidden>
+          <div class="sec-head"><span class="sec-n">Consultar</span><h2 class="sec-t">Glosario de la clase</h2></div>
+          <div class="body"><dl class="glosario">
+            <div class="glos-item" data-termino="ruta"><dt class="glos-termino">Ruta</dt><dd class="glos-tecnica">Asociación entre una dirección y el componente que se pinta.</dd><dd class="glos-vida">El número de un local en un directorio.</dd><dd class="glos-donde">Navegación · concepto y App.jsx</dd></div>
+            <div class="glos-item" data-termino="segmento-dinamico"><dt class="glos-termino">Segmento dinámico</dt><dd class="glos-tecnica">Parte de una ruta que empieza por <code>:</code> y acepta cualquier valor; se lee con <code>useParams</code> como texto.</dd><dd class="glos-vida">“Oficina número ___”: el formato es fijo, el número cambia.</dd><dd class="glos-donde">Biblioteca.jsx y DetalleClase.jsx</dd></div>
+            <div class="glos-item" data-termino="link-navigate"><dt class="glos-termino"><code>Link</code> y <code>useNavigate</code></dt><dd class="glos-tecnica"><code>Link</code> navega sin recargar; <code>useNavigate</code> hace lo mismo desde el código.</dd><dd class="glos-vida">Una puerta que eliges frente a un acomodador que te lleva.</dd><dd class="glos-donde">Navegación y API · reservar</dd></div>
+            <div class="glos-item" data-termino="api"><dt class="glos-termino">API</dt><dd class="glos-tecnica">Conjunto de direcciones de un servidor que responden datos según el método HTTP.</dd><dd class="glos-vida">La ventanilla de un banco.</dd><dd class="glos-donde">API · concepto y backend</dd></div>
+            <div class="glos-item" data-termino="promesa"><dt class="glos-termino">Promesa, <code>async</code> y <code>await</code></dt><dd class="glos-tecnica">Una promesa representa un valor futuro; <code>await</code> lo espera dentro de una función <code>async</code> sin congelar la página.</dd><dd class="glos-vida">El aparato del restaurante que avisa cuando el pedido está listo.</dd><dd class="glos-donde">API · Frutas.jsx</dd></div>
+            <div class="glos-item" data-termino="use-effect"><dt class="glos-termino"><code>useEffect</code></dt><dd class="glos-tecnica">Hook que ejecuta una función después de pintar; sus dependencias deciden cuándo se repite.</dd><dd class="glos-vida">El mesero lleva el pedido a la cocina después de sentarte.</dd><dd class="glos-donde">API · concepto y páginas</dd></div>
+            <div class="glos-item" data-termino="servicio"><dt class="glos-termino">Servicio</dt><dd class="glos-tecnica">Archivo que agrupa peticiones a la API en funciones con nombres del negocio.</dd><dd class="glos-vida">La persona de compras que sabe a qué proveedor llamar.</dd><dd class="glos-donde">API · servicios</dd></div>
+            <div class="glos-item" data-termino="cors"><dt class="glos-termino">CORS</dt><dd class="glos-tecnica">Regla del navegador que exige autorización del servidor para leer respuestas de otro origen.</dd><dd class="glos-vida">La portería que solo deja entrar al visitante autorizado.</dd><dd class="glos-donde">API · CORS</dd></div>
+            <div class="glos-item" data-termino="http-status"><dt class="glos-termino">Códigos de estado HTTP</dt><dd class="glos-tecnica">200 OK, 201 creado, 404 no existe, 409 conflicto y 422 datos inválidos.</dd><dd class="glos-vida">Sellos de una oficina: recibido, rechazado o no existe.</dd><dd class="glos-donde">Backend y errores</dd></div>
+            <div class="glos-item" data-termino="carga-error"><dt class="glos-termino">Estado de carga y error</dt><dd class="glos-tecnica">Valores que dicen si una operación todavía no termina o falló.</dd><dd class="glos-vida">El tablero de vuelos.</dd><dd class="glos-donde">Carga y error · concepto</dd></div>
+            <div class="glos-item" data-termino="try-catch"><dt class="glos-termino"><code>try</code> / <code>catch</code></dt><dd class="glos-tecnica">Intenta ejecutar un bloque y, si algo lanza un error, salta al <code>catch</code>.</dd><dd class="glos-vida">Un plan B cuando el proveedor no contesta.</dd><dd class="glos-donde">Clima.jsx y páginas</dd></div>
+            <div class="glos-item" data-termino="optional-chaining"><dt class="glos-termino">Encadenamiento opcional <code>?.</code></dt><dd class="glos-tecnica">Lee una propiedad solo si lo de la izquierda existe.</dd><dd class="glos-vida">Si hay respuesta del banco, mira el código; si no, no busques código.</dd><dd class="glos-donde">DetalleClase.jsx</dd></div>
+          </dl></div>
+        </section>
+
+        <section class="section view" id="documentacion" data-accent="1" data-layout="canvas" data-escena="consulta" hidden>
+          <div class="sec-head"><span class="sec-n">Consultar</span><h2 class="sec-t">Documentación para profundizar</h2></div>
+          <div class="body"><ul class="docs">
+            <li><div class="doc-meta"><span class="doc-fuente">React Router</span><span class="doc-tipo">Documentación oficial</span><span class="doc-idioma">Inglés</span></div><a class="doc-titulo" href="https://reactrouter.com/start/declarative/routing" target="_blank" rel="noopener">Routing · modo declarativo</a><p class="doc-que-leer">Lee “Configuring Routes”, “Dynamic Segments” y “Linking”. Compara el ejemplo con <code>main.jsx</code> y <code>App.jsx</code>.</p></li>
+            <li><div class="doc-meta"><span class="doc-fuente">React</span><span class="doc-tipo">Documentación oficial</span><span class="doc-idioma">Español</span></div><a class="doc-titulo" href="https://es.react.dev/learn/synchronizing-with-effects" target="_blank" rel="noopener">Sincronizar con Efectos</a><p class="doc-que-leer">Lee la introducción y “Obtención de datos”. Fíjate en la doble petición en desarrollo y en las dependencias <code>[]</code> y <code>[id]</code>.</p></li>
+            <li><div class="doc-meta"><span class="doc-fuente">Axios</span><span class="doc-tipo">Documentación oficial</span><span class="doc-idioma">Español</span></div><a class="doc-titulo" href="https://axios.rest/es/pages/advanced/error-handling" target="_blank" rel="noopener">Manejo de errores</a><p class="doc-que-leer">Lee el ejemplo con <code>error.response</code> y <code>error.request</code>; relaciónalo con el 404, el 409 y el servidor apagado.</p></li>
+            <li><div class="doc-meta"><span class="doc-fuente">Yoelvis Mulen { code }</span><span class="doc-tipo">Video práctico</span><span class="doc-idioma">Español</span></div><a class="doc-titulo" href="https://www.youtube.com/watch?v=KKXFmzr0nKk" target="_blank" rel="noopener">React Router v6 · Guía práctica desde cero</a><p class="doc-que-leer">Revisa rutas, <code>Link</code>, <code>useParams</code> y <code>useNavigate</code>. El video importa de <code>react-router-dom</code>; en esta clase se usa <code>react-router</code>.</p></li>
+            <li><div class="doc-meta"><span class="doc-fuente">React</span><span class="doc-tipo">Práctica interactiva</span><span class="doc-idioma">Español</span></div><a class="doc-titulo" href="https://es.react.dev/learn/synchronizing-with-effects" target="_blank" rel="noopener">Arregla la solicitud dentro de un Efecto</a><p class="doc-que-leer">Resuelve el desafío sobre una respuesta vieja que llega tarde antes de ver la solución.</p></li>
+          </ul><p class="doc-foot">© 2026 Ana Alvarado · Educadora Tech &amp; Desarrolladora Full Stack · Todos los derechos reservados · linkedin.com/in/ana-alvarado-instructora-full-stack</p></div>
+        </section>
+      </div>
+
+      <nav class="view-controls" id="viewControls" aria-label="Navegación entre secciones"><button class="view-btn" id="prevView" type="button" aria-label="Sección anterior">←</button><span class="view-position" id="viewPosition" aria-live="polite">Portada</span><button class="view-btn" id="nextView" type="button" aria-label="Sección siguiente">→</button></nav>
+    </main>
+  </div>
+  <div class="watermark" aria-hidden="true">© 2026 ANA ALVARADO</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+  <script src="anaclase-v12.js"></script>
+</body>
+</html>
